@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &39603748
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1579219705
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 3309814389523156967, guid: 8bba721de1f344844a5d58a595ea5a4c,
     type: 3}
@@ -463,10 +463,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomObjects:
   - {fileID: 6341318343304422858, guid: 7bc722930b6c274418b4e830de10fcbe, type: 3}
-  - {fileID: 6276513182844315967, guid: d2fd4d082fccc3f459611a30b57ad408, type: 3}
-  - {fileID: 7715147394515922196, guid: c3b376599d907a5418a0fe707600d6ca, type: 3}
-  - {fileID: 3173217641596400075, guid: f125481ba153bf34fa304fa8e5b872b0, type: 3}
-  - {fileID: 588443512132912064, guid: 057898edbacd26048b38912f9d5c187a, type: 3}
+  - {fileID: 8143007689901468935, guid: 509fc27f9c989b544964c14eb0630987, type: 3}
+  - {fileID: 5735360686419544392, guid: 64257a9834d2f8f429d33a8ee424122d, type: 3}
+  - {fileID: 1061334525099853774, guid: c0176592989978f4eac1e699bdaa8bff, type: 3}
+  - {fileID: 6094470350055226597, guid: adf9ae32c0387c94a9cf29b943676737, type: 3}
+  - {fileID: 3200732652975116999, guid: deea467c25945ce44851387681c1314e, type: 3}
+  - {fileID: 853074886679674536, guid: 5478242ab8f8d68479a9cfa115f3c61a, type: 3}
+  - {fileID: 3151926378313958792, guid: da505c16f313df84dbc875ed763d8b5d, type: 3}
+  - {fileID: 7630495897562968662, guid: 41900942f27a7f742b68a1832e8c1459, type: 3}
+  - {fileID: 8819816693499536511, guid: 01db2efa7b319164589319bb034a1b4f, type: 3}
+  - {fileID: 4952778598048161639, guid: 73c6348490d6aab419033e00d1efd515, type: 3}
+  - {fileID: 2949655563607056513, guid: aaacc619016683241b34b4144f86ad7f, type: 3}
+  - {fileID: 3734846025440352197, guid: 9d7cd877090e35446a45338fbb6363de, type: 3}
+  - {fileID: 6447731803521102101, guid: 46ce82b1c5c6e9c42b23fc7c7fad81e1, type: 3}
+  - {fileID: 5473848072161613222, guid: ad5aa43eabb361343bd9145419e7ce20, type: 3}
   rooms: []
   head: {fileID: 0}
 --- !u!4 &1815459525
