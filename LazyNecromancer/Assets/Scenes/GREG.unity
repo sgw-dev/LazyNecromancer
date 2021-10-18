@@ -538,8 +538,8 @@ MonoBehaviour:
   boidSpeed: 10
   boidprefab: {fileID: 21300000, guid: a7b846b0e0233a84bb4b6df3b1380530, type: 3}
   Separation: 3
-  behaviourTimerMax: 0
-  swapvalue: 10
+  behaviourTimerMax: 2
+  swapvalue: 15
   debugger: {fileID: 1290272121}
 --- !u!4 &1073135534
 Transform:
