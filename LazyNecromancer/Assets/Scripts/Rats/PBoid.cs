@@ -53,7 +53,7 @@ public class PBoid : MonoBehaviour {
         oldUp = up;
         acceleration = Vector3.zero;
 
-                avgFlockHeading = new Vector3(cell.flockHeadingTotal.x - oldUp.x, cell.flockHeadingTotal.y - oldUp.y, 0);
+        avgFlockHeading = new Vector3(cell.flockHeadingTotal.x - oldUp.x, cell.flockHeadingTotal.y - oldUp.y, 0);
         centreOfFlockmates = new Vector3(cell.flockCentreTotal.x - oldPosition.x, cell.flockCentreTotal.y - oldPosition.y, 0);
         numPerceivedFlockmates = cell.totalNumOfBoids - 1;
 
