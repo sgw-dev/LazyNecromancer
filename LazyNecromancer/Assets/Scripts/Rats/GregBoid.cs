@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boid : MonoBehaviour
+public class GregBoid : MonoBehaviour
 {
     public Vector3 velocity;
     public float speed;

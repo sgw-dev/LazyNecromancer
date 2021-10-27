@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /*
     Unoptimized boids
  */
-public class BoidController : MonoBehaviour {
+public class GregBoidController : MonoBehaviour {
     
     public int numberOfBoids;
     public int Xmax;
@@ -24,7 +24,7 @@ public class BoidController : MonoBehaviour {
 
 
 
-    List<Boid> boids;
+    List<GregBoid> boids;
     static readonly float FACTOR = 100;
     static readonly float FACTOR3 = 10;
     public float Separation = 3;
@@ -39,7 +39,7 @@ public class BoidController : MonoBehaviour {
     public Text debugger;
     
     public void CreateBoids() {
-        boids = new List<Boid>();
+        boids = new List<GregBoid>();
         for(int i = 0 ; i < numberOfBoids ; i++ ){
             //create boid
             //Boid b = new Boid();
@@ -50,7 +50,7 @@ public class BoidController : MonoBehaviour {
             spriteobj.transform.parent = temp.transform;
             sprite.sprite = boidprefab;
 
-            Boid b = temp.AddComponent<Boid>();
+            GregBoid b = temp.AddComponent<GregBoid>();
             b.speed = boidSpeed;
             boids.Add(b);
         }
@@ -94,7 +94,7 @@ public class BoidController : MonoBehaviour {
     }
         
 
-    void OutOfBoundsBreak(Boid b) {
+    void OutOfBoundsBreak(GregBoid b) {
         if(b.transform.position.x > Xmax || b.transform.position.x < Xmin) {
                 Debug.Break();
             }
@@ -103,7 +103,7 @@ public class BoidController : MonoBehaviour {
         }
     }
     void MoveBoids() {
-        foreach(Boid b in boids) {
+        foreach(GregBoid b in boids) {
             Vector3 v1 = Rule1(b);
             Vector3 v2 = Rule2(b);
             Vector3 v3 = Rule3(b);
@@ -128,21 +128,21 @@ public class BoidController : MonoBehaviour {
     }
 
     //Go toward
-    Vector3 Target(Boid boid) {
+    Vector3 Target(GregBoid boid) {
         Vector3 dir = target- boid.transform.position;
         dir.z=0f;
         return dir.normalized;
     }
 
     //cohesion
-    Vector3 Rule1(Boid b) {
+    Vector3 Rule1(GregBoid b) {
         return CenterOfMass(b);
     }
     
     //Separation
-    Vector3 Rule2(Boid boid) {
+    Vector3 Rule2(GregBoid boid) {
         Vector3 c = Vector3.zero;
-        foreach(Boid b in boids) {
+        foreach(GregBoid b in boids) {
             Vector3 mag = (b.transform.position - boid.transform.position);
             if(mag.magnitude < Separation) {
                 c = c - mag.normalized;
@@ -152,10 +152,10 @@ public class BoidController : MonoBehaviour {
     }
 
     //Alignment
-    Vector3 Rule3(Boid boid) {
+    Vector3 Rule3(GregBoid boid) {
         Vector3 percievedVelocity = Vector3.zero;
         
-        foreach(Boid b in boids) {
+        foreach(GregBoid b in boids) {
             if(!boid.Equals(b)){
                 percievedVelocity = percievedVelocity + b.velocity;
             }
@@ -167,9 +167,9 @@ public class BoidController : MonoBehaviour {
     }
 
     //percieved center
-    Vector3 CenterOfMass(Boid boid) {
+    Vector3 CenterOfMass(GregBoid boid) {
         Vector3 mass = Vector3.zero;
-        foreach(Boid b in boids) {
+        foreach(GregBoid b in boids) {
             if(boid.Equals(b)) {
 
             } else {
@@ -181,7 +181,7 @@ public class BoidController : MonoBehaviour {
     }
 
 
-    Vector3 BoundPosition(Boid boid) {
+    Vector3 BoundPosition(GregBoid boid) {
         Vector3 v = Vector3.zero;
 
         if(boid.transform.position.x < Xmin) {
