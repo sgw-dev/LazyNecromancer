@@ -480,7 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8559981342513341376, guid: 73995026476a5c743819529f780e0848,
     type: 3}
-  numberOfBoids: 100
+  numberOfBoids: 22
   boidSpeed: 10
   boidDamage: 15
   MaxAttacksPerSecond: 2
