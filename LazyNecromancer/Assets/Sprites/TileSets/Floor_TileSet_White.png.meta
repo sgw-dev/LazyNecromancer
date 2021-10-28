@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 8bba721de1f344844a5d58a595ea5a4c
+guid: fc941187049a6aa42aca6ce85a69cfd8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3309814389523156967
-    second: Skeleton_Idle_Forward_0
+      213: -1694061040482289842
+    second: Floor_TileSet_White_0
   - first:
-      213: 3906772250443599287
-    second: Skeleton_Idle_Forward_1
+      213: -1685728557298161494
+    second: Floor_TileSet_White_1
   - first:
-      213: -8341853964499384871
-    second: Skeleton_Idle_Forward_2
+      213: -2209671468676060366
+    second: Floor_TileSet_White_2
+  - first:
+      213: 4133644458029946930
+    second: Floor_TileSet_White_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -52,12 +55,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -100,64 +103,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skeleton_Idle_Forward_0
+      name: Floor_TileSet_White_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 32
-        height: 32
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 32, y: 32, z: 32, w: 32}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ef0100b6a2deed20800000000000000
-      internalID: 3309814389523156967
+      spriteID: e47793e857c7d78e0800000000000000
+      internalID: -1694061040482289842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_Idle_Forward_1
+      name: Floor_TileSet_White_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
+        x: 96
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 32, y: 32, z: 32, w: 32}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bd4b0ea9a4a73630800000000000000
-      internalID: 3906772250443599287
+      spriteID: aa8e28afec61b98e0800000000000000
+      internalID: -1685728557298161494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_Idle_Forward_2
+      name: Floor_TileSet_White_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 32, y: 32, z: 32, w: 32}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d584dd2408cb3c80800000000000000
-      internalID: -8341853964499384871
+      spriteID: 23b6f3fa18ba551e0800000000000000
+      internalID: -2209671468676060366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor_TileSet_White_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 32, y: 32, z: 32, w: 32}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23813accbb7ad5930800000000000000
+      internalID: 4133644458029946930
       vertices: []
       indices: 
       edges: []
