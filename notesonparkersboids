@@ -1,0 +1,71 @@
+Initilization
+
+-Spawner Intilizes Grid
+-Grid 
+	makes 2d cell array
+	and sets the cells center based off its origin, cellsize
+	sets refence of cell to grid in cell class
+	
+	sets the cells in radius  for perception and avoidance
+	
+-Spawner Initizlies boids
+	random placemnt in circle
+	calls Manager to add boid
+	
+-Manager
+	calls Boid Initialization
+		sets manager in boid
+		sets target
+		sets position
+		sets up
+		sets speed
+		sets velocity
+	Calls grid AddBOidToGrid
+		references cell by position from Grid 2d Cell array
+			if the GetCellFromPosition add a new cell
+				set prevoius to null
+				set next to filled
+				set filled to the new cell
+		sets the cells boid head to the boid
+		calls cell addboid
+			set boid.prevoius to null
+			set next to head of the cell
+			if head is not null set its previous to based
+			set boid refernce to cell in b
+			DONE
+			
+///Movement///
+	(go through all cells twice) 2N < TotalnumBoids
+	CalaValues (update values for each cell before boids actually move)
+	go through each cell containing boids (Remember double linked list and filledCells is the root)
+	AddToCells() updates 
+		-totalNumOfBoids for a give cell
+		-flockHeading
+		-flockCentre
+	CalculateAvoidence(c)
+		grab head boid
+		go through the avoidance cells for a given cell
+		
+		
+	go through each boid
+	update its movement
+		
+	use grid move to move boid
+		Get cell from boid position
+		if cell is the same update cells values	
+			RETURN
+		otherwise
+		it is in new cell
+			remove boid from old cell
+			and get rid of the add values the boid would have contributed
+		if the cell has no boids add a new cell to the doublelinked list so it is looked at nect time
+		Add the boid to the cell
+
+goes through the 
+	cells twice to update some fo the boid rules
+	go through the boids so each is updated
+	
+	move the boids
+		-move boids from cell to cell if they leave
+		
+	
