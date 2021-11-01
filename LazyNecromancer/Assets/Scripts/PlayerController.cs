@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
             movement = new Vector2(inputX, inputY).normalized;
 
-            if (Input.GetKeyDown(KeyCode.Space) && canDodge)
+            if (Input.GetButtonDown("Jump") && canDodge)
             {
                 StartCoroutine(Dodge());
             }
