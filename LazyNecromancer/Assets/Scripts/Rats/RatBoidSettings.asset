@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b081e9043a50fe4bacef5755f4ac89e, type: 3}
   m_Name: RatBoidSettings
   m_EditorClassIdentifier: 
-  minSpeed: 10
-  maxSpeed: 50
+  minSpeed: 9.54
+  maxSpeed: 11.06
   perceptionRadius: 2.5
   avoidanceRadius: 1
   maxSteerForce: 3
   alignWeight: 1
-  cohesionWeight: 1
-  seperateWeight: 1.5
-  targetWeight: 0.1
+  cohesionWeight: 1.63
+  seperateWeight: 5.81
+  targetWeight: 10
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
-  boundsRadius: 0.3
+  boundsRadius: 1.47
   avoidCollisionWeight: 30
   collisionAvoidDst: 5
