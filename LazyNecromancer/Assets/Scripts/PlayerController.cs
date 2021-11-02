@@ -7,26 +7,30 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D playerRB;
     private Vector2 movement;
 
-    public float moveSpeed = 20.0f;
+    public float moveSpeed = 5f;
     public float slowStop = 1.38f;
 
     private bool isDodging = false;
     private bool canDodge = true;
 
-    public float dodgeDuration = .25f;
-    public float dodgeSpeed = 45f;
+    public float dodgeDuration = .15f;
+    public float dodgeSpeed = 15f;
     public float dodgeCooldown = 1.5f;
 
-    public float dodgeStunTime = 0.25f;
-    public float dodgeStunFactor = 0.25f;
+    public float dodgeStunTime = 0.4f;
+    public float dodgeStunFactor = 0.6f;
     
     float speed;
+
+    PlayerAnimationController animationController;
 
     private void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
 
         speed = moveSpeed;
+
+        animationController = GetComponentInChildren<PlayerAnimationController>();
     }
 
     private void FixedUpdate()
@@ -36,18 +40,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        animationController.ResetState();
+
         if (!isDodging)
         {
             float inputX = Input.GetAxisRaw("Horizontal");
             float inputY = Input.GetAxisRaw("Vertical");
 
             movement = new Vector2(inputX, inputY).normalized;
+            
+            animationController.InputDirection(movement);
 
             if (Input.GetButtonDown("Jump") && canDodge)
             {
                 StartCoroutine(Dodge());
             }
         }
+
+        animationController.UpdateAnimation();
     }
 
     private void HandleMovement()
