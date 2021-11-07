@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerAnimationController))]
 public class AnimationControllerTester : MonoBehaviour
 {
-    PlayerAnimationController animationController;
+    AnimationController animationController;
 
     private void Awake()
     {
-        animationController = GetComponent<PlayerAnimationController>();
+        animationController = GetComponent<AnimationController>();
     }
 
     private void Update()
