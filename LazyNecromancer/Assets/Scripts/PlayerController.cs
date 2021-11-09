@@ -7,19 +7,23 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D playerRB;
     private Vector2 movement;
 
-    public float moveSpeed = 5f;
-    public float slowStop = 1.38f;
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float slowStop = 1.38f;
 
-    private bool isDodging = false;
-    private bool canDodge = true;
+    [Space(20)]
 
-    public float dodgeDuration = .15f;
-    public float dodgeSpeed = 15f;
-    public float dodgeCooldown = 1.5f;
+    [SerializeField] float dodgeDuration = .15f;
+    [SerializeField] float dodgeSpeed = 15f;
+    [SerializeField] float dodgeCooldown = 1.5f;
 
-    public float dodgeStunTime = 0.4f;
-    public float dodgeStunFactor = 0.6f;
-    
+    [Space(10)]
+
+    [SerializeField] float dodgeStunTime = 0.4f;
+    [SerializeField] float dodgeStunFactor = 0.6f;
+
+    bool isDodging = false;
+    bool canDodge = true;
+
     float speed;
 
     PlayerAnimationController animationController;
