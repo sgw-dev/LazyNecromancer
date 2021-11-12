@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class SwordAnimation : MonoBehaviour
 {
-    [SerializeField] float duration = .5f;
+    [SerializeField] public float duration = .15f;
 
     [Space(10)]
 
     [SerializeField] float minArc = 0;
-    [SerializeField] float maxArc = 180;
+    [SerializeField] float maxArc = 125;
     [SerializeField] AnimationCurve arcOverTime;
 
     [Space(10)]
 
-    [SerializeField] float minRadius = 1;
-    [SerializeField] float maxRadius = 1;
+    [SerializeField] float minRadius = 0;
+    [SerializeField] float maxRadius = 0.2f;
     [SerializeField] AnimationCurve radiusOverTime;
 
     [Space(10)]
 
-    [SerializeField] float minRotation = -90;
-    [SerializeField] float maxRotation = 90;
+    [SerializeField] public float arcStartPos = 45;
+    [SerializeField] float arcDistance = 270;
     [SerializeField] AnimationCurve rotationOverTime;
 
     Vector3 pivotPoint;
 
     public void TestAnimation()
     {
-        transform.position = pivotPoint;
+        transform.localPosition = pivotPoint;
         PlayAnimation();
     }
 
@@ -39,7 +39,7 @@ public class SwordAnimation : MonoBehaviour
 
     IEnumerator _PlayAnimation()
     {
-        pivotPoint = transform.position;
+        pivotPoint = transform.localPosition;
         float elapsedTime = 0;
 
         while (elapsedTime < duration)
@@ -59,14 +59,14 @@ public class SwordAnimation : MonoBehaviour
     {
         float arc = minArc + maxArc * arcOverTime.Evaluate(time);
         float radius = minRadius + maxRadius * radiusOverTime.Evaluate(time);
-        float rotation = minRotation + maxRotation * rotationOverTime.Evaluate(time);
+        float rotation = arcStartPos + arcDistance * rotationOverTime.Evaluate(time);
 
         Vector3 position = Vector3.zero;
         arc *= Mathf.Deg2Rad;
 
         position.x = Mathf.Cos(arc);
         position.y = Mathf.Sin(arc);
-        transform.position = pivotPoint + position * radius;
+        transform.localPosition = pivotPoint + position * radius;
         transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
 }

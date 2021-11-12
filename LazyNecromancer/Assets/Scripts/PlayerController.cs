@@ -7,26 +7,34 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D playerRB;
     private Vector2 movement;
 
-    public float moveSpeed = 20.0f;
-    public float slowStop = 1.38f;
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float slowStop = 1.38f;
 
-    private bool isDodging = false;
-    private bool canDodge = true;
+    [Space(20)]
 
-    public float dodgeDuration = .25f;
-    public float dodgeSpeed = 45f;
-    public float dodgeCooldown = 1.5f;
+    [SerializeField] float dodgeDuration = .15f;
+    [SerializeField] float dodgeSpeed = 15f;
+    [SerializeField] float dodgeCooldown = 1.5f;
 
-    public float dodgeStunTime = 0.25f;
-    public float dodgeStunFactor = 0.25f;
-    
+    [Space(10)]
+
+    [SerializeField] float dodgeStunTime = 0.4f;
+    [SerializeField] float dodgeStunFactor = 0.6f;
+
+    bool isDodging = false;
+    bool canDodge = true;
+
     float speed;
+
+    PlayerAnimationController animationController;
 
     private void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
 
         speed = moveSpeed;
+
+        animationController = GetComponentInChildren<PlayerAnimationController>();
     }
 
     private void FixedUpdate()
@@ -36,18 +44,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        animationController.ResetState();
+
         if (!isDodging)
         {
             float inputX = Input.GetAxisRaw("Horizontal");
             float inputY = Input.GetAxisRaw("Vertical");
 
             movement = new Vector2(inputX, inputY).normalized;
+            
+            animationController.InputDirection(movement);
 
             if (Input.GetButtonDown("Jump") && canDodge)
             {
                 StartCoroutine(Dodge());
             }
         }
+
+        animationController.UpdateAnimation();
     }
 
     private void HandleMovement()

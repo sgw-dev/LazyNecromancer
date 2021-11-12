@@ -7,7 +7,7 @@ public abstract class AnimationController : MonoBehaviour
     protected Animator[] animators;
     protected SpriteRenderer[] spriteRenderers;
 
-    protected Vector2 inputDirection = Vector2.down;
+    public Vector2 inputDirection = Vector2.down;
     protected bool idling;
     protected bool walking;
 
