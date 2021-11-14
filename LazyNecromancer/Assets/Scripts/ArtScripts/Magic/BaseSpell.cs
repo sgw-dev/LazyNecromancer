@@ -31,12 +31,17 @@ public abstract class BaseSpell : MonoBehaviour
 
     public virtual void Play()
     {
-        rb.velocity = transform.right * speed;
+        SetVelocity();
     }
 
     protected virtual void SetTarget(Vector3 target)
     {
         this.target = target;
+    }
+
+    public virtual void SetVelocity()
+    {
+        rb.velocity = transform.right * speed;
     }
 
     protected virtual void RotateToTarget()

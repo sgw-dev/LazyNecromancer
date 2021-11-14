@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
             movement = new Vector2(inputX, inputY).normalized;
             
-            animationController.InputDirection(movement);
+            animationController.InputDirection = movement;
 
             if (Input.GetButtonDown("Jump") && canDodge)
             {

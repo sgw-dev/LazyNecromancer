@@ -11,7 +11,7 @@ public class WaveSpell : BaseSpell
     [SerializeField] Vector2 colliderStartingSize;
     [SerializeField] Vector2 colliderEndingSize;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         base.Awake();
         ps = GetComponentInChildren<ParticleSystem>();

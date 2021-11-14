@@ -7,7 +7,7 @@ public abstract class AnimationController : MonoBehaviour
     protected Animator[] animators;
     protected SpriteRenderer[] spriteRenderers;
 
-    public Vector2 inputDirection = Vector2.down;
+    protected Vector2 inputDirection = Vector2.down;
     protected bool idling;
     protected bool walking;
 
@@ -17,19 +17,23 @@ public abstract class AnimationController : MonoBehaviour
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
     }
 
-    public virtual void InputDirection(Vector2 direction)
-    {
-        walking = direction.sqrMagnitude > .001f;
-        if(walking)
-        {
-            inputDirection = direction;
-        }
-    }
-
     public virtual void ResetState()
     {
         walking = false;
         idling = false;
+    }
+
+    public Vector2 InputDirection
+    {
+        get { return inputDirection; }
+        set
+        {
+            walking = value.sqrMagnitude > .001f;
+            if (walking)
+            {
+                inputDirection = value;
+            }
+        }
     }
 
     public virtual void UpdateAnimation()

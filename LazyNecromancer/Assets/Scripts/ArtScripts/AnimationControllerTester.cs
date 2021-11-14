@@ -17,7 +17,7 @@ public class AnimationControllerTester : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
         Vector2 directionalInput = new Vector2(x, y);
         animationController.ResetState();
-        animationController.InputDirection(directionalInput);
+        animationController.InputDirection = directionalInput;
         animationController.UpdateAnimation();
     }
 }

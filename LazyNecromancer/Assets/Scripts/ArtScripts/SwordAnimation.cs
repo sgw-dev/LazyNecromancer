@@ -4,27 +4,9 @@ using UnityEngine;
 
 public class SwordAnimation : MonoBehaviour
 {
-    [SerializeField] public float duration = .15f;
+    [SerializeField] SwordAnimationSettings settings;
 
-    [Space(10)]
-
-    [SerializeField] float minArc = 0;
-    [SerializeField] float maxArc = 125;
-    [SerializeField] AnimationCurve arcOverTime;
-
-    [Space(10)]
-
-    [SerializeField] float minRadius = 0;
-    [SerializeField] float maxRadius = 0.2f;
-    [SerializeField] AnimationCurve radiusOverTime;
-
-    [Space(10)]
-
-    [SerializeField] public float arcStartPos = 45;
-    [SerializeField] float arcDistance = 270;
-    [SerializeField] AnimationCurve rotationOverTime;
-
-    Vector3 pivotPoint;
+    Vector3 pivotPoint = Vector3.zero;
 
     public void TestAnimation()
     {
@@ -41,10 +23,11 @@ public class SwordAnimation : MonoBehaviour
     {
         pivotPoint = transform.localPosition;
         float elapsedTime = 0;
+        Debug.Log(settings.Duration);
 
-        while (elapsedTime < duration)
+        while (elapsedTime < settings.Duration)
         {
-            float precent = elapsedTime / duration;
+            float precent = elapsedTime / settings.Duration;
 
             setTransform(precent);
 
@@ -57,9 +40,9 @@ public class SwordAnimation : MonoBehaviour
 
     void setTransform(float time)
     {
-        float arc = minArc + maxArc * arcOverTime.Evaluate(time);
-        float radius = minRadius + maxRadius * radiusOverTime.Evaluate(time);
-        float rotation = arcStartPos + arcDistance * rotationOverTime.Evaluate(time);
+        float arc = settings.EvaluateArc(time);
+        float radius = settings.EvaluateRadius(time);
+        float rotation = settings.EvaluateRotation(time);
 
         Vector3 position = Vector3.zero;
         arc *= Mathf.Deg2Rad;
@@ -69,4 +52,6 @@ public class SwordAnimation : MonoBehaviour
         transform.localPosition = pivotPoint + position * radius;
         transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
+
+    public SwordAnimationSettings Settings => settings;
 }
