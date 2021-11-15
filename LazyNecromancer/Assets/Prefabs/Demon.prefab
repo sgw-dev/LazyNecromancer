@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2880275170225637977}
   - component: {fileID: 2880275170225637978}
   - component: {fileID: 2880275170225637979}
-  - component: {fileID: 2880275170225637956}
   m_Layer: 0
   m_Name: Demon
   m_TagString: Untagged
@@ -100,7 +99,7 @@ MonoBehaviour:
   player: {fileID: 0}
   maxRange: 4
   minRange: 2
-  moveSpeed: 3
+  stepSize: 0.05
   attackSpeed: 0
 --- !u!61 &2880275170225637979
 BoxCollider2D:
@@ -128,24 +127,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5272007, y: 3.84}
   m_EdgeRadius: 0
---- !u!50 &2880275170225637956
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2880275170225637957}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
