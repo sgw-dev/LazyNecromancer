@@ -9,6 +9,7 @@ public class DemonController : MonoBehaviour
     public float minRange;
 
     public float stepSize;
+    public float moveSpeed;
 
     public float attackSpeed;
 
@@ -50,7 +51,7 @@ public class DemonController : MonoBehaviour
             newPos = newPos + gameObject.transform.position;
             // Set the value to be the distance to the player from the new position
             dv.Value = Vector3.Distance(newPos, player.transform.position);
-            dv.Dir = newPos;
+            //dv.Dir = newPos;
 
             // Save the smallest value
             if(smallest == null || dv.Value < smallest.Value)
@@ -60,7 +61,8 @@ public class DemonController : MonoBehaviour
         }
 
         // Pick Smallest Direction
-        gameObject.transform.position = smallest.Dir;
+        //gameObject.transform.position = smallest.Dir;
+        gameObject.GetComponent<Rigidbody2D>().velocity = smallest.Dir * moveSpeed;
 
 
 
