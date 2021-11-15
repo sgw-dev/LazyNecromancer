@@ -24,10 +24,6 @@ public class DemonController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         moveDirections = new List<DirectionValue>();
-        //Vector3 forward = player.transform.position - gameObject.transform.position;
-        //forward = forward.normalized;
-        //gameObject.GetComponent<Rigidbody2D>().velocity = forward;
-        //gameObject.GetComponent<Rigidbody2D>().velocity = Quaternion.AngleAxis(90, Vector3.forward) * forward;
     }
 
     // Update is called once per frame
@@ -70,19 +66,15 @@ public class DemonController : MonoBehaviour
             {
                 distanceToDemons += Vector3.Distance(newPos, demon.transform.position);
             }
-            // Minimise this
-            float goingToHitWall = 0;
-            Ray ray = new Ray(transform.position, dv.Dir);
-            Debug.DrawRay(transform.position, dv.Dir * 10, Color.red);
-            RaycastHit hitData;
-            //Physics.Raycast(ray, out hitData);
-            //if (Physics.Raycast(transform.position, dv.Dir, 10f, mask))
-            if(Physics.Raycast(ray, out hitData))
+            // Maxamise this
+            float distanceToWall = 2.5f;
+            Debug.DrawRay(transform.position, dv.Dir * stepSize, Color.red);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dv.Dir, stepSize*2, mask);
+            if(hit.collider != null)
             {
-                Debug.Log("Hit wall");
-                goingToHitWall = 100;
+                distanceToWall = Vector3.Distance(transform.position, hit.transform.position);
             }
-            dv.Value = distanceToPlayer + (1 / distanceToDemons) * 2.5f + goingToHitWall;
+            dv.Value = distanceToPlayer + (3.5f / distanceToDemons) + (10f/distanceToWall);
 
             Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + (dv.Dir * dv.Value));
 
@@ -94,32 +86,7 @@ public class DemonController : MonoBehaviour
         }
 
         // Pick Smallest Direction
-        //gameObject.transform.position = smallest.Dir;
         gameObject.GetComponent<Rigidbody2D>().velocity = smallest.Dir * moveSpeed;
-
-
-
-
-
-        /*
-        Vector3 playerPos = player.transform.position;
-        Vector3 selfPos = gameObject.transform.position;
-
-        Vector3 playerDirection = playerPos - selfPos;
-        float playerDistance = Vector3.Distance(playerPos, selfPos);
-        Vector3 direction;
-        if (playerDistance > maxRange)
-        {
-            direction = playerDirection.normalized * moveSpeed;
-        }else if(playerDistance < minRange)
-        {
-            direction = playerDirection.normalized * -moveSpeed;
-        }
-        else
-        {
-            direction = Vector3.zero;
-        }
-        gameObject.GetComponent<Rigidbody2D>().velocity = direction;*/
     }
     private class DirectionValue
     {
