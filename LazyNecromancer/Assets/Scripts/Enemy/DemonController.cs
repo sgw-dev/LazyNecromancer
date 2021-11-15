@@ -15,6 +15,9 @@ public class DemonController : MonoBehaviour
 
     private List<DirectionValue> moveDirections;
 
+    public List<GameObject> demons;
+    public LayerMask mask;
+
     public GameObject Room { get; set; }
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,7 @@ public class DemonController : MonoBehaviour
     void FixedUpdate()
     {
         
+        
         moveDirections.Clear();
         // Make a list of 16 possible move directions
         Vector3 forward = player.transform.position - gameObject.transform.position;
@@ -39,8 +43,11 @@ public class DemonController : MonoBehaviour
         //for(float i = 11.25f; i<360; i+= 11.25f)
         for (float i = 22.5f; i < 360; i += 22.5f)
         {
-            moveDirections.Add(new DirectionValue(Quaternion.AngleAxis(i, Vector3.up) * forward, 0));
+            moveDirections.Add(new DirectionValue(Quaternion.AngleAxis(i, Vector3.back) * forward, 0));
         }
+        // Add the option to not move at all
+        moveDirections.Add(new DirectionValue(Vector3.zero, 0));
+
         DirectionValue smallest = null;
         // Evaluate those directions
         foreach (DirectionValue dv in moveDirections)
@@ -49,12 +56,38 @@ public class DemonController : MonoBehaviour
             Vector3 newPos = dv.Dir * stepSize;
             // Add the new move vector to the current position to get the new position
             newPos = newPos + gameObject.transform.position;
-            // Set the value to be the distance to the player from the new position
-            dv.Value = Vector3.Distance(newPos, player.transform.position);
-            //dv.Dir = newPos;
+
+            // minimise this
+            float distanceToPlayer = Vector3.Distance(newPos, player.transform.position);
+            // If the player is too close, this is bad
+            if(distanceToPlayer < minRange)
+            {
+                distanceToPlayer = (1/distanceToPlayer) * 1;
+            }
+            // maximise this
+            float distanceToDemons = 0;
+            foreach(GameObject demon in demons)
+            {
+                distanceToDemons += Vector3.Distance(newPos, demon.transform.position);
+            }
+            // Minimise this
+            float goingToHitWall = 0;
+            Ray ray = new Ray(transform.position, dv.Dir);
+            Debug.DrawRay(transform.position, dv.Dir * 10, Color.red);
+            RaycastHit hitData;
+            //Physics.Raycast(ray, out hitData);
+            //if (Physics.Raycast(transform.position, dv.Dir, 10f, mask))
+            if(Physics.Raycast(ray, out hitData))
+            {
+                Debug.Log("Hit wall");
+                goingToHitWall = 100;
+            }
+            dv.Value = distanceToPlayer + (1 / distanceToDemons) * 2.5f + goingToHitWall;
+
+            Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + (dv.Dir * dv.Value));
 
             // Save the smallest value
-            if(smallest == null || dv.Value < smallest.Value)
+            if (smallest == null || dv.Value < smallest.Value)
             {
                 smallest = dv;
             }
