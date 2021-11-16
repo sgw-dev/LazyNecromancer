@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] StatResource health;
+    
     Rigidbody2D playerRB;
     private Vector2 movement;
 
