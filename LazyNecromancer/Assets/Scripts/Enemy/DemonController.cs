@@ -68,12 +68,12 @@ public class DemonController : MonoBehaviour
             }
             // Maxamise this
             float distanceToWall = 2.5f;
-            Debug.DrawRay(transform.position, dv.Dir * stepSize, Color.red);
+            /*Debug.DrawRay(transform.position, dv.Dir * stepSize, Color.red);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, dv.Dir, stepSize*2, mask);
             if(hit.collider != null)
             {
                 distanceToWall = Vector3.Distance(transform.position, hit.transform.position);
-            }
+            }*/
             dv.Value = distanceToPlayer + (3.5f / distanceToDemons) + (10f/distanceToWall);
 
             Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + (dv.Dir * dv.Value));
@@ -81,7 +81,12 @@ public class DemonController : MonoBehaviour
             // Save the smallest value
             if (smallest == null || dv.Value < smallest.Value)
             {
-                smallest = dv;
+                RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.5f, dv.Dir, stepSize * 2, mask);
+                if (hit.collider == null)
+                {
+                    smallest = dv;
+                }
+                
             }
         }
 
