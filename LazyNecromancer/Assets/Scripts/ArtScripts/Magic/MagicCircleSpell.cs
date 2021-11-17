@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagicCircleSpell : BaseSpell
 {
-    ParticleSystem ps;
+    ParticleSystem[] particleSystems;
     MagicCircleRotator magicCircle;
 
     bool followTarget = true;
@@ -12,7 +12,7 @@ public class MagicCircleSpell : BaseSpell
     protected override void Awake()
     {
         base.Awake();
-        ps = GetComponentInChildren<ParticleSystem>();
+        particleSystems = GetComponentsInChildren<ParticleSystem>();
         magicCircle = GetComponent<MagicCircleRotator>();
     }
 
@@ -33,6 +33,7 @@ public class MagicCircleSpell : BaseSpell
         {
             followTarget = false;
         }
+        SetVelocity();
     }
 
     public override void SetVelocity()
@@ -53,10 +54,13 @@ public class MagicCircleSpell : BaseSpell
         {
             ele.enabled = false;
         }
+        foreach (ParticleSystem ps in particleSystems)
+        {
+            ps.Stop();
+        }
         magicCircle.EnableSprites(false);
         rb.velocity = Vector2.zero;
         followTarget = false;
-        ps.Stop();
         base.StartDelayedSelfDestruct();
     }
 }
