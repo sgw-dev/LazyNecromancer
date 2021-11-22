@@ -46,31 +46,31 @@ public class CombatController : MonoBehaviour
             StartCoroutine(Shoot());
         }
 
-        if (animationController.inputDirection == Vector2.up)
+        if (animationController.InputDirection == Vector2.up)
         {
             swordAnimation.transform.localPosition = new Vector3(0, 0.15f, 0);
-            swordAnimation.arcStartPos = 225;
+            //swordAnimation.arcStartPos = 225;
 
             firingPointAngle = new Vector3(180, 0, 0);
         }
-        else if (animationController.inputDirection == Vector2.left)
+        else if (animationController.InputDirection == Vector2.left)
         {
             swordAnimation.transform.localPosition = new Vector3(-.1f, 0, 0);
-            swordAnimation.arcStartPos = 315;
+            //swordAnimation.arcStartPos = 315;
 
             firingPointAngle = new Vector3(270, 0, 0);
         }
-        else if (animationController.inputDirection == Vector2.right)
+        else if (animationController.InputDirection == Vector2.right)
         {
             swordAnimation.transform.localPosition = new Vector3(.1f, 0, 0);
-            swordAnimation.arcStartPos = 135;
+            //swordAnimation.arcStartPos = 135;
 
             firingPointAngle = new Vector3(90, 0, 0);
         }
-        else if (animationController.inputDirection == Vector2.down)
+        else if (animationController.InputDirection == Vector2.down)
         {
             swordAnimation.transform.localPosition = new Vector3(0, -.3f, 0);
-            swordAnimation.arcStartPos = 45;
+            //swordAnimation.arcStartPos = 45;
 
             firingPointAngle = new Vector3(0, 0, 0);
         }
@@ -95,7 +95,7 @@ public class CombatController : MonoBehaviour
         weapon.SetActive(true);
 
         swordAnimation.PlayAnimation();
-        yield return new WaitForSeconds(swordAnimation.duration);
+        yield return new WaitForSeconds(swordAnimation.Settings.Duration);
 
         weapon.SetActive(false);
         arms.SetActive(true);

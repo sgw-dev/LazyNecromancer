@@ -28,7 +28,7 @@ public class SliceManager : MonoBehaviour
             SetSize();
         }
     }
-    #endif
+#endif
 
     public void SetSize(float width, float height)
     {
