@@ -66,9 +66,6 @@ public class EnemyBoid : MonoBehaviour
     {
         if(!Alive) {
             Die();
-            cell.RemoveBoid(this);
-            enemycon.boids.Remove(this);
-            //GameObject.Destroy(this);
             return;
         }
         
@@ -196,14 +193,15 @@ public class EnemyBoid : MonoBehaviour
 
     public void Die() {
         anim.SetTrigger("Death");
-        //mark to be cleaned up
+        GetComponent<Collider2D>().enabled = false;
+        enabled=false;
     }
 
     static readonly string NIMP="NOT YET IMPLEMENTED";
 
     public void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")) {
-            Debug.LogWarning(NIMP);
+            // Debug.Log(NIMP);
             throw new System.Exception(NIMP);
             enemycon.Damage<MeshRenderer>(other.gameObject);
         }

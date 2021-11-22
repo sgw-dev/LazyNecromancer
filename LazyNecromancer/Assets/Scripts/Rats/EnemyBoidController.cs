@@ -85,9 +85,21 @@ public class EnemyBoidController : MonoBehaviour
     }
 
     void Update() {
+        RemoveDead();
         BehaviourChange();
         MoveBoids();
         attacktimer+=Time.deltaTime;
+    }
+    
+    void RemoveDead() {
+        for(int i = 0; i < boids.Count ; i ++) {
+            if(!boids[i].Alive) {
+                // remove.Add(boids[i]);
+                boids[i].cell.RemoveBoid(boids[i]);
+                boids.Remove(boids[i]);
+                i-=1;
+            }
+        }
     }
 
     public void MoveBoids() {
