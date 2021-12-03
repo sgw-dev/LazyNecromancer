@@ -47,9 +47,9 @@ public class SlimeSpawner : MonoBehaviour {
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) {
-            TriggerBossStart();
-        }
+        // if(Input.GetKeyDown(KeyCode.Alpha1)) {
+        //     TriggerBossStart();
+        // }
     }
 
     //use this to start the boss

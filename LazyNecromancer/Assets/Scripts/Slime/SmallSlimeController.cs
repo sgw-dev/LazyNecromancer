@@ -17,12 +17,12 @@ public class SmallSlimeController : SlimeProjectile {
     bool canMoveAgain;
     
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Backslash)) {
-            TakeDamage(5);
-        }
-        if(Input.GetKeyDown(KeyCode.D)) {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.right*10f);
-        }
+        // if(Input.GetKeyDown(KeyCode.Backslash)) {
+        //     TakeDamage(5);
+        // }
+        // if(Input.GetKeyDown(KeyCode.D)) {
+        //     GetComponent<Rigidbody2D>().AddForce(Vector2.right*10f);
+        // }
     }
     //hide from base class
     new void Awake() {

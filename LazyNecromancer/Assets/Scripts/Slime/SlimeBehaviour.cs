@@ -81,8 +81,11 @@ public class SlimeBehaviour : MonoBehaviour {
     float MeleeAttacksPerSecond;
     float attackTimer;
 
+    Animator anim;
     bool dead;
+
     void Start() {
+        anim = GetComponent<Animator>();
         dead = false;
         Health = MaxHealth;
         if(chargeRangeScript == null) {
@@ -151,11 +154,11 @@ public class SlimeBehaviour : MonoBehaviour {
             return;
         }
         
-#if UNITY_EDITOR
-        if(Input.GetKeyDown(KeyCode.Minus)) {
-            TakeDamage(21);
-        }
-#endif
+// #if UNITY_EDITOR
+//         if(Input.GetKeyDown(KeyCode.Minus)) {
+//             TakeDamage(21);
+//         }
+// #endif
 
         ChangeBehaviour();
         PlaceTrail();
@@ -184,7 +187,8 @@ public class SlimeBehaviour : MonoBehaviour {
             child.gameObject.SetActive(false);
         }
         LetSlimesLoose();
-        Debug.Log("Dead");
+        anim.SetTrigger("Die");
+        Debug.Log("Big Slime is dead.");
     }
 
     async void LetSlimesLoose() {
@@ -196,6 +200,8 @@ public class SlimeBehaviour : MonoBehaviour {
             slime.ThrowProjectile(transform.position,transform.position + spawnRadius * (new Vector3(Random.Range(-1f,1f),Random.Range(-1f,1f),0f)));
             await Task.Delay(smallSlimeSpawnPause);
         }
+
+        await Task.Delay(5000);//5 second delay
         this.enabled=false;
         gameObject.SetActive(false);
     }
