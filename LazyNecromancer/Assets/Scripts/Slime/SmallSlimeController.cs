@@ -14,18 +14,28 @@ public class SmallSlimeController : SlimeProjectile {
 
     public Transform target;
 
-
+    bool canMoveAgain;
+    
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.Backslash)) {
+            TakeDamage(5);
+        }
+        if(Input.GetKeyDown(KeyCode.D)) {
+            GetComponent<Rigidbody2D>().AddForce(Vector2.right*10f);
+        }
+    }
     //hide from base class
     new void Awake() {
         base.Awake();
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     //hide start from base class
     void Start() {
-        
+        rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Player Sprite").transform;
         canMoveAgain=true;
+        health= MaxHealth;
     }
 
     //hide reset from base class
@@ -33,8 +43,7 @@ public class SmallSlimeController : SlimeProjectile {
 
     }
 
-
-    bool canMoveAgain;
+    
     public void Move() {
         if(canMoveAgain) {
             timer=0f;
@@ -44,7 +53,7 @@ public class SmallSlimeController : SlimeProjectile {
             Vector3 direction = (target.position - transform.position).normalized;
             float dist = Vector3.Distance(transform.position,target.position);
             float percent = (maxTravelDist/dist);
-            
+            //Vector3 vel = ((Vector3)rb.velocity);
             if( dist < maxTravelDist) {
                 Lob(transform.position,target.position);
             } else {
@@ -65,6 +74,18 @@ public class SmallSlimeController : SlimeProjectile {
     private void OnTriggerEnter2D(Collider2D col) {
         if(!dmgDealt && col.CompareTag("Player")) {
             Debug.Log("Player was hit by a small slime!");
+        }
+    }
+
+    public void DeathEnd() {
+        Destroy(this.gameObject);
+    }
+
+    public void TakeDamage(int dmg) {
+        health-=dmg;
+        if(health <=0) {
+            anim.SetTrigger("Die");
+            canMoveAgain=false;
         }
     }
 }

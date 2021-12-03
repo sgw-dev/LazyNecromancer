@@ -23,9 +23,10 @@ public class SlimeProjectile : MonoBehaviour {
     protected GameObject inRange;
 
     protected bool dmgDealt;
-
+    protected Rigidbody2D rb;
     private protected void Awake() {
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private protected void Start() {
@@ -75,8 +76,8 @@ public class SlimeProjectile : MonoBehaviour {
             while(timer < TimeUntilImpact) {
                 float percent = timer/TimeUntilImpact;
                 float heightpercent = travelarc.Evaluate(percent);
-
-                transform.position = Vector3.Lerp(start,end,percent) +new Vector3(0,+heightpercent * maxHeight, 0f);
+                Vector3 vel = (rb!=null) ? (new Vector3(rb.velocity.x,rb.velocity.y,0f)) : Vector3.zero;
+                transform.position = Vector3.Lerp(start,end + vel,percent) +new Vector3(0,+heightpercent * maxHeight, 0f);
 
                 timer+= Time.deltaTime;
                 await Task.Yield();
