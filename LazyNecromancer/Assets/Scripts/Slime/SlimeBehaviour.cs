@@ -18,6 +18,20 @@ public class SlimeBehaviour : MonoBehaviour {
     public Transform trailspawnpoint;
     private Queue<SlimeTrailDecay> trail_pool;
 
+    [SerializeField]
+    [Tooltip("milliseconds")]
+    int smallSlimeSpawnPause;
+    [SerializeField]
+    int numberOfSmallSlimes;
+    [SerializeField]
+    GameObject smallSlimePrefab;
+    [SerializeField]
+    [Range(0f,20f)]
+    float spawnRadius;
+
+    Queue<SmallSlimeController> smallSlimePool;
+
+
     public int maxGlobs;
     public GameObject globPrefab;
     private Queue<SlimeProjectile> glob_pool;
@@ -67,8 +81,9 @@ public class SlimeBehaviour : MonoBehaviour {
     float MeleeAttacksPerSecond;
     float attackTimer;
 
-
+    bool dead;
     void Start() {
+        dead = false;
         Health = MaxHealth;
         if(chargeRangeScript == null) {
             Debug.LogError("chargeRangeScript is not set");
@@ -94,6 +109,14 @@ public class SlimeBehaviour : MonoBehaviour {
             projectilescript.putback = ReturnToPool;
             tmp.SetActive(false);
             glob_pool.Enqueue(projectilescript);
+        }
+
+        smallSlimePool = new Queue<SmallSlimeController>();
+        for(int i = 0 ; i < numberOfSmallSlimes ; i++) {
+            var tmp = GameObject.Instantiate(smallSlimePrefab,null);
+            SmallSlimeController ssscript = tmp .GetComponent<SmallSlimeController>();
+            tmp.SetActive(false);
+            smallSlimePool.Enqueue(ssscript);
         }
 
         positionOfInterest = transform.position;
@@ -124,6 +147,9 @@ public class SlimeBehaviour : MonoBehaviour {
     }
 
     void Update() {
+        if(dead) {
+            return;
+        }
         
 #if UNITY_EDITOR
         if(Input.GetKeyDown(KeyCode.Minus)) {
@@ -151,14 +177,27 @@ public class SlimeBehaviour : MonoBehaviour {
     }
 
     void Die() {
+        dead=true;
         //other cleanup stuff
         GetComponent<Collider2D>().enabled=false;
         foreach(Transform child in transform) {
             child.gameObject.SetActive(false);
         }
-
+        LetSlimesLoose();
         Debug.Log("Dead");
+    }
+
+    async void LetSlimesLoose() {
+        while(smallSlimePool.Count>0) {
+            var slime = smallSlimePool.Dequeue();
+            slime.transform.position = transform.position;
+            slime.gameObject.SetActive(true);
+            
+            slime.ThrowProjectile(transform.position,transform.position + spawnRadius * (new Vector3(Random.Range(-1f,1f),Random.Range(-1f,1f),0f)));
+            await Task.Delay(smallSlimeSpawnPause);
+        }
         this.enabled=false;
+        gameObject.SetActive(false);
     }
 
     public void ReturnToPool(SlimeProjectile glob) {

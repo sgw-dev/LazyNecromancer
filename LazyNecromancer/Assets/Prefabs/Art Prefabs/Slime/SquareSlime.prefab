@@ -296,6 +296,11 @@ MonoBehaviour:
   MaxHealth: 100
   trailSpawnTime: 0.3
   trailspawnpoint: {fileID: 9145406580361602700}
+  smallSlimeSpawnPause: 450
+  numberOfSmallSlimes: 10
+  smallSlimePrefab: {fileID: 2207536177822847652, guid: e92d15b91832eb744a311dd52c00f3e1,
+    type: 3}
+  spawnRadius: 10.2
   maxGlobs: 12
   globPrefab: {fileID: 2800570364616215830, guid: 64b0bb617b4a71745ac156bc795ca1e5,
     type: 3}
