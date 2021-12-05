@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2860956268716246798}
   - component: {fileID: 2860956268716246801}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2860956269157794680}
   - component: {fileID: 2860956269157794683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2860956269893514559}
   - component: {fileID: 2860956269893514558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Border Cracks In
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2860956270324666158}
   - component: {fileID: 2860956270324666161}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Border Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2860956270340794173}
   - component: {fileID: 2860956270340794172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall Bordered
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2053206160230699900}
   - component: {fileID: 2935481362959462710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Border Cracks Out
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5957832398671827362}
   - component: {fileID: 3982694770687151721}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall 1 Cracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6291759372074316565}
   - component: {fileID: 5627899698480671049}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall 2 Cracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
