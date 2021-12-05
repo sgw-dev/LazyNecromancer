@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - 'SpawnCircle: Room 0'
+  - 'ScriptRunner: Room 0'
+  - Room 0
   layers:
   - Default
   - TransparentFX
