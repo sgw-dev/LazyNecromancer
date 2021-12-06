@@ -24,13 +24,14 @@ public class SmallSlimeController : SlimeProjectile {
         //     GetComponent<Rigidbody2D>().AddForce(Vector2.right*10f);
         // }
     }
-    //hide from base class
+
+    //hides
     new void Awake() {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    //hide start from base class
+    //overrides start from base
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Player Sprite").transform;
@@ -38,7 +39,7 @@ public class SmallSlimeController : SlimeProjectile {
         health= MaxHealth;
     }
 
-    //hide reset from base class
+    //overrides OnEnable from base
     void OnEnable() {
 
     }
@@ -70,7 +71,7 @@ public class SmallSlimeController : SlimeProjectile {
 
     }
 
-
+    //overrides
     private void OnTriggerEnter2D(Collider2D col) {
         if(!dmgDealt && col.CompareTag("Player")) {
             Debug.Log("Player was hit by a small slime!");

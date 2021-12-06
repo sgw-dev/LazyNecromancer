@@ -34,7 +34,7 @@ public class SlimeAttackRange : MonoBehaviour {
             radius = ((CircleCollider2D)tmp).radius;
             line = gameObject.GetComponent<LineRenderer>();
 
-            line.sharedMaterial = sb.unlit;
+            line.sharedMaterial = sb.lit;
             line.endWidth       = width;
             line.startWidth     = width;
             line.positionCount  = segments + 1;
@@ -74,7 +74,7 @@ public class SlimeAttackRange : MonoBehaviour {
             p4 = new Vector2(-w,-h);
             
             line = gameObject.GetComponent<LineRenderer>();
-            line.sharedMaterial = sb.unlit;
+            line.sharedMaterial = sb.lit;
 
             line.endWidth   = width;
             line.startWidth = width;

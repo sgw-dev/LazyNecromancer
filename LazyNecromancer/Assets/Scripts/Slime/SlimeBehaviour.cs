@@ -56,14 +56,11 @@ public class SlimeBehaviour : MonoBehaviour {
     float behaviourtimer;//timer to do something else?
 
     [SerializeField]
-    float SlideMoveTime;//exposed time for timer
-    float moveTimer;//class tracked timer
-    bool _move;//semaphore for slime movement function
-    
-    //Probably get rid of these eventually
-    [Space(100)]
-    public bool DEBUG;
-    public Material unlit;
+    float SlideMoveTime; //exposed time for timer
+    float moveTimer;     //class tracked timer
+    bool _move;          //semaphore for slime movement function
+
+    [Space(50)]
     public Material lit;
 
     //flags for behaviour
@@ -85,9 +82,11 @@ public class SlimeBehaviour : MonoBehaviour {
     bool dead;
 
     void Start() {
+
         anim = GetComponent<Animator>();
         dead = false;
         Health = MaxHealth;
+
         if(chargeRangeScript == null) {
             Debug.LogError("chargeRangeScript is not set");
         }
@@ -124,14 +123,6 @@ public class SlimeBehaviour : MonoBehaviour {
 
         positionOfInterest = transform.position;
         _move = false;
-
-
-
-        if(DEBUG) {
-            GetComponent<SpriteRenderer>().sharedMaterial = unlit;
-        } else {
-            GetComponent<SpriteRenderer>().sharedMaterial = lit;
-        } 
 
         playerSighted = playerInAttackRange = nearDeath = false; 
         //set delegates
@@ -172,6 +163,8 @@ public class SlimeBehaviour : MonoBehaviour {
         Debug.Log("Slime is here");
     }
     
+    //called by trigger in child object
+    //see damageScript delegate 
     void Attack() {
         if(attackTimer > 1f/MeleeAttacksPerSecond) {
             attackTimer = 0f;
@@ -179,6 +172,7 @@ public class SlimeBehaviour : MonoBehaviour {
         }
     }
 
+    //Called when hp <=0
     void Die() {
         dead=true;
         //other cleanup stuff
@@ -191,6 +185,9 @@ public class SlimeBehaviour : MonoBehaviour {
         Debug.Log("Big Slime is dead.");
     }
 
+    //called once big slime dies,
+    //randomly lobs small slimes in spawnRadius
+    //waits 5 seconds then deacrivates this gameObject
     async void LetSlimesLoose() {
         while(smallSlimePool.Count>0) {
             var slime = smallSlimePool.Dequeue();
@@ -206,17 +203,19 @@ public class SlimeBehaviour : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
+    //returns projectiles to pool
     public void ReturnToPool(SlimeProjectile glob) {
         glob.gameObject.SetActive(false);
         glob_pool.Enqueue(glob);
     }
 
+    //returns trail to queue
     public void ReturnToPool(SlimeTrailDecay trail) {
         trail.gameObject.SetActive(false);
         trail_pool.Enqueue(trail);
     }
 
-
+    //spawns trail object on the gameObject position
     void PlaceTrail() {
         if(trailspawntimer>trailSpawnTime){
             trailspawntimer=0f;
@@ -226,6 +225,8 @@ public class SlimeBehaviour : MonoBehaviour {
         }
     }
 
+    //move the slime toward a position without reguards to physics
+    //see small slime's script if physics should be required
     async void MoveToward(Vector3 t) {
 
         if(!_move) {
@@ -249,6 +250,8 @@ public class SlimeBehaviour : MonoBehaviour {
     //actually need this for now
     void Nothing() {}
 
+    //Timer function to call the chain of "if else" statements
+    //for change in slimes current state
     void ChangeBehaviour() {
         if(behaviourtimer > behaviourChangeTime)  {
             behaviourtimer = 0f;
@@ -257,6 +260,8 @@ public class SlimeBehaviour : MonoBehaviour {
         }
     }
 
+    //Throw object from ranged attack pool at player,
+    //or positionOfInterest
     void RangedAttack() {
         if(rangedTimer > RangedAttackTimer) {
             rangedTimer = 0f;
@@ -268,35 +273,27 @@ public class SlimeBehaviour : MonoBehaviour {
 
     void DoSomething() {
         if(playerSighted && playerInAttackRange && nearDeath) {
-            //attack, last ditch effor
+            //tackle the player
             MoveToward(positionOfInterest);
-            // current = Attack;
         } else if(playerSighted && playerInAttackRange && !nearDeath) {
-            //attack normally
+            //tackle tha player
             MoveToward(positionOfInterest);
-            // current = Attack;
         } else if(playerSighted && !playerInAttackRange && nearDeath) {
-            //move toward player frantically
+            //Throw globs, faster
             RangedAttack();
         } else if(playerSighted && !playerInAttackRange && !nearDeath) {
-            //move toward player
-            //MoveToward(positionOfInterest);
-            // current = Nothing;
+            //Throw globs
             RangedAttack();
         } else if(!playerSighted && playerInAttackRange && nearDeath) {
-            //look for player, this state doesnt make sense unless player can be hidden
+            //look for player, this state doesnt make sense unless player can be hidden from range
             MoveToward(positionOfInterest);
-            // current = Nothing;
         } else if(!playerSighted && playerInAttackRange && !nearDeath) {
-            //look for player, this state doesnt make sense unless player can be hidden
+            //look for player, this state doesnt make sense unless player can be hidden from range
             MoveToward(positionOfInterest);
-            // current = Nothing;
         } else if(!playerSighted && !playerInAttackRange && nearDeath) {
-
             float f = Random.value;
             MoveToward(new Vector3(f,f,0));
         } else if(!playerSighted && !playerInAttackRange && !nearDeath) {
-
             float f = Random.value;
             MoveToward(new Vector3(f,f,0));
         } else {
@@ -305,11 +302,14 @@ public class SlimeBehaviour : MonoBehaviour {
     }
 
     public void TakeDamage(int damage) {
+        
         Health-= damage;
+        
         if(Health < (int)(MaxHealth*.2f)) {
             nearDeath = true;
             behaviourChangeTime *= BehaviourChangePercent;
         }
+
         if(Health <=0 ) {
             Die();
         }
