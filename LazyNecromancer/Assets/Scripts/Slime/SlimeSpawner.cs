@@ -24,16 +24,18 @@ public class SlimeSpawner : MonoBehaviour {
     bool _fadelock = false;
     float timer;
     Animator fakebossanim;
+    GameObject fakebossgo;
     public static readonly Vector3 offscreen = new Vector3(-5000,-5000,0);
 
     void Start() {
-        fakebossanim = FakeBoss.GetComponent<Animator>();
+        
         spawnerAnim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         sr.color = startColor;
 
-        var tmp = GameObject.Instantiate(FakeBoss,null);
-        tmp.transform.position = transform.position;
+        fakebossgo = GameObject.Instantiate(FakeBoss,null);
+        fakebossgo.transform.position = transform.position;
+        fakebossanim = fakebossgo.GetComponent<Animator>();
 
         slimeBoss = GameObject.Instantiate(SlimeBoss,null);
         slimeBoss.SetActive(false);
@@ -115,6 +117,7 @@ public class SlimeSpawner : MonoBehaviour {
     }
 
     public void PlayBossCrushedAnimation() {
+        fakebossgo.SetActive(false);
         if(fakebossanim!=null) {
             fakebossanim.SetTrigger("crushed");
         }

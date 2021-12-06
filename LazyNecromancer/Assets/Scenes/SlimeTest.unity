@@ -1325,7 +1325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068417090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.14, y: -0.59, z: -0.83974177}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2067640383}
@@ -1348,7 +1348,7 @@ MonoBehaviour:
   fallFrom: {fileID: 2067640383}
   SlimeBoss: {fileID: 5907731474228768091, guid: ec45456ccca69d6469369f826fa21662,
     type: 3}
-  FakeBoss: {fileID: 8884584337224674554, guid: aee252b34cbb3b14098cfdb3791e2b16,
+  FakeBoss: {fileID: 2642942154946241933, guid: b9ccf8a20b49e9b4a9d309a3338b7883,
     type: 3}
   startColor: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
   colorFade:
