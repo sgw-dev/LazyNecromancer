@@ -96,7 +96,8 @@ public class Spawner : MonoBehaviour
                     //Will be part of handling enemy death.
                     //demonScript.SetParentSpawner(this);
                     demonScript.SetParentSpawner(this);
-                    demonScript.SetSpawnerIndex(this.enemyCounter);
+                    // **Spencer ** Enemy counter is never incremented
+                    //demonScript.SetSpawnerIndex(this.enemyCounter);
                 }
                 //Assuming something is always spawned.
                 this.totalEnemies -= 1;
@@ -124,7 +125,7 @@ public class Spawner : MonoBehaviour
     //It should then call a script in here, that removes the enemy from the arrayindex specified.
     //When I frist tried to do this, I accidentally called PlayerEntersRoom
     //before creating the Array of enemies
-    public void RemoveEnemyFromAlive(int index)
+    public void RemoveEnemyFromAlive(GameObject enemy)
     {
         /*
         foreach(DemonDemo enemy in this.aliveEnemies)
@@ -135,6 +136,7 @@ public class Spawner : MonoBehaviour
             }
         }
         */
-        this.aliveEnemies.RemoveAt(0);
+        // **Spencer** Find the gameobject in the array and remove it
+        this.aliveEnemies.Remove(enemy);
     }
 }

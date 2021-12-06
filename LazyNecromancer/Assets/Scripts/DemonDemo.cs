@@ -45,9 +45,9 @@ public class DemonDemo : MonoBehaviour
         print("You clicked");
         this.Health -= 25;
         if (this.Health == 0) {
-            Destroy(gameObject);
-            parentSpawner.RemoveEnemyFromAlive(this.spawnerIndex);
+            parentSpawner.RemoveEnemyFromAlive(this.gameObject);
             parentSpawner.CheckIfEnemiesAlive();
+            Destroy(gameObject);
         }
         //Destroy(this);
         //parentSpawnerScript.CheckIfEnemiesAlive();
