@@ -5,7 +5,7 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     [SerializeField] GameObject arms;
-    [SerializeField] GameObject weapon;
+    //[SerializeField] GameObject weapon;
 
     [Space(10)]
 
@@ -32,7 +32,7 @@ public class CombatController : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         animationController = GetComponentInChildren<AnimationController>();
 
-        weapon.SetActive(false);
+        //weapon.SetActive(false);
     }
 
     void Update()
@@ -46,7 +46,7 @@ public class CombatController : MonoBehaviour
             StartCoroutine(Shoot());
         }
 
-        if (animationController.InputDirection == Vector2.up)
+        /*if (animationController.InputDirection == Vector2.up)
         {
             swordAnimation.transform.localPosition = new Vector3(0, 0.15f, 0);
             //swordAnimation.arcStartPos = 225;
@@ -73,9 +73,9 @@ public class CombatController : MonoBehaviour
             //swordAnimation.arcStartPos = 45;
 
             firingPointAngle = new Vector3(0, 0, 0);
-        }
+        }*/
 
-        firePoint.transform.rotation = Quaternion.Euler(firingPointAngle);
+        //firePoint.transform.rotation = Quaternion.Euler(firingPointAngle);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -90,16 +90,16 @@ public class CombatController : MonoBehaviour
     {
         isAttacking = true;
         
-        Vector3 weaponTransform = weapon.transform.localPosition;
+        //Vector3 weaponTransform = weapon.transform.localPosition;
         arms.SetActive(false);
-        weapon.SetActive(true);
+        //weapon.SetActive(true);
 
         swordAnimation.PlayAnimation();
         yield return new WaitForSeconds(swordAnimation.Settings.Duration);
 
-        weapon.SetActive(false);
+        //weapon.SetActive(false);
         arms.SetActive(true);
-        weapon.transform.localPosition = weaponTransform;
+       // weapon.transform.localPosition = weaponTransform;
 
         yield return new WaitForSeconds(attackCooldown);
         isAttacking = false;
