@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomManager : MonoBehaviour
+public class RoomManager2 : MonoBehaviour
 {
     List<Animator> skullDoorAnims;
     List<Animator> ribsDoorAnims;
