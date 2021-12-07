@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04cc63266e6fc664e9ff9fd0458371a8, type: 3}
+  m_Name: Sword Settings
+  m_EditorClassIdentifier: 
+  duration: 0.25
+  arcOffset: -25
+  arc: 200
+  arcOverTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1.0094261
+      inSlope: 3.5080137
+      outSlope: 3.5080137
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07455695
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  radiusOffset: 0
+  radius: 1
+  radiusOverTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.71978384
+      value: 0.95922935
+      inSlope: 0.13767937
+      outSlope: 0.13767937
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.078497894
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.0009384155
+      inSlope: -3.893363
+      outSlope: -3.893363
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.107916474
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rotationOffset: -135
+  rotation: 280
+  rotationOverTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
