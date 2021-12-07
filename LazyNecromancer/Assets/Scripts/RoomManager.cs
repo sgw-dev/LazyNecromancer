@@ -10,10 +10,12 @@ public class RoomManager : MonoBehaviour
 
     private bool moveFlag;
     private float count;
+
+    public GameObject minimapCover;
     // Start is called before the first frame update
     void Start()
     {
-
+        minimapCover = this.transform.Find("Canvas/MinimapCover").gameObject;
     }
 
     // Update is called once per frame
@@ -38,6 +40,11 @@ public class RoomManager : MonoBehaviour
             count = 0;
             moveFlag = true;
             //StartCoroutine("MoveCamera");
+            if (minimapCover.activeSelf)
+            {
+                minimapCover.SetActive(false);
+            }
+            
         }
     }
     void OnTriggerExit2D(Collider2D collision)
