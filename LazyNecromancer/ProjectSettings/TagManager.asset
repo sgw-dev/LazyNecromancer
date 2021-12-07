@@ -5,9 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+<<<<<<< HEAD
   - 'SpawnCircle: Room 0'
   - 'ScriptRunner: Room 0'
   - Room 0
+=======
+  - MinimapCover
+>>>>>>> main
   layers:
   - Default
   - TransparentFX
@@ -15,9 +19,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - wall
+  - MiniMap
+  - floor
   - 
   - 
   - 
