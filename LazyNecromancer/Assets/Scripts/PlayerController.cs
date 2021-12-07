@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     float speed;
 
     PlayerAnimationController animationController;
+    AfterImageController afterImageController;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         speed = moveSpeed;
 
         animationController = GetComponentInChildren<PlayerAnimationController>();
+        afterImageController = GetComponentInChildren<AfterImageController>();
     }
 
     private void FixedUpdate()
@@ -80,6 +82,7 @@ public class PlayerController : MonoBehaviour
     {
         isDodging = true;
         canDodge = false;
+        afterImageController.Play(dodgeDuration);
 
         speed = dodgeSpeed;
 
