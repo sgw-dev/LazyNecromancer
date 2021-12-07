@@ -15,14 +15,14 @@ public class ManaProjectile : MonoBehaviour
         rb.velocity = -transform.up * speed;
     }
 
-    void OnTriggerEnter2D (Collider2D trigger)
+    void OnTriggerEnter2D (Collider2D collider2D)
     {
-        if (trigger.gameObject.tag == "Wall")
+        if (collider2D.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
             // put code here for projectile death anim
         }
-        else if (trigger.gameObject.tag == "Enemy")
+        else if (collider2D.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
             // put code here for projectile death anim

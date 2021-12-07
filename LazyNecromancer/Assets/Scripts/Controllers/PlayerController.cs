@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] StatResource health;
-    
     Rigidbody2D playerRB;
     private Vector2 movement;
 
@@ -29,6 +27,7 @@ public class PlayerController : MonoBehaviour
     float speed;
 
     PlayerAnimationController animationController;
+    AfterImageController afterImageController;
 
     private void Start()
     {
@@ -37,6 +36,7 @@ public class PlayerController : MonoBehaviour
         speed = moveSpeed;
 
         animationController = GetComponentInChildren<PlayerAnimationController>();
+        afterImageController = GetComponentInChildren<AfterImageController>();
     }
 
     private void FixedUpdate()
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
             movement = new Vector2(inputX, inputY).normalized;
             
-            animationController.InputDirection(movement);
+            animationController.InputDirection = movement;
 
             if (Input.GetButtonDown("Jump") && canDodge)
             {
@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
     {
         isDodging = true;
         canDodge = false;
+        afterImageController.Play(dodgeDuration);
 
         speed = dodgeSpeed;
 

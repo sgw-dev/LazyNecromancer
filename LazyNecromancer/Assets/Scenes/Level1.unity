@@ -216,7 +216,9 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32, type: 3}
+    - {fileID: 4687421696914776491, guid: 08f9aa7e78b3dba40b50bddfa8518c32, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 08f9aa7e78b3dba40b50bddfa8518c32, type: 3}
 --- !u!1 &128241130
 GameObject:
@@ -293,6 +295,55 @@ CanvasRenderer:
 --- !u!1 &166127279 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5181539616768458150, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+    type: 3}
+  m_PrefabInstance: {fileID: 80024819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &483335490 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4687421696914776528, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+    type: 3}
+  m_PrefabInstance: {fileID: 80024819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &483335493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483335490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0959622c734a74fb2ae5ef3ae8df86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  slowStop: 1.38
+  dodgeDuration: 0.15
+  dodgeSpeed: 15
+  dodgeCooldown: 1.5
+  dodgeStunTime: 0.4
+  dodgeStunFactor: 0.6
+--- !u!114 &483335494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483335490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa3e72c2fad80e4992325a0700cb72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arms: {fileID: 166127279}
+  firePoint: {fileID: 1549221933}
+  manaProjectile: {fileID: 7280169849991140248, guid: f2480cbddcfca664ba65726ac24eb33b,
+    type: 3}
+  attackCooldown: 0.1
+  manaCooldown: 0.1
+--- !u!4 &483335495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4687421696914776492, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
     type: 3}
   m_PrefabInstance: {fileID: 80024819}
   m_PrefabAsset: {fileID: 0}
@@ -980,6 +1031,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1549221932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1549221933}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1549221933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549221932}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 483335495}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1758964949
 GameObject:
