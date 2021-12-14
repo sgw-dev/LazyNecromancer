@@ -4,14 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
-<<<<<<< HEAD
-  - 'SpawnCircle: Room 0'
-  - 'ScriptRunner: Room 0'
-  - Room 0
-=======
   - MinimapCover
->>>>>>> main
+  - 'SpawnCircle: Room 0'
+  - Room 0
   layers:
   - Default
   - TransparentFX
@@ -19,9 +14,9 @@ TagManager:
   - 
   - Water
   - UI
-  - wall
-  - MiniMap
-  - floor
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -48,25 +43,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Floor
-    uniqueID: 1053987995
-    locked: 0
-  - name: Wall
-    uniqueID: 2709375861
-    locked: 0
-  - name: Misc
-    uniqueID: 406756543
-    locked: 0
-  - name: Enemy
-    uniqueID: 2569630169
-    locked: 0
-  - name: Player
-    uniqueID: 2715747591
-    locked: 0
-  - name: Particles
-    uniqueID: 1074203979
-    locked: 0
-  - name: UI
-    uniqueID: 3229982881
     locked: 0

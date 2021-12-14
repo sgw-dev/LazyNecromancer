@@ -90,7 +90,7 @@ public class Spawner : MonoBehaviour
                     this.aliveEnemies.Add(spawnedDemon);
 
 
-                    var demonScript = spawnedDemon.GetComponent<DemonDemo>();
+                    var demonScript = spawnedDemon.GetComponent<DemonController>();
 
                     //Need to make the other version of the actual script for functionality.
                     //Will be part of handling enemy death.

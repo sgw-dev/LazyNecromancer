@@ -18,10 +18,20 @@ public class DemonController : MonoBehaviour
     public List<GameObject> demons;
     public LayerMask mask;
 
+    // DanValues:
+    private Spawner parentSpawner;
+    private int spawnerIndex;
+    int Health;
+
+
+
     public GameObject Room { get; set; }
     // Start is called before the first frame update
     void Start()
     {
+        //Temp health value
+        this.Health = 50;
+
         player = GameObject.FindGameObjectWithTag("Player");
         moveDirections = new List<DirectionValue>();
     }
@@ -102,5 +112,38 @@ public class DemonController : MonoBehaviour
             Dir = d;
             Value = v;
         }
+    }
+
+    public void SetParentSpawner(Spawner spawner)
+    {
+        //this.parentSpawner = GameObject.FindGameObjectWithTag("ScriptRunner: Room 0");
+        //this.parentSpawnerScript = parentSpawner.GetComponent<Spawner>();
+        this.parentSpawner = spawner;
+    }
+
+    public void SetSpawnerIndex(int index)
+    {
+        this.spawnerIndex = index;
+    }
+
+    public int GetSpawnerIndex()
+    {
+        return this.spawnerIndex;
+    }
+
+
+    //Temp health loss mechanics
+    private void OnMouseDown()
+    {
+        print("You clicked");
+        this.Health -= 25;
+        if (this.Health == 0)
+        {
+            parentSpawner.RemoveEnemyFromAlive(this.gameObject);
+            parentSpawner.CheckIfEnemiesAlive();
+            Destroy(gameObject);
+        }
+        //Destroy(this);
+        //parentSpawnerScript.CheckIfEnemiesAlive();
     }
 }
