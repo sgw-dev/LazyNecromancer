@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2860956268716246798}
   - component: {fileID: 2860956268716246801}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 24, y: 16}
+  m_Size: {x: 24, y: 22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2860956269157794680}
   - component: {fileID: 2860956269157794683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 24, y: 16}
+  m_Size: {x: 24, y: 22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2860956269893514559}
   - component: {fileID: 2860956269893514558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Border Cracks In
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 24, y: 16}
+  m_Size: {x: 24, y: 22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2860956270324666158}
   - component: {fileID: 2860956270324666161}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Border Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 24, y: 16}
+  m_Size: {x: 24, y: 22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -342,7 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2860956270340794173}
   - component: {fileID: 2860956270340794172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall Bordered
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2860956270340794170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2860956270324666158}
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d36e43aa9389dd48965b2cacd3970c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 24, y: 16}
+  size: {x: 24, y: 22}
 --- !u!1 &3551589075703022915
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2053206160230699900}
   - component: {fileID: 2935481362959462710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Border Cracks Out
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 24, y: 16}
+  m_Size: {x: 24, y: 22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -476,7 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5957832398671827362}
   - component: {fileID: 3982694770687151721}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall 1 Cracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,7 +543,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 24, y: 16}
+  m_Size: {x: 24, y: 22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -559,7 +559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6291759372074316565}
   - component: {fileID: 5627899698480671049}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall 2 Cracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 24, y: 16}
+  m_Size: {x: 24, y: 22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

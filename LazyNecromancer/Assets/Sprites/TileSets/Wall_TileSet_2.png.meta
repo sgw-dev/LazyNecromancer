@@ -1,34 +1,25 @@
 fileFormatVersion: 2
-guid: 3820059a7581cd840bbd74acef795d37
+guid: 0b5e5d126ff07e443844dd1ac66eb8cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4664281331932757992
-    second: Floor_TileSet_0
+      213: 4217328501333614526
+    second: Wall_TileSet_2_0
   - first:
-      213: -5889058274748654193
-    second: Floor_TileSet_1
+      213: 3625460242804777218
+    second: Wall_TileSet_2_1
   - first:
-      213: -3007885679652437766
-    second: Floor_TileSet_2
+      213: 1913936445508543813
+    second: Wall_TileSet_2_2
   - first:
-      213: -118955801294154111
-    second: Floor_TileSet_3
+      213: -2984491075863226486
+    second: Wall_TileSet_2_3
   - first:
-      213: 1655003005616439346
-    second: Floor_TileSet_4
+      213: -7075372093194979076
+    second: Wall_TileSet_2_4
   - first:
-      213: -7840000764951257627
-    second: Floor_TileSet_5
-  - first:
-      213: 7178872380048946688
-    second: Floor_TileSet_6
-  - first:
-      213: 6238593622433963849
-    second: Floor_TileSet_7
-  - first:
-      213: 5794171195377775910
-    second: Floor_TileSet_8
+      213: -5292054840731010868
+    second: Wall_TileSet_2_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -68,14 +59,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
-  spriteBorder: {x: 32, y: 32, z: 32, w: 32}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -118,190 +109,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Floor_TileSet_0
+      name: Wall_TileSet_2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 32, y: 0, z: 32, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebfde177de5f68a30800000000000000
+      internalID: 4217328501333614526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_TileSet_2_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2012eafd1e8305230800000000000000
+      internalID: 3625460242804777218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_TileSet_2_2
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 32
-        height: 32
+        width: 128
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 32, y: 0, z: 32, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ef7652b82bdab040800000000000000
-      internalID: 4664281331932757992
+      spriteID: 545e5358e0baf8a10800000000000000
+      internalID: 1913936445508543813
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Floor_TileSet_1
+      name: Wall_TileSet_2_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 128
         y: 64
-        width: 32
-        height: 32
+        width: 128
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 32, y: 0, z: 32, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8d180063bcd54ea0800000000000000
-      internalID: -5889058274748654193
+      spriteID: a8759d3dd25f496d0800000000000000
+      internalID: -2984491075863226486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Floor_TileSet_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af0055b29e7d146d0800000000000000
-      internalID: -3007885679652437766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Floor_TileSet_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 186d3e73452695ef0800000000000000
-      internalID: -118955801294154111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Floor_TileSet_4
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 230c8fb0770c7f610800000000000000
-      internalID: 1655003005616439346
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Floor_TileSet_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ed1a46a7d8b23390800000000000000
-      internalID: -7840000764951257627
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Floor_TileSet_6
+      name: Wall_TileSet_2_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 128
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 8, y: 0, z: 8, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0063ea4f46a70a360800000000000000
-      internalID: 7178872380048946688
+      spriteID: cf8b663719a3fcd90800000000000000
+      internalID: -7075372093194979076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Floor_TileSet_7
+      name: Wall_TileSet_2_5
       rect:
         serializedVersion: 2
-        x: 32
+        x: 128
         y: 0
-        width: 32
-        height: 32
+        width: 128
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 32, y: 0, z: 32, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94f913b98dfe39650800000000000000
-      internalID: 6238593622433963849
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Floor_TileSet_8
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 625fa4cd008096050800000000000000
-      internalID: 5794171195377775910
+      spriteID: cc8775e2928de86b0800000000000000
+      internalID: -5292054840731010868
       vertices: []
       indices: 
       edges: []

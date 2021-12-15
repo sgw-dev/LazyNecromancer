@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6318058542265347981}
   - component: {fileID: 6318058542265347980}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6318058543854227390}
   - component: {fileID: 6318058543854227361}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6318058544102640584}
   - component: {fileID: 6318058544102640587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
