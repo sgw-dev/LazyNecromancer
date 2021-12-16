@@ -23,7 +23,7 @@ public class WallSlicer : BaseSlicer
             Debug.LogWarning("Could Not Find Door");
         }
         boxColliders = GetComponentsInChildren<BoxCollider2D>(true);
-        spriteSlicers = GetComponentsInChildren<SpriteSlicer>(true);
+        spriteSlicers = transform.GetComponentsInDirectChildren<SpriteSlicer>(true);
         InitializeChildren(spriteSlicers);
     }
 

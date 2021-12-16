@@ -49,4 +49,9 @@ public abstract class BaseSlicer : MonoBehaviour
             bs.Initialize();
         }
     }
+
+    protected void InitializeChildren(BaseSlicer slicer)
+    {
+        slicer.Initialize();
+    }
 }

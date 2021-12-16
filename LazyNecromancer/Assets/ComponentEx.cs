@@ -4,17 +4,23 @@ namespace UnityEngine
 {
     public static class ComponentEX
     {
+
         public static T[] GetComponentsInDirectChildren<T>(this Transform parent, bool includeInactive = false) where T : Component
         {
             List<T> tmpList = new List<T>();
+            GetComponentsInDirectChildren<T>(parent, tmpList, includeInactive);
+            return tmpList.ToArray();
+        }
+
+        public static void GetComponentsInDirectChildren<T>(this Transform parent, List<T> list, bool includeInactive = false) where T : Component
+        {
             foreach (Transform transform in parent)
             {
                 if (includeInactive || parent.gameObject.activeInHierarchy)
                 {
-                    tmpList.AddRange(transform.GetComponents<T>());
+                    list.AddRange(transform.GetComponents<T>());
                 }
             }
-            return tmpList.ToArray();
         }
 
         public static T GetComponentInDirectChildren<T>(this Transform parent, int index, bool includeInactive = false) where T : Component
@@ -32,6 +38,20 @@ namespace UnityEngine
                 }
             }
             return null;
+        }
+
+        public static void SafeDestroy(this Component parent)
+        {
+            if (parent == null)
+            {
+                return;
+            }
+            if (Application.isEditor)
+            {
+                Object.DestroyImmediate(parent.gameObject);
+                return;
+            }
+            Object.Destroy(parent.gameObject);
         }
     }
 }
