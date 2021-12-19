@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7200159922843004904}
+  - component: {fileID: 4252152902470720215}
   - component: {fileID: 7200159922843004905}
   m_Layer: 0
   m_Name: Room
@@ -37,6 +38,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4252152902470720215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200159922843004906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d44c432c541e34469b804e7c4c0a038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7200159922843004905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 17, y: 17}
   lockXSize: 0
-  lockYSize: 0
+  lockYSize: 1
   floorOffset: {x: 0, y: -1}
   torchOffset: {x: 0, y: -0.5}
   doorSettings:
@@ -119,6 +132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424157896186314148, guid: 36837b98c32404d4aad7fd2f5abd5850,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2424157896186314149, guid: 36837b98c32404d4aad7fd2f5abd5850,
         type: 3}
@@ -207,6 +225,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36837b98c32404d4aad7fd2f5abd5850, type: 3}
+--- !u!4 &452803331311365681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2424157896186314149, guid: 36837b98c32404d4aad7fd2f5abd5850,
+    type: 3}
+  m_PrefabInstance: {fileID: 2876948007533269908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4758741411740238808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -426,6 +450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
+      propertyPath: doorTransform
+      value: 
+      objectReference: {fileID: 8699224380770646742}
+    - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
       propertyPath: doorSettings.hasDoor
       value: 1
       objectReference: {fileID: 0}
@@ -438,6 +467,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spriteSlicers.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
+      propertyPath: doorSettings.doorPosition
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
@@ -666,6 +700,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 2424157896186314148, guid: 36837b98c32404d4aad7fd2f5abd5850,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2424157896186314149, guid: 36837b98c32404d4aad7fd2f5abd5850,
         type: 3}
       propertyPath: m_RootOrder
@@ -753,6 +792,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36837b98c32404d4aad7fd2f5abd5850, type: 3}
+--- !u!4 &8567635435215468726 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2424157896186314149, guid: 36837b98c32404d4aad7fd2f5abd5850,
+    type: 3}
+  m_PrefabInstance: {fileID: 6287603198256842003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7200159922166600807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -768,7 +813,7 @@ PrefabInstance:
     - target: {fileID: 1603392482477617199, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1603392482477617199, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
@@ -780,6 +825,11 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 4.275
       objectReference: {fileID: 0}
+    - target: {fileID: 1603392482477617199, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Size.x
@@ -788,12 +838,17 @@ PrefabInstance:
     - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Offset.x
       value: -4.275
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5652683438766977539, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
@@ -863,7 +918,7 @@ PrefabInstance:
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: size.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
@@ -882,13 +937,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
+      propertyPath: wallOffset.y
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
       propertyPath: doorTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8567635435215468726}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: doorSettings.hasDoor
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
+      propertyPath: doorSettings.doorPosition
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfaa75209755634489a080cd38e67da7, type: 3}
@@ -913,7 +978,7 @@ PrefabInstance:
     - target: {fileID: 1603392482477617199, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1603392482477617199, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
@@ -925,6 +990,11 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 4.275
       objectReference: {fileID: 0}
+    - target: {fileID: 1603392482477617199, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Size.x
@@ -933,12 +1003,17 @@ PrefabInstance:
     - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Offset.x
       value: -4.275
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5652683438766977539, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
@@ -1008,7 +1083,7 @@ PrefabInstance:
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: size.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
@@ -1027,13 +1102,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
+      propertyPath: wallOffset.y
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
       propertyPath: doorTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 452803331311365681}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: doorSettings.hasDoor
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
+      propertyPath: doorSettings.doorPosition
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfaa75209755634489a080cd38e67da7, type: 3}
@@ -1169,7 +1254,7 @@ PrefabInstance:
     - target: {fileID: 1603392482477617199, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1603392482477617199, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
@@ -1181,6 +1266,11 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 4.275
       objectReference: {fileID: 0}
+    - target: {fileID: 1603392482477617199, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Size.x
@@ -1189,12 +1279,17 @@ PrefabInstance:
     - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: m_Offset.x
       value: -4.275
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193847839259411981, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5652683438766977539, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
@@ -1264,7 +1359,7 @@ PrefabInstance:
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: size.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
@@ -1283,13 +1378,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
+      propertyPath: wallOffset.y
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
       propertyPath: doorTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6713579744559678908}
     - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
         type: 3}
       propertyPath: doorSettings.hasDoor
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093472413512504660, guid: cfaa75209755634489a080cd38e67da7,
+        type: 3}
+      propertyPath: doorSettings.doorPosition
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfaa75209755634489a080cd38e67da7, type: 3}
@@ -1443,6 +1548,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e15c6c2a84904284b962a4ea06ff61a9, type: 3}
+--- !u!4 &8699224380770646742 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1969692852615133845, guid: e15c6c2a84904284b962a4ea06ff61a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7200159923689242691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7356663609876527793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1590,6 +1701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 2424157896186314148, guid: 36837b98c32404d4aad7fd2f5abd5850,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2424157896186314149, guid: 36837b98c32404d4aad7fd2f5abd5850,
         type: 3}
       propertyPath: m_RootOrder
@@ -1677,3 +1793,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36837b98c32404d4aad7fd2f5abd5850, type: 3}
+--- !u!4 &6713579744559678908 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2424157896186314149, guid: 36837b98c32404d4aad7fd2f5abd5850,
+    type: 3}
+  m_PrefabInstance: {fileID: 8975458511934224409}
+  m_PrefabAsset: {fileID: 0}

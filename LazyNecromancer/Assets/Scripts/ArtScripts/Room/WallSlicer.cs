@@ -10,7 +10,7 @@ public class WallSlicer : BaseSlicer
     [Space(10)]
     [SerializeField] Vector2 wallOffset = Vector2.zero;
 
-    Transform doorTransform;
+    public Transform doorTransform;
     BoxCollider2D[] boxColliders;
     SpriteSlicer[] spriteSlicers;
 
@@ -20,7 +20,7 @@ public class WallSlicer : BaseSlicer
         if (doorTransform == null)
         {
             doorSettings = new DoorSettings(false, doorSettings.DoorPosition);
-            Debug.LogWarning("Could Not Find Door");
+            Debug.LogWarning("Could Not Find Door: " + gameObject.name);
         }
         boxColliders = GetComponentsInChildren<BoxCollider2D>(true);
         spriteSlicers = transform.GetComponentsInDirectChildren<SpriteSlicer>(true);
@@ -70,22 +70,29 @@ public class WallSlicer : BaseSlicer
         doorTransform.localPosition = new Vector2((doorSettings.DoorPosition - .5f) * wallwidthMinusDoor, 0) + doorOffset;
     }
 
-    public DoorSettings DoorSettings => doorSettings;
+    public DoorSettings DoorSettings
+    {
+        get { return doorSettings; }
+        set
+        {
+            doorSettings = new DoorSettings(value.HasDoor, value.DoorPosition);
+        }
+    }
 }
 
 [System.Serializable]
-public class DoorSettings
+public struct DoorSettings
 {
     [SerializeField] bool hasDoor;
     [Range(0, 1)]
     [SerializeField] float doorPosition;
+
+    public bool HasDoor => hasDoor;
+    public float DoorPosition => doorPosition;
 
     public DoorSettings(bool hasDoor = false, float doorPosition = .5f)
     {
         this.hasDoor = hasDoor;
         this.doorPosition = doorPosition;
     }
-
-    public bool HasDoor => hasDoor;
-    public float DoorPosition => doorPosition;
 }

@@ -8,23 +8,27 @@ public class RoomSlicer : BaseSlicer
     [SerializeField] Vector2 floorOffset = Vector2.zero;
     [SerializeField] Vector2 torchOffset = Vector2.zero;
     [Space(20)]
-
     [SerializeField] DoorSettings[] doorSettings;
 
     WallSlicer[] wallSlicers;
     SpriteSlicer[] spriteSlicers;
     TorchManager torchManager;
 
+    public void ReInitialize()
+    {
+        Initialize();
+        SetSize();
+    }
+
     protected override void Initialize()
     {
         wallSlicers = GetComponentsInChildren<WallSlicer>(true);
-
-        doorSettings = new DoorSettings[wallSlicers.Length];
-        for (int i = 0; i < wallSlicers.Length; i++)
-        {
-           doorSettings[i] = wallSlicers[i].DoorSettings;
-        }
         InitializeChildren(wallSlicers);
+
+        for (int i = 0; i < doorSettings.Length; i++)
+        {
+            wallSlicers[i].DoorSettings = doorSettings[i];
+        }
 
         spriteSlicers = transform.GetComponentsInDirectChildren<SpriteSlicer>(true);
         InitializeChildren(spriteSlicers);
@@ -65,4 +69,14 @@ public class RoomSlicer : BaseSlicer
             torchManager.ResetTorches(new Vector2(size.x - 1, size.y - 2));
         }
     }
+
+    public void SetDoorSettings(int doorIndex)
+    {
+        for( int i = 0; i < doorSettings.Length; i++)
+        {
+            doorSettings[i] = new DoorSettings((doorIndex >> i & 1) == 1);
+        }
+    }
+
+    public DoorSettings[] DoorSettings => doorSettings;
 }

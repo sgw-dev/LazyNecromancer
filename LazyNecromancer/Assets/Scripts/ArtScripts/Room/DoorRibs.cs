@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DoorRibs : MonoBehaviour
 {
-    RoomManager2 roomManager;
+    RoomManager roomManager;
     Animator animator;
 
     private void Awake()
     {
-        roomManager = GetComponentInParent<RoomManager2>();
+        roomManager = GetComponentInParent<RoomManager>();
         animator = GetComponent<Animator>();
     }
 
