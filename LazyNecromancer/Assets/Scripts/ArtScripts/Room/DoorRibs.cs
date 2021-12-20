@@ -4,27 +4,33 @@ using UnityEngine;
 
 public class DoorRibs : MonoBehaviour
 {
-    RoomManager2 roomManager;
     Animator animator;
+    DoorManager doorManager;
+    public DoorManager DoorManager { get; set; }
 
     private void Awake()
     {
-        roomManager = GetComponentInParent<RoomManager2>();
-        animator = GetComponent<Animator>();
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        print("Collision Ribs");
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        print("Triggered Ribs");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            OpenDoor();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            animator.SetBool("Open", false);
+        }
     }
 
     void OpenDoor() {
-        if (!roomManager.isLocked())
+        if (!DoorManager.IsLocked)
         {
             animator.SetBool("Open", true);
         }

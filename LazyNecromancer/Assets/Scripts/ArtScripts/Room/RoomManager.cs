@@ -12,13 +12,12 @@ public class RoomManager : MonoBehaviour
     private float count;
 
     public GameObject minimapCover;
-    // Start is called before the first frame update
+
     void Start()
     {
         minimapCover = this.transform.Find("Canvas/MinimapCover").gameObject;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (moveFlag && count <=1.1f)
@@ -31,6 +30,7 @@ public class RoomManager : MonoBehaviour
             moveFlag = false;
         }
     }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -47,6 +47,7 @@ public class RoomManager : MonoBehaviour
             
         }
     }
+
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -58,6 +59,7 @@ public class RoomManager : MonoBehaviour
             //StartCoroutine("MoveCamera");
         }
     }
+
     private IEnumerator MoveCamera()
     {
         for (float i = 0f; i <= 1; i += 0.01f)
