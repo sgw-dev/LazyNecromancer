@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1969692852060866762}
-  - component: {fileID: 1969692852060866763}
   - component: {fileID: 1969692852060866765}
   - component: {fileID: 1969692852060866764}
   m_Layer: 0
@@ -34,19 +33,6 @@ Transform:
   m_Father: {fileID: 1969692852615133845}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1969692852060866763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969692852060866761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f0b84abd2ce824a9d89f986eda1fec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  open: 0
 --- !u!61 &1969692852060866765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -104,7 +90,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1969692852549158759}
   - component: {fileID: 1969692852549158778}
-  - component: {fileID: 1969692852549158777}
   - component: {fileID: 4695530285977549112}
   m_Layer: 0
   m_Name: NS_Door_Ribs
@@ -140,19 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d131a82a694c9479cb52f24b6922bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1969692852549158777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969692852549158758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f0b84abd2ce824a9d89f986eda1fec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  open: 0
 --- !u!58 &4695530285977549112
 CircleCollider2D:
   m_ObjectHideFlags: 0

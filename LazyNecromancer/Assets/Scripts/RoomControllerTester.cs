@@ -6,6 +6,7 @@ public class RoomControllerTester : MonoBehaviour
 {
     [Range(0, 15)]
     [SerializeField] int doorIndex;
+    int oldDoorIndex;
     [SerializeField] bool testWhichDoors;
     [SerializeField] bool testCrateDoorConverted;
 
@@ -18,13 +19,17 @@ public class RoomControllerTester : MonoBehaviour
 
     private void Update()
     {
-        if (testCrateDoorConverted)
+        if(doorIndex != oldDoorIndex)
         {
-            roomController.CreateDoorsConverted(doorIndex);
-        }
-        else
-        {
-            roomController.CreateDoors(doorIndex);
+            oldDoorIndex = doorIndex;
+            if (testCrateDoorConverted)
+            {
+                roomController.CreateDoorsConverted(oldDoorIndex);
+            }
+            else
+            {
+                roomController.CreateDoors(oldDoorIndex);
+            }
         }
         if (testWhichDoors)
         {
