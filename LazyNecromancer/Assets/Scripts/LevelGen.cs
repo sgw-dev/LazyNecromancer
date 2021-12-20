@@ -4,7 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Direction { NORTH, SOUTH, EAST, WEST };
+public enum Direction 
+{ 
+    NORTH = 0, 
+    EAST = 1, 
+    SOUTH = 2, 
+    WEST = 3 
+};
 public static class Extenions
 {
     public static Direction Invert(this Direction direction)
@@ -42,6 +48,8 @@ public class LevelGen : MonoBehaviour
     public bool waitFlag = false;
 
     public Color color;
+
+    public float roomSize;
 
     [SerializeField]
     public static Color setColor;
@@ -152,10 +160,10 @@ public class LevelGen : MonoBehaviour
                     {
                         yield return new WaitForSeconds(1f);
                         roomCounter++;
-                        (float, float) roomPos = (room.transform.position.x, room.transform.position.y + 20f);
+                        (float, float) roomPos = (room.transform.position.x, room.transform.position.y + roomSize);
                         chooseRoomV3(Direction.NORTH, newDepth, roomPos, roomCounter);
                         room.North.transform.parent = room.transform;
-                        room.North.transform.localPosition = new Vector3(0, 20, 0);
+                        room.North.transform.localPosition = new Vector3(0, roomSize, 0);
                         room.North.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd(roomPos, room.North);
@@ -168,10 +176,10 @@ public class LevelGen : MonoBehaviour
                     {
                         yield return new WaitForSeconds(1f);
                         roomCounter++;
-                        (float, float) roomPos = (room.transform.position.x, room.transform.position.y - 20f);
+                        (float, float) roomPos = (room.transform.position.x, room.transform.position.y - roomSize);
                         chooseRoomV3(Direction.SOUTH, newDepth, roomPos, roomCounter);
                         room.South.transform.parent = room.transform;
-                        room.South.transform.localPosition = new Vector3(0, -20, 0);
+                        room.South.transform.localPosition = new Vector3(0, -roomSize, 0);
                         room.South.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd(roomPos, room.South);
@@ -184,10 +192,10 @@ public class LevelGen : MonoBehaviour
                     {
                         yield return new WaitForSeconds(1f);
                         roomCounter++;
-                        (float, float) roomPos = (room.transform.position.x + 20f, room.transform.position.y);
+                        (float, float) roomPos = (room.transform.position.x + roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.EAST, newDepth, roomPos, roomCounter);
                         room.East.transform.parent = room.transform;
-                        room.East.transform.localPosition = new Vector3(20, 0, 0);
+                        room.East.transform.localPosition = new Vector3(roomSize, 0, 0);
                         room.East.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd((room.East.transform.position.x, room.East.transform.position.y), room.East);
@@ -200,10 +208,10 @@ public class LevelGen : MonoBehaviour
                     {
                         yield return new WaitForSeconds(1f);
                         roomCounter++;
-                        (float, float) roomPos = (room.transform.position.x - 20f, room.transform.position.y);
+                        (float, float) roomPos = (room.transform.position.x - roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.WEST, newDepth, roomPos, roomCounter);
                         room.West.transform.parent = room.transform;
-                        room.West.transform.localPosition = new Vector3(-20, 0, 0);
+                        room.West.transform.localPosition = new Vector3(-roomSize, 0, 0);
                         room.West.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd(roomPos, room.West);
@@ -226,20 +234,20 @@ public class LevelGen : MonoBehaviour
         // Check all 4 directions for neighbors
         foreach (Direction side in System.Enum.GetValues(typeof(Direction)))
         {
-            (float x, float y) newPos = (roomPos.x, roomPos.y + 20f);
+            (float x, float y) newPos = (roomPos.x, roomPos.y + roomSize);
             switch (side)
             {
                 case Direction.NORTH:
-                    newPos = (roomPos.x, roomPos.y + 20f);
+                    newPos = (roomPos.x, roomPos.y + roomSize);
                     break;
                 case Direction.SOUTH:
-                    newPos = (roomPos.x, roomPos.y - 20f);
+                    newPos = (roomPos.x, roomPos.y - roomSize);
                     break;
                 case Direction.EAST:
-                    newPos = (roomPos.x +20f, roomPos.y);
+                    newPos = (roomPos.x + roomSize, roomPos.y);
                     break;
                 case Direction.WEST:
-                    newPos = (roomPos.x - 20f, roomPos.y);
+                    newPos = (roomPos.x - roomSize, roomPos.y);
                     break;
             }
             if (allRooms.ContainsKey(newPos))
