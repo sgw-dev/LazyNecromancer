@@ -4,7 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Direction { NORTH, SOUTH, EAST, WEST };
+public enum Direction 
+{ 
+    NORTH = 0, 
+    EAST = 1, 
+    SOUTH = 2, 
+    WEST = 3 
+};
 public static class Extenions
 {
     public static Direction Invert(this Direction direction)

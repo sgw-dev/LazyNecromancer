@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class DoorLockTrap : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        print("collision Skull");
-    }
+    DoorManager doorManager;
+    public DoorManager DoorManager { get; set; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Triggered Skull");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            DoorManager.LockRoom();
+        }
     }
+
 }

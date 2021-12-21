@@ -23,7 +23,7 @@ public class MagicCircleSpell : BaseSpell
 
     private void Update()
     {
-        if (followTarget && Input.GetMouseButton(0))
+        if (followTarget && Input.GetMouseButton(1))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
