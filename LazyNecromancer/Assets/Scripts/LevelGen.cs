@@ -31,8 +31,8 @@ public static class Extenions
 }
 public class LevelGen : MonoBehaviour
 {
-    
-    
+    [SerializeField]
+    float waitTime;
     public List<GameObject> roomObjects; // The prefabs
     public List<Room> rooms; // The scripts attached to each prefab
     public GameObject head;
@@ -141,7 +141,7 @@ public class LevelGen : MonoBehaviour
                     roomPos = (room.transform.position.x - 20f, room.transform.position.y);
                     break;
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(waitTime);
             roomCounter++;
             chooseRoomV3(key, newDepth, roomPos, roomCounter);
             room.DoorList[key].transform.parent = room.transform;
@@ -158,7 +158,7 @@ public class LevelGen : MonoBehaviour
                 case Direction.NORTH:
                     if(room.North == null)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(waitTime);
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y + roomSize);
                         chooseRoomV3(Direction.NORTH, newDepth, roomPos, roomCounter);
@@ -174,7 +174,7 @@ public class LevelGen : MonoBehaviour
                 case Direction.SOUTH:
                     if (room.South == null)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(waitTime);
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y - roomSize);
                         chooseRoomV3(Direction.SOUTH, newDepth, roomPos, roomCounter);
@@ -190,7 +190,7 @@ public class LevelGen : MonoBehaviour
                 case Direction.EAST:
                     if (room.East == null)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(waitTime);
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x + roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.EAST, newDepth, roomPos, roomCounter);
@@ -206,7 +206,7 @@ public class LevelGen : MonoBehaviour
                 case Direction.WEST:
                     if (room.West == null)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(waitTime);
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x - roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.WEST, newDepth, roomPos, roomCounter);
@@ -314,6 +314,7 @@ public class LevelGen : MonoBehaviour
         int index = Random.Range(0, valid.Count);
         GameObject choice = Instantiate(valid[index]);
         choice.GetComponent<Room>().UniqueHash = roomNumber;
+        choice.GetComponent<Room>().depth = depth;
         choice.name = choice.name + ":" + roomNumber;
         // Assign parents to the room's needed doors
         foreach (Direction key in needsDoorsHere.Keys)
@@ -371,6 +372,18 @@ public class LevelGen : MonoBehaviour
         }
         random = Mathf.Clamp(random, minAdjusted, maxAdjusted);
         return (random / 10);
+
+    }
+
+    public void PlaceBoss() {
+        
+        GameObject bossRoom = BossPlacement.FindRoom(allRooms);
+        
+        if( bossRoom != null ) {
+            Debug.Log(bossRoom.name);
+        } else {
+            Debug.LogError("No Valid Rooms for Boss placement");
+        }
 
     }
 }
