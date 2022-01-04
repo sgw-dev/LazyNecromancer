@@ -53,6 +53,9 @@ public class LevelGen : MonoBehaviour
 
     [SerializeField]
     public static Color setColor;
+
+    [SerializeField]
+    GameObject bossSpawnPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -380,10 +383,12 @@ public class LevelGen : MonoBehaviour
         GameObject bossRoom = BossPlacement.FindRoom(allRooms);
         
         if( bossRoom != null ) {
-            Debug.Log(bossRoom.name);
+            //Debug.Log(bossRoom.name);
+            Instantiate(bossSpawnPrefab,bossRoom.transform);
         } else {
             Debug.LogError("No Valid Rooms for Boss placement");
         }
 
     }
+    
 }

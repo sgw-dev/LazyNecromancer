@@ -1250,6 +1250,8 @@ MonoBehaviour:
   waitFlag: 0
   color: {r: 0.18523192, g: 1, b: 0, a: 0.3882353}
   roomSize: 21
+  bossSpawnPrefab: {fileID: 763361980418084917, guid: 1851b16ea00c366488ba7c5dae3e192d,
+    type: 3}
 --- !u!4 &1815459525
 Transform:
   m_ObjectHideFlags: 0
