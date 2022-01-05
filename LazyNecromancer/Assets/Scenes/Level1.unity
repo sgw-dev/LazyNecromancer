@@ -1074,6 +1074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1815459525}
   - component: {fileID: 1815459524}
+  - component: {fileID: 1815459526}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1093,30 +1094,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a722fc62a3bd944a74ce6a86274d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomObjects:
-  - {fileID: 6341318343304422858, guid: 7bc722930b6c274418b4e830de10fcbe, type: 3}
-  - {fileID: 8143007689901468935, guid: 509fc27f9c989b544964c14eb0630987, type: 3}
-  - {fileID: 5735360686419544392, guid: 64257a9834d2f8f429d33a8ee424122d, type: 3}
-  - {fileID: 1061334525099853774, guid: c0176592989978f4eac1e699bdaa8bff, type: 3}
-  - {fileID: 6094470350055226597, guid: adf9ae32c0387c94a9cf29b943676737, type: 3}
-  - {fileID: 3200732652975116999, guid: deea467c25945ce44851387681c1314e, type: 3}
-  - {fileID: 853074886679674536, guid: 5478242ab8f8d68479a9cfa115f3c61a, type: 3}
-  - {fileID: 3151926378313958792, guid: da505c16f313df84dbc875ed763d8b5d, type: 3}
-  - {fileID: 7630495897562968662, guid: 41900942f27a7f742b68a1832e8c1459, type: 3}
-  - {fileID: 8819816693499536511, guid: 01db2efa7b319164589319bb034a1b4f, type: 3}
-  - {fileID: 4952778598048161639, guid: 73c6348490d6aab419033e00d1efd515, type: 3}
-  - {fileID: 2949655563607056513, guid: aaacc619016683241b34b4144f86ad7f, type: 3}
-  - {fileID: 3734846025440352197, guid: 9d7cd877090e35446a45338fbb6363de, type: 3}
-  - {fileID: 6447731803521102101, guid: 46ce82b1c5c6e9c42b23fc7c7fad81e1, type: 3}
-  - {fileID: 5473848072161613222, guid: ad5aa43eabb361343bd9145419e7ce20, type: 3}
   roomSlice: {fileID: 7200159922843004906, guid: 5c437ee8f84a85d42a69207e8a6ecc44,
     type: 3}
-  rooms: []
-  head: {fileID: 0}
   done: 1
   waitFlag: 0
   color: {r: 0.18523192, g: 1, b: 0, a: 0.3882353}
   roomSize: 20
+  roomSpawnDelay: 0.1
 --- !u!4 &1815459525
 Transform:
   m_ObjectHideFlags: 0
@@ -1131,6 +1115,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1815459526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815459523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089eecbc0f12eab4aa4e8b147b5829ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useSceneView: 1
 --- !u!1 &1850057238
 GameObject:
   m_ObjectHideFlags: 0
