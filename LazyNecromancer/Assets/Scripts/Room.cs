@@ -31,6 +31,50 @@ public class Room : MonoBehaviour
         IEnumerator temp = flash(sp);
         StartCoroutine(temp);*/
     }
+    public void initialize(int prefabNumber)
+    {
+        RoomController rc = this.GetComponent<RoomController>();
+        rc.CreateDoorsConverted(prefabNumber);
+        doorList = new Dictionary<Direction, GameObject>();
+        if (rc.HasDoor(Direction.NORTH))
+        {
+            doorList.Add(Direction.NORTH, North);
+        }
+        if (rc.HasDoor(Direction.SOUTH))
+        {
+            doorList.Add(Direction.SOUTH, South);
+        }
+        if (rc.HasDoor(Direction.EAST))
+        {
+            doorList.Add(Direction.EAST, East);
+        }
+        if (rc.HasDoor(Direction.WEST))
+        {
+            doorList.Add(Direction.WEST, West);
+        }
+    }
+    public void initialize((int, int)element)
+    {
+        RoomController rc = this.GetComponent<RoomController>();
+        rc.CreateDoors(element.Item1);
+        doorList = new Dictionary<Direction, GameObject>();
+        if (rc.HasDoor(Direction.NORTH))
+        {
+            doorList.Add(Direction.NORTH, North);
+        }
+        if (rc.HasDoor(Direction.SOUTH))
+        {
+            doorList.Add(Direction.SOUTH, South);
+        }
+        if (rc.HasDoor(Direction.EAST))
+        {
+            doorList.Add(Direction.EAST, East);
+        }
+        if (rc.HasDoor(Direction.WEST))
+        {
+            doorList.Add(Direction.WEST, West);
+        }
+    }
     public GameObject North
     {
         get
@@ -40,7 +84,7 @@ public class Room : MonoBehaviour
         set
         {
             north = value;
-            nImage.color = LevelGen.setColor;
+            //nImage.color = LevelGen.setColor;
         }
     }
     public GameObject South
@@ -52,7 +96,7 @@ public class Room : MonoBehaviour
         set
         {
             south = value;
-            sImage.color = LevelGen.setColor;
+            //sImage.color = LevelGen.setColor;
         }
     }
     public GameObject East
@@ -64,7 +108,7 @@ public class Room : MonoBehaviour
         set
         {
             east = value;
-            eImage.color = LevelGen.setColor;
+            //eImage.color = LevelGen.setColor;
         }
     }
     public GameObject West
@@ -76,37 +120,13 @@ public class Room : MonoBehaviour
         set
         {
             west = value;
-            wImage.color = LevelGen.setColor;
+            //wImage.color = LevelGen.setColor;
         }
     }
     public Dictionary<Direction, GameObject> DoorList
     {
         get
         {
-            if(doorList == null)
-            {
-                doorList = new Dictionary<Direction, GameObject>();
-                Transform temp = transform.Find("NorthDoor");
-                if (temp != null)
-                {
-                    doorList.Add(Direction.NORTH, West);
-                }
-                temp = transform.Find("SouthDoor");
-                if (temp != null)
-                {
-                    doorList.Add(Direction.SOUTH, South);
-                }
-                temp = transform.Find("EastDoor");
-                if (temp != null)
-                {
-                    doorList.Add(Direction.EAST, East);
-                }
-                temp = transform.Find("WestDoor");
-                if (temp != null)
-                {
-                    doorList.Add(Direction.WEST, West);
-                }
-            }
             return doorList;
         }
     }
