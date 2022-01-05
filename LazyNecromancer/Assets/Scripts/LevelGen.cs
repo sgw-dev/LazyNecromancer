@@ -32,17 +32,12 @@ public static class Extenions
 public class LevelGen : MonoBehaviour
 {
     
-    
-    public List<GameObject> roomObjects; // The prefabs
     public GameObject roomSlice;
-    public List<Room> rooms; // The scripts attached to each prefab
-    public GameObject head;
-    //public int test;
     private GameObject headObject;
+
     public bool done = true;
 
     private IEnumerator routine;
-    private ConcurrentQueue<IEnumerator> levelGens;
     private ConcurrentDictionary<(float, float), GameObject> allRooms;
 
     private int roomCounter = 0;
@@ -51,6 +46,7 @@ public class LevelGen : MonoBehaviour
     public Color color;
 
     public float roomSize;
+    public float roomSpawnDelay;
 
     int[] CONVERSION_TABLE =
     {
@@ -79,73 +75,30 @@ public class LevelGen : MonoBehaviour
     {
 
         LevelGen.setColor = color;
-        foreach(GameObject obj in roomObjects)
-        {
-            rooms.Add(obj.GetComponent<Room>());
-        }
-        levelGens = new ConcurrentQueue<IEnumerator>();
         allRooms = new ConcurrentDictionary<(float, float), GameObject>();
-        /*head = generateLevel();
-        GameObject headObject = Instantiate(roomObjects[head.RoomScript.roomId]);
-        displayLevel(headObject, head);*/
-        //headObject = Instantiate(roomObjects[0]);
+
         headObject = Instantiate(roomSlice);
         headObject.GetComponent<Room>().initialize(0);
         allRooms.TryAdd((headObject.transform.position.x, headObject.transform.position.y), headObject);
         routine = levelGen2(headObject, 0);
-        //levelGens.Enqueue(routine);
         StartCoroutine(routine);
-        //levelGen2(headObject, 0);
-    }
-    void Update()
-    {
-        /*if(levelGens.Count > 0 && done)
-        {
-            IEnumerator next = null;
-            levelGens.TryDequeue(out next);
-            StartCoroutine(next);
-            
-            done = false;
-        }*/
     }
     public void Reload()
     {
         roomCounter = 0;
         Destroy(headObject);
         allRooms = new ConcurrentDictionary<(float, float), GameObject>();
-        levelGens = new ConcurrentQueue<IEnumerator>();
         headObject = Instantiate(roomSlice);
         headObject.GetComponent<Room>().initialize(0);
         allRooms.TryAdd((headObject.transform.position.x, headObject.transform.position.y), headObject);
-        //Room temp = headObject.GetComponent<Room>();
-        //temp.north = null;
         routine = levelGen2(headObject, 0);
-        //levelGens.Enqueue(routine);
         StartCoroutine(routine);
-        //levelGen2(headObject, 0);
         done = true;
-    }
-    public void Next()
-    {
-        if (levelGens.Count > 0 && done)
-        {
-            IEnumerator next = null;
-            levelGens.TryDequeue(out next);
-            StartCoroutine(next);
-
-            done = false;
-        }
-    }
-    IEnumerator WaitForKeyDown(KeyCode keyCode)
-    {
-        while (!Input.GetKeyDown(keyCode))
-            yield return null;
     }
     IEnumerator levelGen2(GameObject head, int depth)
     {
         
         Room room = head.GetComponent<Room>();
-        //Debug.Log("Generating children for room "+room.UniqueHash);
         foreach (Direction key in room.DoorList.Keys)
         {
             int newDepth = depth + 1;
@@ -183,7 +136,7 @@ public class LevelGen : MonoBehaviour
                 case Direction.NORTH:
                     if(room.North == null)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(roomSpawnDelay);
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y + roomSize);
                         chooseRoomV3(Direction.NORTH, newDepth, roomPos, roomCounter);
@@ -199,7 +152,7 @@ public class LevelGen : MonoBehaviour
                 case Direction.SOUTH:
                     if (room.South == null)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(roomSpawnDelay);
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y - roomSize);
                         chooseRoomV3(Direction.SOUTH, newDepth, roomPos, roomCounter);
@@ -215,7 +168,7 @@ public class LevelGen : MonoBehaviour
                 case Direction.EAST:
                     if (room.East == null)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(roomSpawnDelay);
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x + roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.EAST, newDepth, roomPos, roomCounter);
@@ -231,7 +184,7 @@ public class LevelGen : MonoBehaviour
                 case Direction.WEST:
                     if (room.West == null)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(roomSpawnDelay);
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x - roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.WEST, newDepth, roomPos, roomCounter);
@@ -364,10 +317,6 @@ public class LevelGen : MonoBehaviour
         foreach (Direction key in needsDoorsHere.Keys)
         {
             // Go to the room to the north and set it's south door to be the new room
-            /*Room room = needsDoorsHere[key];
-            room.DoorList[key.Invert()] = choice;
-            choice.GetComponent<Room>().DoorList[key] = room.gameObject;*/
-            
             switch (key)
             {
                 case Direction.NORTH:
