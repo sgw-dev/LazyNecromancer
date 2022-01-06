@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     private List<int> enemyList;
     private ArrayList aliveEnemies;
     private int totalEnemies;
-    private GameObject[] spawnCircles;
+    public Transform[] spawnCircles;
 
     private int enemyCounter;
 
@@ -16,11 +16,23 @@ public class Spawner : MonoBehaviour
     public GameObject Rat;
     public GameObject SpawnCircle;
 
+    public GameObject[] SpawnCircleGroups;
+    private GameObject SpawnCircleGroup;
+
     public int RoomNumber;
+
 
     // Start is called before the first frame update
     void Start()
     {
+    }
+    public void StartSpawning()
+    {
+        SpawnCircleGroup = Instantiate(SpawnCircleGroups[0], this.transform);
+
+        this.findSpawnCircles();
+        this.totalEnemies = 6;
+        /*
         this.fillEnemyList();
         this.aliveEnemies = new ArrayList();
         this.determineTotalEnemies();
@@ -34,7 +46,7 @@ public class Spawner : MonoBehaviour
         this.findSpawnCircles();
 
         //Need to call this only when the player actually enters the room
-        this.PlayerEntersRoom();
+        this.PlayerEntersRoom();*/
     }
 
     // Update is called once per frame
@@ -59,11 +71,16 @@ public class Spawner : MonoBehaviour
     private void findSpawnCircles()
     {
         //Make sure that the spawn circles get a tag to denote them specifically.
-        this.spawnCircles = GameObject.FindGameObjectsWithTag("SpawnCircle: Room 0");
-
+        //this.spawnCircles = GameObject.FindGameObjectsWithTag("SpawnCircle: Room 0");
+        //this.spawnCircles = transform.GetComponentsInDirectChildren<Transform>(SpawnCircleGroup.transform);
+        spawnCircles = new Transform[SpawnCircleGroup.transform.childCount];
+        for(int i = 0; i<SpawnCircleGroup.transform.childCount; i++)
+        {
+            spawnCircles[i] = SpawnCircleGroup.transform.GetChild(i);
+        }
     }
 
-    void PlayerEntersRoom()
+    public void PlayerEntersRoom()
     {
         this.spawnEnemyGroup();
     }
@@ -72,20 +89,23 @@ public class Spawner : MonoBehaviour
     {
         if (this.totalEnemies > 0)
         {
-            foreach (GameObject spawnCircle in this.spawnCircles)
+            foreach (Transform spawnCircle in this.spawnCircles)
             {
+                GameObject spawnedDemon = Instantiate(Demon, spawnCircle);
+                spawnedDemon.transform.localPosition = Vector3.zero;
+                /*
                 var random = Random.Range(0, this.enemyList.Count);
                 var randomPull = this.enemyList[random];
 
                 if (randomPull == 1)
                 {
-                    var spawnedRat = Instantiate(Rat, spawnCircle.transform.position, Quaternion.identity);
+                    var spawnedRat = Instantiate(Rat, spawnCircle.position, Quaternion.identity);
                     spawnedRat.tag = "Room 0";
                     this.aliveEnemies.Add(spawnedRat);
                 }
                 if (randomPull == 2)
                 {
-                    var spawnedDemon = Instantiate(Demon, spawnCircle.transform.position, Quaternion.identity);
+                    var spawnedDemon = Instantiate(Demon, spawnCircle.position, Quaternion.identity);
                     spawnedDemon.tag = "Room 0";
                     this.aliveEnemies.Add(spawnedDemon);
 
@@ -99,6 +119,7 @@ public class Spawner : MonoBehaviour
                     // **Spencer ** Enemy counter is never incremented
                     //demonScript.SetSpawnerIndex(this.enemyCounter);
                 }
+                */
                 //Assuming something is always spawned.
                 this.totalEnemies -= 1;
             }
@@ -111,13 +132,14 @@ public class Spawner : MonoBehaviour
 
     public void CheckIfEnemiesAlive()
     {
+        /*
         print("Checking if enemies dead");
         print("Alive enemies count: " + this.aliveEnemies.Count);
         if (this.aliveEnemies.Count == 0)
         {
             print("Enemies found to be dead.");
             this.spawnEnemyGroup();
-        }
+        }*/
     }
 
     //Pretty sure this method is a type-casting time-bomb. Better way to do this?

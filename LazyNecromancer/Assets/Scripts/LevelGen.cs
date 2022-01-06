@@ -80,6 +80,7 @@ public class LevelGen : MonoBehaviour
 
         headObject = Instantiate(roomSlice, roomContainer.transform);
         headObject.GetComponent<Room>().initialize(0);
+        headObject.GetComponent<DoorManager>().IsHead = true;
         allRooms.TryAdd((headObject.transform.position.x, headObject.transform.position.y), headObject);
         routine = levelGen2(headObject, 0);
         StartCoroutine(routine);
@@ -94,6 +95,7 @@ public class LevelGen : MonoBehaviour
         allRooms = new ConcurrentDictionary<(float, float), GameObject>();
         headObject = Instantiate(roomSlice, roomContainer.transform);
         headObject.GetComponent<Room>().initialize(0);
+        headObject.GetComponent<DoorManager>().IsHead = true;
         allRooms.TryAdd((headObject.transform.position.x, headObject.transform.position.y), headObject);
         routine = levelGen2(headObject, 0);
         StartCoroutine(routine);
@@ -312,6 +314,7 @@ public class LevelGen : MonoBehaviour
         
         //choice.GetComponent<Room>().UniqueHash = roomNumber;
         choice.GetComponent<Room>().initialize(valid[index]);
+        choice.GetComponent<Spawner>().StartSpawning();
         choice.name = choice.name + ":" + roomNumber;
         // Assign parents to the room's needed doors
         foreach (Direction key in needsDoorsHere.Keys)

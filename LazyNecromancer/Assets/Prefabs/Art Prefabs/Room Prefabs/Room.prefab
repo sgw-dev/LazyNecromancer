@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5289453146229888013}
   - component: {fileID: -181976239929617493}
   - component: {fileID: 6558443290910065010}
+  - component: {fileID: 4124005471514353123}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -155,6 +156,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 20}
   m_EdgeRadius: 0
+--- !u!114 &4124005471514353123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200159922843004906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75fb0b3bb7b33547a2c3455e623c44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnCircles: []
+  Demon: {fileID: 2880275170225637957, guid: d8bbc722f7a36ea4c8bd0b9c60d3ad22, type: 3}
+  Rat: {fileID: 0}
+  SpawnCircle: {fileID: 0}
+  SpawnCircleGroups:
+  - {fileID: 6168689130159410458, guid: 0e1711df5e4e6d741a63f9ae01e91f3b, type: 3}
+  RoomNumber: 0
 --- !u!1 &8931456496938770647
 GameObject:
   m_ObjectHideFlags: 0
