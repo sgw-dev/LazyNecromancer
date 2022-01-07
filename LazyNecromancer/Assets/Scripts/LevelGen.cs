@@ -315,6 +315,7 @@ public class LevelGen : MonoBehaviour
         //choice.GetComponent<Room>().UniqueHash = roomNumber;
         choice.GetComponent<Room>().initialize(valid[index]);
         choice.GetComponent<Spawner>().StartSpawning();
+        choice.GetComponent<Spawner>().RoomDepth = depth;
         choice.name = choice.name + ":" + roomNumber;
         // Assign parents to the room's needed doors
         foreach (Direction key in needsDoorsHere.Keys)

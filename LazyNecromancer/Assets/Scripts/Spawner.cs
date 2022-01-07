@@ -7,20 +7,23 @@ public class Spawner : MonoBehaviour
 
     private List<int> enemyList;
     private ArrayList aliveEnemies;
-    private int totalEnemies;
-    public Transform[] spawnCircles;
+    public int totalEnemies;
+    private Transform[] spawnCircles;
 
     private int enemyCounter;
 
     public GameObject Demon;
     public GameObject Rat;
-    public GameObject SpawnCircle;
 
     public GameObject[] SpawnCircleGroups;
     private GameObject SpawnCircleGroup;
 
-    public int RoomNumber;
+    public int RoomDepth { get; set; }
 
+    public GameObject[] ClutterGroups;
+    public Transform[] Corners;
+
+    public Color disabledCircleColor;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +31,24 @@ public class Spawner : MonoBehaviour
     }
     public void StartSpawning()
     {
-        SpawnCircleGroup = Instantiate(SpawnCircleGroups[0], this.transform);
+        int rand = Random.Range(0, SpawnCircleGroups.Length);
+        SpawnCircleGroup = Instantiate(SpawnCircleGroups[rand], this.transform);
 
         this.findSpawnCircles();
-        this.totalEnemies = 6;
+        this.determineTotalEnemies();
         this.aliveEnemies = new ArrayList();
+
+        //Spawn Clutter
+        foreach(Transform corner in Corners)
+        {
+            rand = Random.Range(0, 2);
+            if (rand == 1)
+            {
+                rand = Random.Range(0, ClutterGroups.Length);
+                Instantiate(ClutterGroups[rand], corner);
+            }
+        }
+        
         /*
         this.fillEnemyList();
         this.aliveEnemies = new ArrayList();
@@ -65,7 +81,15 @@ public class Spawner : MonoBehaviour
     //Determine total enemies based on the room depth
     private void determineTotalEnemies()
     {
-
+        Debug.Log("Room Depth of " + gameObject.name + " is " + RoomDepth);
+        if(RoomDepth > 2)
+        {
+            this.totalEnemies = spawnCircles.Length * 2;
+        }
+        else
+        {
+            this.totalEnemies = spawnCircles.Length;
+        }
     }
 
     //Need to select only the spawn circles
@@ -141,9 +165,21 @@ public class Spawner : MonoBehaviour
         print("Alive enemies count: " + this.aliveEnemies.Count);
         if (this.aliveEnemies.Count == 0)
         {
-            print("Enemies found to be dead.");
+            //print("Enemies found to be dead.");
             //this.spawnEnemyGroup();
-            this.GetComponent<DoorManager>().RoomCleared();
+            if(totalEnemies > 0)
+            {
+                this.spawnEnemyGroup();
+            }
+            else
+            {
+                this.GetComponent<DoorManager>().RoomCleared();
+                foreach(Transform circle in spawnCircles)
+                {
+                    circle.GetComponent<SpriteRenderer>().color = disabledCircleColor;
+                }
+            }
+            
         }
     }
 
