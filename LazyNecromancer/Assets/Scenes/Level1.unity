@@ -130,17 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4687421696204539760, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-        type: 3}
-      propertyPath: settings
-      value: 
-      objectReference: {fileID: 11400000, guid: b652e5abcd79a944ea21f824371a4024,
-        type: 2}
-    - target: {fileID: 4687421696914776491, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-        type: 3}
-      propertyPath: arms
-      value: 
-      objectReference: {fileID: 166127279}
     - target: {fileID: 4687421696914776492, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
         type: 3}
       propertyPath: m_RootOrder
@@ -200,21 +189,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerController
-      objectReference: {fileID: 0}
-    - target: {fileID: 4687421696914776528, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4687421696914776528, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5181539617544595374, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08f9aa7e78b3dba40b50bddfa8518c32, type: 3}
@@ -290,12 +264,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128241130}
   m_CullTransparentMesh: 1
---- !u!1 &166127279 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5181539616768458150, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-    type: 3}
-  m_PrefabInstance: {fileID: 80024819}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &310128112
 GameObject:
   m_ObjectHideFlags: 0

@@ -131,19 +131,19 @@ public class DemonController : MonoBehaviour
         return this.spawnerIndex;
     }
 
-
-    //Temp health loss mechanics
-    private void OnMouseDown()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("You clicked");
-        this.Health -= 25;
-        if (this.Health == 0)
+        if(collision.tag == "Player")
         {
-            parentSpawner.RemoveEnemyFromAlive(this.gameObject);
-            parentSpawner.CheckIfEnemiesAlive();
-            Destroy(gameObject);
+            CombatController cc = collision.GetComponent<CombatController>();
+            this.Health -= 25;
+            if (this.Health == 0)
+            {
+                parentSpawner.RemoveEnemyFromAlive(this.gameObject);
+                parentSpawner.CheckIfEnemiesAlive();
+                Destroy(gameObject);
+            }
         }
-        //Destroy(this);
-        //parentSpawnerScript.CheckIfEnemiesAlive();
+        
     }
 }

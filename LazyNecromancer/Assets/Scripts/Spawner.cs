@@ -32,6 +32,7 @@ public class Spawner : MonoBehaviour
 
         this.findSpawnCircles();
         this.totalEnemies = 6;
+        this.aliveEnemies = new ArrayList();
         /*
         this.fillEnemyList();
         this.aliveEnemies = new ArrayList();
@@ -93,6 +94,9 @@ public class Spawner : MonoBehaviour
             {
                 GameObject spawnedDemon = Instantiate(Demon, spawnCircle);
                 spawnedDemon.transform.localPosition = Vector3.zero;
+                var demonScript = spawnedDemon.GetComponent<DemonController>();
+                demonScript.SetParentSpawner(this);
+                this.aliveEnemies.Add(spawnedDemon);
                 /*
                 var random = Random.Range(0, this.enemyList.Count);
                 var randomPull = this.enemyList[random];
@@ -132,14 +136,15 @@ public class Spawner : MonoBehaviour
 
     public void CheckIfEnemiesAlive()
     {
-        /*
+        
         print("Checking if enemies dead");
         print("Alive enemies count: " + this.aliveEnemies.Count);
         if (this.aliveEnemies.Count == 0)
         {
             print("Enemies found to be dead.");
-            this.spawnEnemyGroup();
-        }*/
+            //this.spawnEnemyGroup();
+            this.GetComponent<DoorManager>().RoomCleared();
+        }
     }
 
     //Pretty sure this method is a type-casting time-bomb. Better way to do this?

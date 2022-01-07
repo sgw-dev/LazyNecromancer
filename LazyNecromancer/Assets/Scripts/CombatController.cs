@@ -26,12 +26,14 @@ public class CombatController : MonoBehaviour
     PlayerController playerController;
     AnimationController animationController;
 
+    public PolygonCollider2D swordCollider;
+
     void Start()
     {
         swordAnimation = GetComponentInChildren<SwordAnimation>();
         playerController = GetComponent<PlayerController>();
         animationController = GetComponentInChildren<AnimationController>();
-
+        swordCollider.enabled = false;
         //weapon.SetActive(false);
     }
 
@@ -89,6 +91,7 @@ public class CombatController : MonoBehaviour
     private IEnumerator Attack()
     {
         isAttacking = true;
+        swordCollider.enabled = true;
         
         //Vector3 weaponTransform = weapon.transform.localPosition;
         arms.SetActive(false);
@@ -99,8 +102,8 @@ public class CombatController : MonoBehaviour
 
         //weapon.SetActive(false);
         arms.SetActive(true);
-       // weapon.transform.localPosition = weaponTransform;
-
+        // weapon.transform.localPosition = weaponTransform;
+        swordCollider.enabled = false;
         yield return new WaitForSeconds(attackCooldown);
         isAttacking = false;
     }
