@@ -35,7 +35,12 @@ public class RoomController : MonoBehaviour
     {
         CreateDoors(CONVERSION_TABLE[indexOfSpencersPrefab]);
     }
-
+    /*
+     - N = 0001
+    - E = 0010
+    - S = 0100
+    - W = 1000
+         */
     public void CreateDoors(int doorIndex)
     {
         roomSlicer.SetDoorSettings(doorIndex);
