@@ -15,7 +15,8 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-        minimapCover = this.transform.Find("Canvas/MinimapCover").gameObject;
+        //minimapCover = this.transform.Find("Canvas/MinimapCover").gameObject;
+        minimapCover = this.transform.GetComponentInDirectChildren<Transform>(6, true).gameObject;
     }
 
     void Update()
@@ -57,6 +58,10 @@ public class RoomManager : MonoBehaviour
             count = 0;
             moveFlag = false;
             //StartCoroutine("MoveCamera");
+            if (minimapCover.activeSelf)
+            {
+                minimapCover.SetActive(false);
+            }
         }
     }
 
