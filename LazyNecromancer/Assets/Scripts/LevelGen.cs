@@ -90,6 +90,7 @@ public class LevelGen : MonoBehaviour
     {
         roomCounter = 0;
         Destroy(headObject);
+        foreach(var t in allRooms.Values) { Destroy(t);}
         allRooms = new ConcurrentDictionary<(float, float), GameObject>();
         headObject = Instantiate(roomSlice);
         headObject.GetComponent<Room>().initialize(0);
@@ -376,11 +377,10 @@ public class LevelGen : MonoBehaviour
     }
 
     public void PlaceBoss() {
-        
+    
         GameObject bossRoom = BossPlacement.FindRoom(allRooms);
         
         if( bossRoom != null ) {
-            //Debug.Log(bossRoom.name);
             Instantiate(bossSpawnPrefab,bossRoom.transform);
         } else {
             Debug.LogError("No Valid Rooms for Boss placement");
@@ -388,4 +388,18 @@ public class LevelGen : MonoBehaviour
 
     }
     
+    public void SeparateRoomTree() {
+        List<Transform> clearParent = new List<Transform>();
+        Cheatunparent(clearParent,headObject);
+        clearParent.ForEach(t => t.parent=null);
+    }
+
+    void Cheatunparent(List<Transform> collector,GameObject root) {
+        collector.Add(root.transform);
+        foreach(Transform childtransform in  root.transform) {
+            if(childtransform.name.Contains("Room(Clone)")) {        
+                Cheatunparent(collector,childtransform.gameObject);
+            }
+        }
+    }
 }
