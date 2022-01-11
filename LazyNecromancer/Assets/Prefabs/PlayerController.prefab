@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 4687421696914776495}
   m_Layer: 0
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arms: {fileID: 5181539616768458150}
-  weapon: {fileID: 5232137992464820371}
   firePoint: {fileID: 4687421697107705486}
   manaProjectile: {fileID: 4162274769208575268, guid: f2480cbddcfca664ba65726ac24eb33b,
     type: 3}
@@ -5162,12 +5161,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792260c851512c14b9c1981603d6d927, type: 3}
---- !u!1 &5232137992464820371 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 558679897515345638, guid: 792260c851512c14b9c1981603d6d927,
-    type: 3}
-  m_PrefabInstance: {fileID: 5718618938887974517}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5232137992464820374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 558679897515345635, guid: 792260c851512c14b9c1981603d6d927,
