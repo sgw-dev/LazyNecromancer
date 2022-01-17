@@ -39,7 +39,7 @@ public class Spawner : MonoBehaviour
         this.aliveEnemies = new ArrayList();
 
         //Spawn Clutter
-        foreach(Transform corner in Corners)
+        foreach (Transform corner in Corners)
         {
             rand = Random.Range(0, 2);
             if (rand == 1)
@@ -82,7 +82,7 @@ public class Spawner : MonoBehaviour
     private void determineTotalEnemies()
     {
         Debug.Log("Room Depth of " + gameObject.name + " is " + RoomDepth);
-        if(RoomDepth > 2)
+        if(RoomDepth > 4)
         {
             this.totalEnemies = spawnCircles.Length * 2;
         }

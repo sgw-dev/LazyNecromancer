@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalEnemies: 0
-  Demon: {fileID: 2880275170225637957, guid: d8bbc722f7a36ea4c8bd0b9c60d3ad22, type: 3}
+  Demon: {fileID: 4199921069333909298, guid: d6d549961e1c6b04a9546c7f60e5216f, type: 3}
   Rat: {fileID: 0}
   SpawnCircleGroups:
   - {fileID: 6430273305352393486, guid: bf3c8e487b710c9418e9d1c80f7b3259, type: 3}

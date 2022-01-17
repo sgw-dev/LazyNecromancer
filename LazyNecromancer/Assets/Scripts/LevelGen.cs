@@ -311,11 +311,12 @@ public class LevelGen : MonoBehaviour
         // Choose a random element from that list
         int index = Random.Range(0, valid.Count);
         GameObject choice = Instantiate(roomSlice, roomContainer.transform);
-        
+
         //choice.GetComponent<Room>().UniqueHash = roomNumber;
+        choice.GetComponent<Room>().depth = depth;
         choice.GetComponent<Room>().initialize(valid[index]);
-        choice.GetComponent<Spawner>().StartSpawning();
         choice.GetComponent<Spawner>().RoomDepth = depth;
+        choice.GetComponent<Spawner>().StartSpawning();
         choice.name = choice.name + ":" + roomNumber;
         // Assign parents to the room's needed doors
         foreach (Direction key in needsDoorsHere.Keys)

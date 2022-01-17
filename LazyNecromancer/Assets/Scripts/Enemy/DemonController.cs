@@ -26,6 +26,8 @@ public class DemonController : MonoBehaviour
 
 
     public GameObject Room { get; set; }
+
+    private DemonAnimationController DAC;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,13 +36,15 @@ public class DemonController : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
         moveDirections = new List<DirectionValue>();
+        DAC = this.GetComponent<DemonAnimationController>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        
+        demons = new List<GameObject>(GameObject.FindGameObjectsWithTag("Demon"));
+
+
         moveDirections.Clear();
         // Make a list of 16 possible move directions
         Vector3 forward = player.transform.position - gameObject.transform.position;
@@ -102,6 +106,10 @@ public class DemonController : MonoBehaviour
 
         // Pick Smallest Direction
         gameObject.GetComponent<Rigidbody2D>().velocity = smallest.Dir * moveSpeed;
+        Vector2 directionalInput = new Vector2(smallest.Dir.x, smallest.Dir.y);
+        DAC.ResetState();
+        DAC.InputDirection = directionalInput;
+        DAC.UpdateAnimation();
     }
     private class DirectionValue
     {
@@ -111,6 +119,7 @@ public class DemonController : MonoBehaviour
         {
             Dir = d;
             Value = v;
+
         }
     }
 
