@@ -22,10 +22,13 @@ public class WaveSpell : BaseSpell
         var main = ps.main;
         main.duration = attackDuration;
         ps.Play();
+
+        Play();
     }
 
     public override void Play()
     {
+        SetTarget(GameObject.FindGameObjectWithTag("Player").transform.position);
         RotateToTarget();
         StartAttackTimer();
         StartCoroutine(ScaleCollider());

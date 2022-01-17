@@ -30,6 +30,14 @@ public class DemonController : MonoBehaviour
     private DirectionValue previous;
 
     public float diff;
+
+    public float timeBetweenAttacks;
+    public float attackChargeTime;
+
+    public GameObject magicWave;
+
+    private bool attacking;
+    private float attackTimer = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +52,23 @@ public class DemonController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+        // If the attack has cooled down
+        if(attackTimer > timeBetweenAttacks)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            // If the player is in range
+            if(distanceToPlayer < maxRange)
+            {
+                GameObject wave = Instantiate(magicWave);
+                wave.transform.position = this.transform.position;
+                attackTimer = 0f;
+            }
+        }
+        else
+        {
+            attackTimer += Time.fixedDeltaTime;
+        }
         demons = new List<GameObject>(GameObject.FindGameObjectsWithTag("Demon"));
 
         moveDirections.Clear();
