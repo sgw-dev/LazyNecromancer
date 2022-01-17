@@ -25,6 +25,8 @@ public class Spawner : MonoBehaviour
 
     public Color disabledCircleColor;
 
+    public float DemonSpawnDelay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,11 +118,14 @@ public class Spawner : MonoBehaviour
         {
             foreach (Transform spawnCircle in this.spawnCircles)
             {
-                GameObject spawnedDemon = Instantiate(Demon, spawnCircle);
+                IEnumerator routine = SpawnEnemy(Demon, spawnCircle);
+                StartCoroutine(routine);
+
+                /*GameObject spawnedDemon = Instantiate(Demon, spawnCircle);
                 spawnedDemon.transform.localPosition = Vector3.zero;
                 var demonScript = spawnedDemon.GetComponent<DemonController>();
                 demonScript.SetParentSpawner(this);
-                this.aliveEnemies.Add(spawnedDemon);
+                this.aliveEnemies.Add(spawnedDemon);*/
                 /*
                 var random = Random.Range(0, this.enemyList.Count);
                 var randomPull = this.enemyList[random];
@@ -150,11 +155,32 @@ public class Spawner : MonoBehaviour
                 */
                 //Assuming something is always spawned.
                 this.totalEnemies -= 1;
+                
             }
         }
         else
         {
             print("You've killed all the enemies!");
+        }
+    }
+    IEnumerator SpawnEnemy(GameObject enemy, Transform spawnCircle)
+    {
+        // Disable and then re-enable particles, incase this is the second time they need to be played
+        spawnCircle.GetChild(0).gameObject.SetActive(false);
+        spawnCircle.GetChild(1).gameObject.SetActive(false);
+        spawnCircle.GetChild(0).gameObject.SetActive(true);
+        spawnCircle.GetChild(1).gameObject.SetActive(true);
+        yield return new WaitForSeconds(DemonSpawnDelay);
+        GameObject spawnedDemon = Instantiate(enemy, spawnCircle.parent);
+        spawnedDemon.transform.localPosition = spawnCircle.localPosition;
+        var demonScript = spawnedDemon.GetComponent<DemonController>();
+        demonScript.SetParentSpawner(this);
+        this.aliveEnemies.Add(spawnedDemon);
+        
+        // If all enemies have been spawned, disable your circle
+        if (totalEnemies <= 0)
+        {
+            spawnCircle.GetComponent<SpriteRenderer>().color = disabledCircleColor;
         }
     }
 
@@ -174,10 +200,6 @@ public class Spawner : MonoBehaviour
             else
             {
                 this.GetComponent<DoorManager>().RoomCleared();
-                foreach(Transform circle in spawnCircles)
-                {
-                    circle.GetComponent<SpriteRenderer>().color = disabledCircleColor;
-                }
             }
             
         }
