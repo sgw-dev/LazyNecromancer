@@ -7,8 +7,11 @@ public class DoorManager : MonoBehaviour
     List<Animator> ribsDoorAnims;
     List<Animator> skullDoorAnims;
 
+    TorchManager2 torchManager;
+
     bool locked;
     bool cleared;
+    bool lightsOn;
 
     public bool IsLocked => locked;
     public bool IsCleared => cleared;
@@ -16,6 +19,7 @@ public class DoorManager : MonoBehaviour
     private void Awake()
     {
         Initialize();
+        torchManager = FindObjectOfType<TorchManager2>();
     }
 
     void Initialize()
@@ -68,6 +72,11 @@ public class DoorManager : MonoBehaviour
         locked = false;
         SetDoorsAnim(skullDoorAnims, true);
         SetDoorsAnim(ribsDoorAnims, false);
+    }
+
+    public void TurnOnLights(Direction direction)
+    {
+        torchManager.RequestTorches(transform.position, direction, !IsCleared);
     }
 
     void SetDoorsAnim(List<Animator> animators, bool isOpen)

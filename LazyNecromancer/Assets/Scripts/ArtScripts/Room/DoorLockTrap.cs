@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoorLockTrap : MonoBehaviour
 {
+    [SerializeField] Direction direction;
+
     DoorManager doorManager;
     public DoorManager DoorManager { get; set; }
 
@@ -15,4 +17,11 @@ public class DoorLockTrap : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            DoorManager.TurnOnLights(direction);
+        }
+    }
 }

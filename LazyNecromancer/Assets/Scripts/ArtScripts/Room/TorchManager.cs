@@ -46,10 +46,10 @@ public class TorchManager : MonoBehaviour
         {
             float x = i * torchSpacing.x + padding.x;
             float y = offsetSize.y / 2;
-            torchPositions.Add(new Vector2(x + offset.x, y));
-            torchPositions.Add(new Vector2(-x + offset.x, y));
-            torchPositions.Add(new Vector2(x + offset.x, -y));
-            torchPositions.Add(new Vector2(-x + offset.x, -y));
+            torchPositions.Add(new Vector2(x + offset.x, y));   // North
+            torchPositions.Add(new Vector2(-x + offset.x, y));  // North
+            torchPositions.Add(new Vector2(x + offset.x, -y));  // South
+            torchPositions.Add(new Vector2(-x + offset.x, -y)); // South
         }
 
         // East/West
@@ -58,10 +58,10 @@ public class TorchManager : MonoBehaviour
             float x = offsetSize.x / 2;
             float y = i * torchSpacing.y + padding.y;
 
-            torchPositions.Add(new Vector2(x, y + offset.y));
-            torchPositions.Add(new Vector2(x, -y + offset.y));
-            torchPositions.Add(new Vector2(-x, y + offset.y));
-            torchPositions.Add(new Vector2(-x, -y + offset.y));
+            torchPositions.Add(new Vector2(x, y + offset.y));   // West
+            torchPositions.Add(new Vector2(x, -y + offset.y));  // West
+            torchPositions.Add(new Vector2(-x, y + offset.y));  // East
+            torchPositions.Add(new Vector2(-x, -y + offset.y)); // East
         }
 
         for (int i = 0; i < torchPositions.Count; i++)

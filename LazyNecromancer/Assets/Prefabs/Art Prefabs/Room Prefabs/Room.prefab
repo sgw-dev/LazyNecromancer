@@ -171,7 +171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4484690325566626270
 Transform:
   m_ObjectHideFlags: 0
@@ -359,6 +359,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4900166761578073412, guid: 36837b98c32404d4aad7fd2f5abd5850,
+        type: 3}
+      propertyPath: direction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5242038710367499452, guid: 36837b98c32404d4aad7fd2f5abd5850,
         type: 3}
@@ -925,6 +930,11 @@ PrefabInstance:
     - target: {fileID: 3110910248201500944, guid: 36837b98c32404d4aad7fd2f5abd5850,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4900166761578073412, guid: 36837b98c32404d4aad7fd2f5abd5850,
+        type: 3}
+      propertyPath: direction
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5242038710367499452, guid: 36837b98c32404d4aad7fd2f5abd5850,
@@ -1735,8 +1745,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8633281056637623092, guid: fc3d3621da0fd324292025d8300feada,
         type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633281056637623092, guid: fc3d3621da0fd324292025d8300feada,
+        type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633281056637623092, guid: fc3d3621da0fd324292025d8300feada,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1579219705
       objectReference: {fileID: 0}
     - target: {fileID: 8633281056637623093, guid: fc3d3621da0fd324292025d8300feada,
         type: 3}
@@ -1927,6 +1947,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4900166761578073412, guid: 36837b98c32404d4aad7fd2f5abd5850,
+        type: 3}
+      propertyPath: direction
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5242038710367499452, guid: 36837b98c32404d4aad7fd2f5abd5850,
         type: 3}
