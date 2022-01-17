@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2351687225915150413}
   - component: {fileID: 1681465434389800426}
   - component: {fileID: 7533109767669314383}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Crate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1579219705
-  m_SortingLayer: 5
+  m_SortingLayerID: 406756543
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -4141225271908847606, guid: 727f3e6ad1ec22f4c81eb49635519087,
     type: 3}

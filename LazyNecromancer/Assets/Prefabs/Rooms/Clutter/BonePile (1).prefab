@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6261022136691401855}
   - component: {fileID: 6427244057467844599}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BonePile (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,6 +81,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bones2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385064789253437279, guid: f9eb11ddf2974ff4684ea07466957412,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4641442920695509983, guid: f9eb11ddf2974ff4684ea07466957412,
         type: 3}
@@ -162,6 +167,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bones2
       objectReference: {fileID: 0}
+    - target: {fileID: 4385064789253437279, guid: f9eb11ddf2974ff4684ea07466957412,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4641442920695509983, guid: f9eb11ddf2974ff4684ea07466957412,
         type: 3}
       propertyPath: m_RootOrder
@@ -236,6 +246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bones2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385064789253437279, guid: f9eb11ddf2974ff4684ea07466957412,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4641442920695509983, guid: f9eb11ddf2974ff4684ea07466957412,
         type: 3}
@@ -317,6 +332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bones2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4385064789253437279, guid: f9eb11ddf2974ff4684ea07466957412,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4641442920695509983, guid: f9eb11ddf2974ff4684ea07466957412,
         type: 3}
       propertyPath: m_RootOrder
@@ -391,6 +411,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bones2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385064789253437279, guid: f9eb11ddf2974ff4684ea07466957412,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4641442920695509983, guid: f9eb11ddf2974ff4684ea07466957412,
         type: 3}
@@ -467,6 +492,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bones1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6903891159958120052, guid: a36c00a80a8af314e9c4ba318cc8b3ef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8241056356598913105, guid: a36c00a80a8af314e9c4ba318cc8b3ef,
         type: 3}
       propertyPath: m_RootOrder
@@ -541,6 +571,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bones2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385064789253437279, guid: f9eb11ddf2974ff4684ea07466957412,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4641442920695509983, guid: f9eb11ddf2974ff4684ea07466957412,
         type: 3}
@@ -622,6 +657,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bones1
       objectReference: {fileID: 0}
+    - target: {fileID: 6903891159958120052, guid: a36c00a80a8af314e9c4ba318cc8b3ef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8241056356598913105, guid: a36c00a80a8af314e9c4ba318cc8b3ef,
         type: 3}
       propertyPath: m_RootOrder
@@ -696,6 +736,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bones2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385064789253437279, guid: f9eb11ddf2974ff4684ea07466957412,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4641442920695509983, guid: f9eb11ddf2974ff4684ea07466957412,
         type: 3}

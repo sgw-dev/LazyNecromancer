@@ -15,12 +15,11 @@ public class DemonController : MonoBehaviour
 
     private List<DirectionValue> moveDirections;
 
-    public List<GameObject> demons;
+    private List<GameObject> demons;
     public LayerMask mask;
 
     // DanValues:
     private Spawner parentSpawner;
-    private int spawnerIndex;
     int Health;
 
 
@@ -28,6 +27,9 @@ public class DemonController : MonoBehaviour
     public GameObject Room { get; set; }
 
     private DemonAnimationController DAC;
+    private DirectionValue previous;
+
+    public float diff;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,13 +46,11 @@ public class DemonController : MonoBehaviour
     {
         demons = new List<GameObject>(GameObject.FindGameObjectsWithTag("Demon"));
 
-
         moveDirections.Clear();
         // Make a list of 16 possible move directions
         Vector3 forward = player.transform.position - gameObject.transform.position;
         forward = forward.normalized;
         moveDirections.Add(new DirectionValue(forward, 0));
-        //for(float i = 11.25f; i<360; i+= 11.25f)
         for (float i = 22.5f; i < 360; i += 22.5f)
         {
             moveDirections.Add(new DirectionValue(Quaternion.AngleAxis(i, Vector3.back) * forward, 0));
@@ -82,12 +82,17 @@ public class DemonController : MonoBehaviour
             }
             // Maxamise this
             float distanceToWall = 2.5f;
-            /*Debug.DrawRay(transform.position, dv.Dir * stepSize, Color.red);
+            //Debug.DrawLine(transform.position, transform.position+(dv.Dir * stepSize), Color.red);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, dv.Dir, stepSize*2, mask);
             if(hit.collider != null)
             {
                 distanceToWall = Vector3.Distance(transform.position, hit.transform.position);
-            }*/
+                //Debug.DrawLine(transform.position, transform.position + (dv.Dir * stepSize * 2), Color.red);
+            }
+            else
+            {
+                //Debug.DrawLine(transform.position, transform.position + (dv.Dir * stepSize*2), Color.green);
+            }
             dv.Value = distanceToPlayer + (3.5f / distanceToDemons) + (10f/distanceToWall);
 
             Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + (dv.Dir * dv.Value));
@@ -95,7 +100,7 @@ public class DemonController : MonoBehaviour
             // Save the smallest value
             if (smallest == null || dv.Value < smallest.Value)
             {
-                RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.5f, dv.Dir, stepSize * 2, mask);
+                hit = Physics2D.CircleCast(transform.position, 0.5f, dv.Dir, stepSize * 2, mask);
                 if (hit.collider == null)
                 {
                     smallest = dv;
@@ -105,8 +110,28 @@ public class DemonController : MonoBehaviour
         }
 
         // Pick Smallest Direction
-        gameObject.GetComponent<Rigidbody2D>().velocity = smallest.Dir * moveSpeed;
-        Vector2 directionalInput = new Vector2(smallest.Dir.x, smallest.Dir.y);
+        // if the previous value has been set
+        if(previous != null)
+        {
+            // If the difference is larger, use the new movement and update the previous
+            if(Mathf.Abs(previous.Value - smallest.Value) > diff)
+            {
+                previous = new DirectionValue(smallest.Dir, smallest.Value);
+            }
+            else
+            {
+                //The new position is not different enough, so stay *still*
+                previous.Dir = Vector3.zero;
+            }
+        }
+        else
+        {
+            // This is the first time through, so just use the calculated values and set the previous
+            previous = new DirectionValue(smallest.Dir, smallest.Value);
+        }
+
+        gameObject.GetComponent<Rigidbody2D>().velocity = previous.Dir * moveSpeed;
+        Vector2 directionalInput = new Vector2(previous.Dir.x, previous.Dir.y);
         DAC.ResetState();
         DAC.InputDirection = directionalInput;
         DAC.UpdateAnimation();
@@ -128,16 +153,6 @@ public class DemonController : MonoBehaviour
         //this.parentSpawner = GameObject.FindGameObjectWithTag("ScriptRunner: Room 0");
         //this.parentSpawnerScript = parentSpawner.GetComponent<Spawner>();
         this.parentSpawner = spawner;
-    }
-
-    public void SetSpawnerIndex(int index)
-    {
-        this.spawnerIndex = index;
-    }
-
-    public int GetSpawnerIndex()
-    {
-        return this.spawnerIndex;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

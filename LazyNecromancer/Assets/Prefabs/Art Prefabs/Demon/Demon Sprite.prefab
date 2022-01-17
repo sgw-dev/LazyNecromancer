@@ -313,3 +313,4 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 64
+  diff: 0.002

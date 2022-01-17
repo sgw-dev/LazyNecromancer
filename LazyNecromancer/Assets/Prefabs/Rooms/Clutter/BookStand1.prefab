@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7534804159511563008}
   - component: {fileID: 4995198430515490612}
   - component: {fileID: 2415290443040931943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BookStand1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1579219705
-  m_SortingLayer: 5
+  m_SortingLayerID: 406756543
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -7035026930533023423, guid: 727f3e6ad1ec22f4c81eb49635519087,
     type: 3}

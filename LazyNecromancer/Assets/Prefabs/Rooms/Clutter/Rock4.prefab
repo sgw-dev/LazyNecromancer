@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1186184078248054839}
   - component: {fileID: 7740694931995938446}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1579219705
-  m_SortingLayer: 5
+  m_SortingLayerID: 406756543
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 3039068182104328534, guid: 727f3e6ad1ec22f4c81eb49635519087,
     type: 3}
