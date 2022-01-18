@@ -27,6 +27,8 @@ public class Spawner : MonoBehaviour
 
     public float DemonSpawnDelay;
 
+    public bool IsBossRoom { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,7 +111,11 @@ public class Spawner : MonoBehaviour
 
     public void PlayerEntersRoom()
     {
-        this.spawnEnemyGroup();
+        if (!IsBossRoom)
+        {
+            this.spawnEnemyGroup();
+        }
+        
     }
 
     private void spawnEnemyGroup()
