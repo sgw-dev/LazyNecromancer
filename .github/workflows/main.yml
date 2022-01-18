@@ -32,7 +32,7 @@ jobs:
       - name: Build project
         uses: webbertakken/unity-builder@v1.2
         with:
-          projectPath: "Neuromancer"
+          projectPath: "LazyNecromancer"
           unityVersion: 2020.3.20f1
           targetPlatform: ${{ matrix.targetPlatform }}
       - name: Upload Artifact
