@@ -27,18 +27,18 @@ jobs:
       - name: Load Library
         uses: actions/cache@v1.1.0
         with:
-          path: Neuromancer/Library
+          path: LazyNecromancer/Library
           key: Library
       - name: Build project
         uses: webbertakken/unity-builder@v1.2
         with:
           projectPath: "Neuromancer"
-          unityVersion: 2019.4.11f1
+          unityVersion: 2020.3.20f1
           targetPlatform: ${{ matrix.targetPlatform }}
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: Neuromancer - ${{ matrix.targetPlatform }}
+          name: LazyNecromancer - ${{ matrix.targetPlatform }}
           path: build
       - name: Deploy to GitHub Pages
         if: ${{ matrix.targetPlatform == 'WebGL' && success() }}
