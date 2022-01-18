@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3279b68879944548aef52a9ed6ecffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimapCover: {fileID: 0}
+  minimapCover: {fileID: 8931456496938770647}
 --- !u!61 &6558443290910065010
 BoxCollider2D:
   m_ObjectHideFlags: 0

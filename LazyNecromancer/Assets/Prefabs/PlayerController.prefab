@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arms: {fileID: 5181539616768458150}
   firePoint: {fileID: 4687421697107705486}
-  manaProjectile: {fileID: 4162274769208575268, guid: f2480cbddcfca664ba65726ac24eb33b,
+  manaProjectile: {fileID: 7235148414251653975, guid: 68d31970c11ed2b48b2dee50f72859e1,
     type: 3}
   attackCooldown: 0.1
   manaCooldown: 0.1

@@ -34,7 +34,8 @@ public class DemonController : MonoBehaviour
     public float timeBetweenAttacks;
     public float attackChargeTime;
 
-    public GameObject magicWave;
+    public WaveSpell magicWave;
+    //public GameObject magicWave;
 
     private bool attacking;
     private float attackTimer = 0f;
@@ -60,8 +61,10 @@ public class DemonController : MonoBehaviour
             // If the player is in range
             if(distanceToPlayer < maxRange)
             {
-                GameObject wave = Instantiate(magicWave);
-                wave.transform.position = this.transform.position;
+                WaveSpell wave = Instantiate(magicWave, transform.position, Quaternion.identity);
+                //GameObject wave = Instantiate(magicWave, transform.position, Quaternion.identity);
+                //wave.GetComponent<WaveSpell>().Play();
+                wave.Play();
                 attackTimer = 0f;
             }
         }

@@ -16,7 +16,7 @@ public class RoomManager : MonoBehaviour
     void Start()
     {
         //minimapCover = this.transform.Find("Canvas/MinimapCover").gameObject;
-        minimapCover = this.transform.GetComponentInDirectChildren<Transform>(6, true).gameObject;
+        //minimapCover = this.transform.GetComponentInDirectChildren<Transform>(6, true).gameObject;
     }
 
     void Update()

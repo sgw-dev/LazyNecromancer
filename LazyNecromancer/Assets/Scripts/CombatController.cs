@@ -112,7 +112,7 @@ public class CombatController : MonoBehaviour
     {
         isFiring = true;
 
-        Instantiate(manaProjectile, firePoint.position, firePoint.rotation);
+        Instantiate(manaProjectile, firePoint.position, Quaternion.identity);
 
         yield return new WaitForSeconds(manaCooldown);
         isFiring = false;
