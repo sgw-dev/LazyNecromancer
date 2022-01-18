@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6358841188528109431}
   - component: {fileID: 7338486577681971090}
+  - component: {fileID: 2026144363}
+  - component: {fileID: 2026144362}
   m_Layer: 0
   m_Name: Rotate To Mouse
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +47,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2faa4573cc560d44f9f294c34d810a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!60 &2026144363
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3335599539493871287}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5016633, y: 0.07085839}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.19, y: 1}
+      - {x: -0.64, y: 0.8}
+      - {x: -1, y: 0.42}
+      - {x: -1.13, y: 0}
+      - {x: 1.13, y: 0}
+      - {x: 1, y: 0.42}
+      - {x: 0.64, y: 0.8}
+      - {x: 0.19, y: 1}
+--- !u!114 &2026144362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3335599539493871287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fe98602e52ae845961d247db33981b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arms: {fileID: 5181539616768458150}
+  firePoint: {fileID: 4687421697107705486}
+  manaProjectile: {fileID: 7235148414251653975, guid: 68d31970c11ed2b48b2dee50f72859e1,
+    type: 3}
+  attackCooldown: 0.1
+  manaCooldown: 0.1
+  swordCollider: {fileID: 2026144363}
 --- !u!1 &4687421696914776528
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +109,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4687421696914776492}
   - component: {fileID: 4687421696914776493}
-  - component: {fileID: 4687421696914776491}
   - component: {fileID: 4687421696914776494}
   - component: {fileID: 4687421696914776495}
   m_Layer: 0
@@ -101,24 +154,6 @@ MonoBehaviour:
   dodgeCooldown: 1.5
   dodgeStunTime: 0.4
   dodgeStunFactor: 0.6
---- !u!114 &4687421696914776491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4687421696914776528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4fe98602e52ae845961d247db33981b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arms: {fileID: 5181539616768458150}
-  firePoint: {fileID: 4687421697107705486}
-  manaProjectile: {fileID: 4162274769208575268, guid: f2480cbddcfca664ba65726ac24eb33b,
-    type: 3}
-  attackCooldown: 0.1
-  manaCooldown: 0.1
 --- !u!61 &4687421696914776494
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5151,6 +5186,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7778675244057038101, guid: 792260c851512c14b9c1981603d6d927,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778675244057038101, guid: 792260c851512c14b9c1981603d6d927,
+        type: 3}
       propertyPath: m_Offset.x
       value: 0
       objectReference: {fileID: 0}
@@ -5183,6 +5223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943447181363554304, guid: be768c34e8ab0c147bae0a572a6403ce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3943447181363554311, guid: be768c34e8ab0c147bae0a572a6403ce,
         type: 3}
