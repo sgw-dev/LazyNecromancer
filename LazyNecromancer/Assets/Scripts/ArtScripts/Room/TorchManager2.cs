@@ -36,6 +36,7 @@ public class TorchManager2 : MonoBehaviour
 
     public void RequestTorches(Vector2 position, Direction direction, bool newRoom = false)
     {
+        StopAllCoroutines();
         StartCoroutine(SpawnTorches(GenerateWallTorchePositions(direction), position + positionOffset, newRoom));
     }
 
@@ -50,11 +51,11 @@ public class TorchManager2 : MonoBehaviour
                 torches[torchIndex].Stop();
                 continue;
             }
-            yield return new WaitForSeconds(.1f);
             torches[torchIndex].gameObject.SetActive(true);
             torches[torchIndex].transform.position = torchPositions[i] + position;
             if (newRoom)
             {
+                yield return new WaitForSeconds(.1f);
                 torches[torchIndex].PlayNew();
                 continue;
             }

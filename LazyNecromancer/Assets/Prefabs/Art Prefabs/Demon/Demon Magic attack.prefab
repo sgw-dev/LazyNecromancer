@@ -50,7 +50,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   speed: 2
   attackDuration: 3
-  selfDestructDelay: 0
+  selfDestructDelay: 0.1
   colliderStartingSize: {x: 0.25, y: 0.75}
   colliderEndingSize: {x: 1, y: 2.5}
 --- !u!61 &4575236161059242396

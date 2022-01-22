@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorLockTrap : MonoBehaviour
+public class LightSwitch : MonoBehaviour
 {
     [SerializeField] Direction direction;
 
@@ -12,7 +12,6 @@ public class DoorLockTrap : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            DoorManager.LockRoom();
             DoorManager.InDoorWay = false;
         }
     }
@@ -21,6 +20,7 @@ public class DoorLockTrap : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            DoorManager.TurnOnLights(direction);
             DoorManager.InDoorWay = true;
         }
     }

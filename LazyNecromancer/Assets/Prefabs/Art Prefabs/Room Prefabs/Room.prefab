@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3279b68879944548aef52a9ed6ecffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimapCover: {fileID: 0}
+  minimapCover: {fileID: 8931456496938770647}
 --- !u!61 &6558443290910065010
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4484690325566626270
 Transform:
   m_ObjectHideFlags: 0
@@ -273,6 +273,11 @@ PrefabInstance:
     - target: {fileID: 2122120595260294611, guid: 36837b98c32404d4aad7fd2f5abd5850,
         type: 3}
       propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410619144312653354, guid: 36837b98c32404d4aad7fd2f5abd5850,
+        type: 3}
+      propertyPath: direction
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2420342422921605402, guid: 36837b98c32404d4aad7fd2f5abd5850,
@@ -856,6 +861,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410619144312653354, guid: 36837b98c32404d4aad7fd2f5abd5850,
+        type: 3}
+      propertyPath: direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2420342422921605402, guid: 36837b98c32404d4aad7fd2f5abd5850,
         type: 3}
@@ -1872,6 +1882,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410619144312653354, guid: 36837b98c32404d4aad7fd2f5abd5850,
+        type: 3}
+      propertyPath: direction
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2420342422921605402, guid: 36837b98c32404d4aad7fd2f5abd5850,
         type: 3}

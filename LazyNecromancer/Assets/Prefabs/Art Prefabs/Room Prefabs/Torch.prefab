@@ -4851,7 +4851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fluctuation: 0.1
-  warmUpTime: 0.5
+  warmUpTime: 1
 --- !u!1 &6864995573987222256
 GameObject:
   m_ObjectHideFlags: 0

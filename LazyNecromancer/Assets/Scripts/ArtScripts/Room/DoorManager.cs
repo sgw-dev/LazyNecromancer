@@ -11,7 +11,7 @@ public class DoorManager : MonoBehaviour
 
     bool locked;
     bool cleared;
-    bool lightsOn;
+    public bool InDoorWay { get; set; }
 
     public bool IsLocked => locked;
     public bool IsCleared => cleared;
@@ -33,6 +33,12 @@ public class DoorManager : MonoBehaviour
             dlt.DoorManager = this;
         }
 
+        LightSwitch[] lightSwitches = GetComponentsInChildren<LightSwitch>();
+        foreach (LightSwitch ls in lightSwitches)
+        {
+            ls.DoorManager = this;
+        }
+
         DoorRibs[] doorRibs = GetComponentsInChildren<DoorRibs>();
         foreach (DoorRibs dr in doorRibs)
         {
@@ -46,7 +52,7 @@ public class DoorManager : MonoBehaviour
 
     public void LockRoom()
     {
-        if(cleared || locked) { return; }
+        if(cleared || locked || InDoorWay) { return; }
 
         locked = true;
 
@@ -76,6 +82,7 @@ public class DoorManager : MonoBehaviour
 
     public void TurnOnLights(Direction direction)
     {
+        if (InDoorWay) { return; }
         torchManager.RequestTorches(transform.position, direction, !IsCleared);
     }
 
