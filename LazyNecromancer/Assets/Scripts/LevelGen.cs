@@ -34,6 +34,7 @@ public class LevelGen : MonoBehaviour
 {
     
     public GameObject roomSlice;
+    public GameObject roomContainer;
     private GameObject headObject;
     [System.ObsoleteAttribute("done is not referenced")]
     public bool done = true;
@@ -80,8 +81,9 @@ public class LevelGen : MonoBehaviour
         LevelGen.setColor = color;
         allRooms = new ConcurrentDictionary<(float, float), GameObject>();
 
-        headObject = Instantiate(roomSlice);
+        headObject = Instantiate(roomSlice, roomContainer.transform);
         headObject.GetComponent<Room>().initialize(0);
+        headObject.GetComponent<DoorManager>().IsHead = true;
         allRooms.TryAdd((headObject.transform.position.x, headObject.transform.position.y), headObject);
         // routine = levelGen2(headObject, 0);
         // StartCoroutine(routine);
@@ -97,10 +99,14 @@ public class LevelGen : MonoBehaviour
         }
         reloadLock = true;
         roomCounter = 0;
-        Destroy(headObject);
+        foreach (Transform child in roomContainer.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
         allRooms = new ConcurrentDictionary<(float, float), GameObject>();
-        headObject = Instantiate(roomSlice);
+        headObject = Instantiate(roomSlice, roomContainer.transform);
         headObject.GetComponent<Room>().initialize(0);
+        headObject.GetComponent<DoorManager>().IsHead = true;
         allRooms.TryAdd((headObject.transform.position.x, headObject.transform.position.y), headObject);
         //routine = levelGen2(headObject, 0);
         await levelGen2(headObject, 0);
@@ -155,8 +161,7 @@ public class LevelGen : MonoBehaviour
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y + roomSize);
                         chooseRoomV3(Direction.NORTH, newDepth, roomPos, roomCounter);
-                        room.North.transform.parent = room.transform;
-                        room.North.transform.localPosition = new Vector3(0, roomSize, 0);
+                        room.North.transform.localPosition = room.transform.position + new Vector3(0, roomSize, 0);
                         //room.North.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd(roomPos, room.North);
@@ -173,8 +178,7 @@ public class LevelGen : MonoBehaviour
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y - roomSize);
                         chooseRoomV3(Direction.SOUTH, newDepth, roomPos, roomCounter);
-                        room.South.transform.parent = room.transform;
-                        room.South.transform.localPosition = new Vector3(0, -roomSize, 0);
+                        room.South.transform.localPosition = room.transform.position + new Vector3(0, -roomSize, 0);
                         //room.South.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd(roomPos, room.South);
@@ -191,8 +195,7 @@ public class LevelGen : MonoBehaviour
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x + roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.EAST, newDepth, roomPos, roomCounter);
-                        room.East.transform.parent = room.transform;
-                        room.East.transform.localPosition = new Vector3(roomSize, 0, 0);
+                        room.East.transform.localPosition = room.transform.position + new Vector3(roomSize, 0, 0);
                         //room.East.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd((room.East.transform.position.x, room.East.transform.position.y), room.East);
@@ -209,8 +212,7 @@ public class LevelGen : MonoBehaviour
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x - roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.WEST, newDepth, roomPos, roomCounter);
-                        room.West.transform.parent = room.transform;
-                        room.West.transform.localPosition = new Vector3(-roomSize, 0, 0);
+                        room.West.transform.localPosition = room.transform.position + new Vector3(-roomSize, 0, 0);
                         //room.West.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd(roomPos, room.West);
@@ -330,10 +332,13 @@ public class LevelGen : MonoBehaviour
         valid = valid.FindAll(element => element.Item2 == doors);
         // Choose a random element from that list
         int index = Random.Range(0, valid.Count);
-        GameObject choice = Instantiate(roomSlice);
-        
+        GameObject choice = Instantiate(roomSlice, roomContainer.transform);
+
         //choice.GetComponent<Room>().UniqueHash = roomNumber;
+        choice.GetComponent<Room>().depth = depth;
         choice.GetComponent<Room>().initialize(valid[index]);
+        choice.GetComponent<Spawner>().RoomDepth = depth;
+        choice.GetComponent<Spawner>().StartSpawning();
         choice.name = choice.name + ":" + roomNumber;
         // Assign parents to the room's needed doors
         foreach (Direction key in needsDoorsHere.Keys)

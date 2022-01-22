@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - MinimapCover
+  - Demon
   layers:
   - Default
   - TransparentFX

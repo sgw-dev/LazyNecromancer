@@ -130,17 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4687421696204539760, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-        type: 3}
-      propertyPath: settings
-      value: 
-      objectReference: {fileID: 11400000, guid: b652e5abcd79a944ea21f824371a4024,
-        type: 2}
-    - target: {fileID: 4687421696914776491, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-        type: 3}
-      propertyPath: arms
-      value: 
-      objectReference: {fileID: 166127279}
     - target: {fileID: 4687421696914776492, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
         type: 3}
       propertyPath: m_RootOrder
@@ -200,21 +189,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerController
-      objectReference: {fileID: 0}
-    - target: {fileID: 4687421696914776528, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4687421696914776528, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5181539617544595374, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08f9aa7e78b3dba40b50bddfa8518c32, type: 3}
@@ -290,12 +264,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128241130}
   m_CullTransparentMesh: 1
---- !u!1 &166127279 stripped
+--- !u!1 &310128112
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5181539616768458150, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
-    type: 3}
-  m_PrefabInstance: {fileID: 80024819}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310128113}
+  m_Layer: 0
+  m_Name: Rooms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &310128113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310128112}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,6 +1163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSlice: {fileID: 7200159922843004906, guid: 5c437ee8f84a85d42a69207e8a6ecc44,
     type: 3}
+  roomContainer: {fileID: 310128112}
   done: 1
   waitFlag: 0
   color: {r: 0.18523192, g: 1, b: 0, a: 0.3882353}
@@ -1197,6 +1196,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useSceneView: 1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2.7254643
+      value: 3.5858085
+      inSlope: -0.45153764
+      outSlope: -0.45153764
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.28259763
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4.118749
+      value: 2.8556592
+      inSlope: -0.083225496
+      outSlope: -0.083225496
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.09241864
+    - serializedVersion: 3
+      time: 6.9915957
+      value: 1.6613951
+      inSlope: -1.2306606
+      outSlope: -1.2306606
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08550108
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 8.195917
+      value: 1.0130259
+      inSlope: 0.012281662
+      outSlope: 0.012281662
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.11779921
+    - serializedVersion: 3
+      time: 11.971252
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1850057238
 GameObject:
   m_ObjectHideFlags: 0

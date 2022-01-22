@@ -12,6 +12,12 @@ public class DoorManager : MonoBehaviour
     bool locked;
     bool cleared;
     public bool InDoorWay { get; set; }
+    bool isHead;
+
+    public bool IsHead {
+        get { return isHead; }
+        set { isHead = value; cleared = true; }
+    }
 
     public bool IsLocked => locked;
     public bool IsCleared => cleared;
@@ -62,6 +68,8 @@ public class DoorManager : MonoBehaviour
         }
         SetDoorsAnim(skullDoorAnims, false);
         SetDoorsAnim(ribsDoorAnims, false);
+        
+        this.GetComponent<Spawner>().PlayerEntersRoom();
     }
 
     public void RoomCleared()
