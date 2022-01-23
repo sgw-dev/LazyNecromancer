@@ -24,15 +24,18 @@ jobs:
         uses: actions/checkout@v2
         with:
           lfs: true
-      - name: Load Library
-        uses: actions/cache@v1.1.0
+      # Cache
+      - name: Cache Library
+        uses: actions/cache@v2
         with:
           path: LazyNecromancer/Library
-          key: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
       - name: Build project
-        uses: webbertakken/unity-builder@v1.2
+        uses: webbertakken/unity-builder@v2
         with:
-          projectPath: "LazyNecromancer"
+          projectPath: LazyNecromancer
           unityVersion: 2020.3.20f1
           targetPlatform: ${{ matrix.targetPlatform }}
       - name: Upload Artifact
