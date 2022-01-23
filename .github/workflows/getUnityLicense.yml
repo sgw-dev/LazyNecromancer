@@ -1,3 +1,4 @@
+#use this to get unity license for github
 name: Acquire activation file
 on:
   workflow_dispatch: {}
