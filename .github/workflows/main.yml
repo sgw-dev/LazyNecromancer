@@ -4,9 +4,6 @@ on:
   pull_request: {}
   push: {}
 
-env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_2022 }} # Can be generated at https://license.unity3d.com/manual
-
 jobs:
   build:
     name: Build Unity
@@ -34,6 +31,8 @@ jobs:
             Library-
       - name: Build project
         uses: webbertakken/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_2022 }} # Can be generated at https://license.unity3d.com/manual
         with:
           projectPath: LazyNecromancer
           unityVersion: 2020.3.20f1
