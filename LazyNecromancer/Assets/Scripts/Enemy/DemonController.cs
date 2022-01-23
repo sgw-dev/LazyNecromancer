@@ -64,7 +64,7 @@ public class DemonController : MonoBehaviour
                 WaveSpell wave = Instantiate(magicWave, transform.position, Quaternion.identity);
                 //GameObject wave = Instantiate(magicWave, transform.position, Quaternion.identity);
                 //wave.GetComponent<WaveSpell>().Play();
-                wave.Play();
+                wave.Play(player.transform.position);
                 attackTimer = 0f;
             }
         }

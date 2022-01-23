@@ -10,7 +10,7 @@ public class WallSlicer : BaseSlicer
     [Space(10)]
     [SerializeField] Vector2 wallOffset = Vector2.zero;
 
-    public Transform doorTransform;
+    Transform doorTransform;
     BoxCollider2D[] boxColliders;
     SpriteSlicer[] spriteSlicers;
 

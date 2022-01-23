@@ -7,8 +7,11 @@ public class DoorManager : MonoBehaviour
     List<Animator> ribsDoorAnims;
     List<Animator> skullDoorAnims;
 
+    TorchManager2 torchManager;
+
     bool locked;
     bool cleared;
+    public bool InDoorWay { get; set; }
     bool isHead;
 
     public bool IsHead {
@@ -22,6 +25,7 @@ public class DoorManager : MonoBehaviour
     private void Awake()
     {
         Initialize();
+        torchManager = FindObjectOfType<TorchManager2>();
     }
 
     void Initialize()
@@ -33,6 +37,12 @@ public class DoorManager : MonoBehaviour
         foreach(DoorLockTrap dlt in doorLockTraps)
         {
             dlt.DoorManager = this;
+        }
+
+        LightSwitch[] lightSwitches = GetComponentsInChildren<LightSwitch>();
+        foreach (LightSwitch ls in lightSwitches)
+        {
+            ls.DoorManager = this;
         }
 
         DoorRibs[] doorRibs = GetComponentsInChildren<DoorRibs>();
@@ -48,7 +58,7 @@ public class DoorManager : MonoBehaviour
 
     public void LockRoom()
     {
-        if(cleared || locked) { return; }
+        if(cleared || locked || InDoorWay) { return; }
 
         locked = true;
 
@@ -76,6 +86,12 @@ public class DoorManager : MonoBehaviour
         locked = false;
         SetDoorsAnim(skullDoorAnims, true);
         SetDoorsAnim(ribsDoorAnims, false);
+    }
+
+    public void TurnOnLights(Direction direction)
+    {
+        if (InDoorWay) { return; }
+        torchManager.RequestTorches(transform.position, direction, !IsCleared);
     }
 
     void SetDoorsAnim(List<Animator> animators, bool isOpen)

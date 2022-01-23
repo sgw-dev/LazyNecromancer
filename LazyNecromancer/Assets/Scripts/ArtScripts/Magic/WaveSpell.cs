@@ -11,8 +11,6 @@ public class WaveSpell : BaseSpell
     [SerializeField] Vector2 colliderStartingSize;
     [SerializeField] Vector2 colliderEndingSize;
 
-    private Transform player;
-
     protected override void Awake()
     {
         base.Awake();
@@ -24,15 +22,11 @@ public class WaveSpell : BaseSpell
         var main = ps.main;
         main.duration = attackDuration;
         ps.Play();
-
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        //Play();
     }
 
-    public override void Play()
+    public override void Play(Vector3 target)
     {
-        SetTarget(player.position);
+        SetTarget(target);
         RotateToTarget();
         StartAttackTimer();
         StartCoroutine(ScaleCollider());
