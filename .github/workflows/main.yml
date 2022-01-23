@@ -30,7 +30,7 @@ jobs:
           restore-keys: |
             Library-
       - name: Build project
-        uses: webbertakken/unity-builder@v2
+        uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_2022 }} # Can be generated at https://license.unity3d.com/manual
         with:
