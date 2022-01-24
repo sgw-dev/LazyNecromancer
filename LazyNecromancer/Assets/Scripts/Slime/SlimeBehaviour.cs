@@ -292,10 +292,10 @@ public class SlimeBehaviour : MonoBehaviour {
             MoveToward(positionOfInterest);
         } else if(!playerSighted && !playerInAttackRange && nearDeath) {
             float f = Random.value;
-            MoveToward(new Vector3(f,f,0));
+            MoveToward(new Vector3(f,f,0)+transform.position);
         } else if(!playerSighted && !playerInAttackRange && !nearDeath) {
             float f = Random.value;
-            MoveToward(new Vector3(f,f,0));
+            MoveToward(new Vector3(f,f,0)+transform.position);
         } else {
             Debug.LogError("Impossible state");
         }
