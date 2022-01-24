@@ -407,6 +407,17 @@ public class LevelGen : MonoBehaviour
     
         GameObject bossRoom = BossPlacement.FindRoom(allRooms);
         
+        //disable spawners and remove sprites
+        var spawnerscript = bossRoom.GetComponent<Spawner>();
+        spawnerscript.IsBossRoom=true;
+        spawnerscript.enabled=false;
+
+        foreach(Transform t in bossRoom.transform) {
+            if(t.name.Contains("SpawnCircles")){
+                t.gameObject.SetActive(false);
+            }
+        }
+
         if( bossRoom != null ) {
             Instantiate(bossSpawnPrefab,bossRoom.transform);
         } else {
