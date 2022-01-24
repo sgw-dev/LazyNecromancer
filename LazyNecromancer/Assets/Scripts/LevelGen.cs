@@ -108,6 +108,8 @@ public class LevelGen : MonoBehaviour
         //routine = levelGen2(headObject, 0);
         await levelGen2(headObject, 0);
         Debug.Log("Room Generation Finished");
+        PlaceBoss();
+        Debug.Log("Boss placed");
         reloadLock = false;
         // StartCoroutine(routine);
         done = true;
