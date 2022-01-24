@@ -59,7 +59,6 @@ public abstract class BaseSpell : MonoBehaviour
 
     protected void StartAttackTimer()
     {
-        StopCoroutine(AttackTimer());
         StartCoroutine(AttackTimer());
     }
 
@@ -74,7 +73,6 @@ public abstract class BaseSpell : MonoBehaviour
 
     protected virtual void StartDelayedSelfDestruct()
     {
-        StopCoroutine(DelayedSelfDestruct());
         StartCoroutine(DelayedSelfDestruct());
     }
 

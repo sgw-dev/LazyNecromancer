@@ -1,0 +1,52 @@
+name: Build Project
+
+on:
+  pull_request: {}
+  push: {}
+
+jobs:
+  build:
+    name: Build Unity
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneOSX
+          - StandaloneWindows64
+          - StandaloneLinux64
+          - WebGL
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      # Cache
+      - name: Cache Library
+        uses: actions/cache@v2
+        with:
+          path: LazyNecromancer/Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+      - name: Build project
+        uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_2019 }} # Can be generated at https://license.unity3d.com/manual
+        with:
+          projectPath: LazyNecromancer
+          unityVersion: 2020.3.20f1
+          targetPlatform: ${{ matrix.targetPlatform }}
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: LazyNecromancer - ${{ matrix.targetPlatform }}
+          path: build
+      - name: Deploy to GitHub Pages
+        if: ${{ matrix.targetPlatform == 'WebGL' && success() }}
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

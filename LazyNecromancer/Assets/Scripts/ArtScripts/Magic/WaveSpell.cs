@@ -24,8 +24,9 @@ public class WaveSpell : BaseSpell
         ps.Play();
     }
 
-    public override void Play()
+    public override void Play(Vector3 target)
     {
+        SetTarget(target);
         RotateToTarget();
         StartAttackTimer();
         StartCoroutine(ScaleCollider());

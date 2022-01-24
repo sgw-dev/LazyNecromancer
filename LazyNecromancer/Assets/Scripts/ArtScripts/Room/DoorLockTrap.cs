@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DoorLockTrap : MonoBehaviour
 {
-    DoorManager doorManager;
+    [SerializeField] Direction direction;
+
     public DoorManager DoorManager { get; set; }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -12,7 +13,15 @@ public class DoorLockTrap : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             DoorManager.LockRoom();
+            DoorManager.InDoorWay = false;
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            DoorManager.InDoorWay = true;
+        }
+    }
 }
