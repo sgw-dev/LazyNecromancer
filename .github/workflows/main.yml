@@ -1,8 +1,9 @@
 name: Build Project
 
 on:
-  pull_request: {}
-  push: {}
+  push:
+    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build:
