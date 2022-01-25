@@ -8,7 +8,7 @@ public class RoomManager : MonoBehaviour
     private Vector3 end;
     private Vector3 offest = new Vector3(0, 0, -10);
 
-    private bool moveFlag;
+    private bool moveFlag = false;
     private float count;
 
     public GameObject minimapCover;
@@ -19,11 +19,11 @@ public class RoomManager : MonoBehaviour
         //minimapCover = this.transform.GetComponentInDirectChildren<Transform>(6, true).gameObject;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (moveFlag && count <=1.1f)
         {
-            count += Time.deltaTime;
+            count += Time.fixedDeltaTime;
             Camera.main.transform.position = Vector3.Lerp(start, end, count);
         }
         else if(count > 1.1f)
@@ -53,8 +53,8 @@ public class RoomManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            start = Camera.main.transform.position;
-            end = this.transform.position + offest;
+            //start = Camera.main.transform.position;
+            //end = this.transform.position + offest;
             count = 0;
             moveFlag = false;
             //StartCoroutine("MoveCamera");
