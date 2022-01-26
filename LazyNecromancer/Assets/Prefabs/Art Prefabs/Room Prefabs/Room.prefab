@@ -194,6 +194,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimapCover: {fileID: 8931456496938770647}
+  player: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minY: 0
+  maxY: 0
 --- !u!61 &6558443290910065010
 BoxCollider2D:
   m_ObjectHideFlags: 0

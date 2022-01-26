@@ -12,23 +12,35 @@ public class RoomManager : MonoBehaviour
     private float count;
 
     public GameObject minimapCover;
+    public GameObject player;
+    private CameraMover CM;
+
+    public float minX;
+    public float maxX;
+    public float minY;
+    public float maxY;
 
     void Start()
     {
         //minimapCover = this.transform.Find("Canvas/MinimapCover").gameObject;
         //minimapCover = this.transform.GetComponentInDirectChildren<Transform>(6, true).gameObject;
+        player = GameObject.FindGameObjectWithTag("Player");
+        CM = Camera.main.GetComponent<CameraMover>();
+        minX = this.transform.position.x - 10f;
+        maxX = this.transform.position.x + 10f;
+        minY = this.transform.position.y - 12f;
+        maxY = this.transform.position.y + 8f;
     }
 
     void FixedUpdate()
     {
-        if (moveFlag && count <=1.1f)
+        
+        if(player.transform.position.x >= minX && player.transform.position.x < maxX)
         {
-            count += Time.fixedDeltaTime;
-            Camera.main.transform.position = Vector3.Lerp(start, end, count);
-        }
-        else if(count > 1.1f)
-        {
-            moveFlag = false;
+            if (player.transform.position.y >= minY && player.transform.position.y < maxY)
+            {
+                CM.Target = this.transform.position;
+            }
         }
     }
 
@@ -36,11 +48,6 @@ public class RoomManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            start = Camera.main.transform.position;
-            end = this.transform.position + offest;
-            count = 0;
-            moveFlag = true;
-            //StartCoroutine("MoveCamera");
             if (minimapCover.activeSelf)
             {
                 minimapCover.SetActive(false);
@@ -53,24 +60,10 @@ public class RoomManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //start = Camera.main.transform.position;
-            //end = this.transform.position + offest;
-            count = 0;
-            moveFlag = false;
-            //StartCoroutine("MoveCamera");
             if (minimapCover.activeSelf)
             {
                 minimapCover.SetActive(false);
             }
-        }
-    }
-
-    private IEnumerator MoveCamera()
-    {
-        for (float i = 0f; i <= 1; i += 0.01f)
-        {
-            Camera.main.transform.position = Vector3.Lerp(start, end, i);
-            yield return new WaitForSeconds(.01f);
         }
     }
 }
