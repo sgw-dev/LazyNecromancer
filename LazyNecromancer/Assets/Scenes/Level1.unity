@@ -185,6 +185,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+        type: 3}
+      propertyPath: manaBar
+      value: 
+      objectReference: {fileID: 1934010285}
+    - target: {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1224152297}
+    - target: {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+        type: 3}
+      propertyPath: healthPerIcon
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+        type: 3}
+      propertyPath: demonAttackDamage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4687421696914776528, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
         type: 3}
       propertyPath: m_Name
@@ -606,6 +631,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1224152297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5923527876923123423, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 4354799588111597624}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca427cb9adc678a4d9ba7c4a07759a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1225007521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1343,6 +1380,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850057238}
   m_CullTransparentMesh: 1
+--- !u!114 &1934010285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6326394580828617572, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 4354799588111597624}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca427cb9adc678a4d9ba7c4a07759a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4354799588111597624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1513,6 +1562,11 @@ PrefabInstance:
     - target: {fileID: 5923527876287197608, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923527876923123419, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5923527876923123422, guid: 0441e08a309260d4e9b9cdf3e7e386ed,

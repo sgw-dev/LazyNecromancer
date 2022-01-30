@@ -21,6 +21,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dodgeStunTime = 0.4f;
     [SerializeField] float dodgeStunFactor = 0.6f;
 
+    [Space(20)]
+
+    public ResourceDisplayBar healthBar;
+    public ResourceDisplayBar manaBar;
+    [Space(10)]
+    public int demonAttackDamage;
+    public int maxHealth;
+    public int currentHealth;
+    public int healthPerIcon;
+
     bool isDodging = false;
     bool canDodge = true;
 
@@ -37,6 +47,11 @@ public class PlayerController : MonoBehaviour
 
         animationController = GetComponentInChildren<PlayerAnimationController>();
         afterImageController = GetComponentInChildren<AfterImageController>();
+
+        currentHealth = maxHealth;
+        healthBar.ValuePerIcon = healthPerIcon;
+        healthBar.UpdateNumIcons( Mathf.CeilToInt(maxHealth/healthPerIcon) );
+        healthBar.UpdateValue(currentHealth);
     }
 
     private void FixedUpdate()
@@ -104,4 +119,20 @@ public class PlayerController : MonoBehaviour
             playerRB.velocity = Vector2.zero;
         }
     }
+    public void DemonHit()
+    {
+        currentHealth -= demonAttackDamage;
+        healthBar.UpdateValue(currentHealth);
+        Debug.LogWarning("Player Hit!");
+    }
+    /*
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "DemonAttack")
+        {
+            currentHealth -= demonAttackDamage;
+            healthBar.UpdateValue(currentHealth);
+            Debug.LogWarning("Player Hit!");
+        }
+    }*/
 }
