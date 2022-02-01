@@ -294,6 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
+  bounds: 6
+  spawnpoint: {x: 0, y: 0, z: 0}
   trailSpawnTime: 0.3
   trailspawnpoint: {fileID: 9145406580361602700}
   smallSlimeSpawnPause: 450
