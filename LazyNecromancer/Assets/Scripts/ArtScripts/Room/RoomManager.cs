@@ -32,7 +32,7 @@ public class RoomManager : MonoBehaviour
         maxY = this.transform.position.y + 8f;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         
         if(player.transform.position.x >= minX && player.transform.position.x < maxX)

@@ -21,7 +21,7 @@ public class CameraMover : MonoBehaviour
         target = Vector3.zero;
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         if(this.transform.position.x != target.x || this.transform.position.y != target.y)
         {
