@@ -1046,7 +1046,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1758964949
 GameObject:
@@ -1169,6 +1169,8 @@ MonoBehaviour:
   color: {r: 0.18523192, g: 1, b: 0, a: 0.3882353}
   roomSize: 20
   roomSpawnDelay: 0.1
+  bossSpawnPrefab: {fileID: 763361980418084917, guid: 1851b16ea00c366488ba7c5dae3e192d,
+    type: 3}
 --- !u!4 &1815459525
 Transform:
   m_ObjectHideFlags: 0
@@ -1196,66 +1198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useSceneView: 1
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 4
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 2.7254643
-      value: 3.5858085
-      inSlope: -0.45153764
-      outSlope: -0.45153764
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.28259763
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 4.118749
-      value: 2.8556592
-      inSlope: -0.083225496
-      outSlope: -0.083225496
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.09241864
-    - serializedVersion: 3
-      time: 6.9915957
-      value: 1.6613951
-      inSlope: -1.2306606
-      outSlope: -1.2306606
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.08550108
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 8.195917
-      value: 1.0130259
-      inSlope: 0.012281662
-      outSlope: 0.012281662
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.11779921
-    - serializedVersion: 3
-      time: 11.971252
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1850057238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923527876287197608, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 5923527876923123422, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
         type: 3}

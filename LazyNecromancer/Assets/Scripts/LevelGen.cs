@@ -73,6 +73,8 @@ public class LevelGen : MonoBehaviour
     [SerializeField]
     public static Color setColor;
 
+    [SerializeField]
+    GameObject bossSpawnPrefab;
     bool reloadLock = false;
 
     // Start is called before the first frame update
@@ -111,6 +113,8 @@ public class LevelGen : MonoBehaviour
         //routine = levelGen2(headObject, 0);
         await levelGen2(headObject, 0);
         Debug.Log("Room Generation Finished");
+        PlaceBoss();
+        Debug.Log("Boss placed");
         reloadLock = false;
         // StartCoroutine(routine);
         done = true;
@@ -139,7 +143,7 @@ public class LevelGen : MonoBehaviour
                     roomPos = (room.transform.position.x - 20f, room.transform.position.y);
                     break;
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(waitTime);
             roomCounter++;
             chooseRoomV3(key, newDepth, roomPos, roomCounter);
             room.DoorList[key].transform.parent = room.transform;
@@ -397,5 +401,43 @@ public class LevelGen : MonoBehaviour
         random = Mathf.Clamp(random, minAdjusted, maxAdjusted);
         return (random / 10);
 
+    }
+
+    public void PlaceBoss() {
+    
+        GameObject bossRoom = BossPlacement.FindRoom(allRooms);
+        
+        //disable spawners and remove sprites
+        var spawnerscript = bossRoom.GetComponent<Spawner>();
+        spawnerscript.IsBossRoom=true;
+        spawnerscript.enabled=false;
+
+        foreach(Transform t in bossRoom.transform) {
+            if(t.name.Contains("SpawnCircles")){
+                t.gameObject.SetActive(false);
+            }
+        }
+
+        if( bossRoom != null ) {
+            Instantiate(bossSpawnPrefab,bossRoom.transform);
+        } else {
+            Debug.LogError("No Valid Rooms for Boss placement");
+        }
+
+    }
+    
+    public void SeparateRoomTree() {
+        List<Transform> clearParent = new List<Transform>();
+        Cheatunparent(clearParent,headObject);
+        clearParent.ForEach(t => t.parent=null);
+    }
+
+    void Cheatunparent(List<Transform> collector,GameObject root) {
+        collector.Add(root.transform);
+        foreach(Transform childtransform in  root.transform) {
+            if(childtransform.name.Contains("Room(Clone)")) {        
+                Cheatunparent(collector,childtransform.gameObject);
+            }
+        }
     }
 }
