@@ -16,14 +16,14 @@ public class SmallSlimeController : SlimeProjectile {
 
     bool canMoveAgain;
     
-    void Update() {
-        // if(Input.GetKeyDown(KeyCode.Backslash)) {
-        //     TakeDamage(5);
-        // }
-        // if(Input.GetKeyDown(KeyCode.D)) {
-        //     GetComponent<Rigidbody2D>().AddForce(Vector2.right*10f);
-        // }
-    }
+    // void Update() {
+    //     if(Input.GetKeyDown(KeyCode.Backslash)) {
+    //         TakeDamage(5);
+    //     }
+    //     if(Input.GetKeyDown(KeyCode.D)) {
+    //         GetComponent<Rigidbody2D>().AddForce(Vector2.right*10f);
+    //     }
+    // }
 
     //hides
     new void Awake() {
@@ -32,7 +32,7 @@ public class SmallSlimeController : SlimeProjectile {
     }
 
     //overrides start from base
-    void Start() {
+    new void Start() {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Player Sprite").transform;
         canMoveAgain=true;
@@ -40,7 +40,7 @@ public class SmallSlimeController : SlimeProjectile {
     }
 
     //overrides OnEnable from base
-    void OnEnable() {
+    new void OnEnable() {
 
     }
 
@@ -72,7 +72,7 @@ public class SmallSlimeController : SlimeProjectile {
     }
 
     //overrides
-    private void OnTriggerEnter2D(Collider2D col) {
+    new private void OnTriggerEnter2D(Collider2D col) {
         if(!dmgDealt && col.CompareTag("Player")) {
             Debug.Log("Player was hit by a small slime!");
         }
