@@ -36,8 +36,6 @@ public class LevelGen : MonoBehaviour
     public GameObject roomSlice;
     public GameObject roomContainer;
     private GameObject headObject;
-    [System.ObsoleteAttribute("done is not referenced")]
-    public bool done = true;
 
     private Task routine;
     private ConcurrentDictionary<(float, float), GameObject> allRooms;
@@ -117,7 +115,6 @@ public class LevelGen : MonoBehaviour
         Debug.Log("Boss placed");
         reloadLock = false;
         // StartCoroutine(routine);
-        done = true;
     }
     async Task levelGen2(GameObject head, int depth)
     {
@@ -227,7 +224,6 @@ public class LevelGen : MonoBehaviour
                     break;
             }
         }
-        done = true;
     }
     /*
      * roomPos is position of the room you are generating
