@@ -10,9 +10,9 @@ public class SlimeBehaviour : MonoBehaviour {
     int MaxHealth;
     int Health;
 
-    [SerializeField]
-    [Range(1,10)]
-    float bounds=9f;
+    // [SerializeField]
+    // [Range(1,10)]
+    // float bounds=9f;
     public Vector3 spawnpoint ;
 
     [SerializeField]

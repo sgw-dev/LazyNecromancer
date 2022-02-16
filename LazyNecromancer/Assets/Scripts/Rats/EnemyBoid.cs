@@ -205,7 +205,7 @@ public class EnemyBoid : MonoBehaviour
         if(other.CompareTag("Player")) {
             Debug.LogWarning(NIMP);
             throw new System.Exception(NIMP);
-            enemycon.Damage<MeshRenderer>(other.gameObject);
+            // enemycon.Damage<MeshRenderer>(other.gameObject);
         }
     }
 }
