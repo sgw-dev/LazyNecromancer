@@ -15,6 +15,10 @@ public class CameraMover : MonoBehaviour
                 target = value;
             }
         }
+        get
+        {
+            return target;
+        }
     }
     public void Start()
     {

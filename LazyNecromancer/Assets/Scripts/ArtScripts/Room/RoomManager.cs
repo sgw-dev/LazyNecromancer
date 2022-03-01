@@ -40,8 +40,12 @@ public class RoomManager : MonoBehaviour
         {
             if (player.transform.position.y >= minY && player.transform.position.y < maxY)
             {
-                CM.Target = this.transform.position;
-                Debug.Log("Moved Target");
+                if (!CM.Target.Equals(this.transform.position))
+                {
+                    CM.Target = this.transform.position;
+                    Debug.Log("Room " + this.gameObject.name + ": Moved Target");
+                }
+                
             }
         }
     }
