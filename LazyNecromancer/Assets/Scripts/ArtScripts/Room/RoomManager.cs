@@ -30,6 +30,7 @@ public class RoomManager : MonoBehaviour
         maxX = this.transform.position.x + 10f;
         minY = this.transform.position.y - 12f;
         maxY = this.transform.position.y + 8f;
+        Debug.Log("RoomManager Start");
     }
 
     void Update()
@@ -40,6 +41,7 @@ public class RoomManager : MonoBehaviour
             if (player.transform.position.y >= minY && player.transform.position.y < maxY)
             {
                 CM.Target = this.transform.position;
+                Debug.Log("Moved Target");
             }
         }
     }
