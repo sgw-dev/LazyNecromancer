@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-// using System.Threading.Tasks;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,8 +37,7 @@ public class LevelGen : MonoBehaviour
     public GameObject roomContainer;
     private GameObject headObject;
 
-    // private Task routine;
-    private IEnumerator routine;
+    private List<Task> routine;
     private ConcurrentDictionary<(float, float), GameObject> allRooms;
 
     private int roomCounter = 0;
@@ -85,7 +84,7 @@ public class LevelGen : MonoBehaviour
         headObject = Instantiate(roomSlice, roomContainer.transform);
         headObject.GetComponent<Room>().initialize(0);
         headObject.GetComponent<DoorManager>().IsHead = true;
-        // allRooms.TryAdd((headObject.transform.position.x, headObject.transform.position.y), headObject);
+        allRooms.TryAdd((headObject.transform.position.x, headObject.transform.position.y), headObject);
         // routine = levelGen2(headObject, 0);
         // StartCoroutine(routine);
         Reload();
@@ -98,6 +97,7 @@ public class LevelGen : MonoBehaviour
         {
             return;
         }
+        routine = new List<Task>();
         reloadLock = true;
         roomCounter = 0;
         foreach (Transform child in roomContainer.transform)
@@ -109,18 +109,19 @@ public class LevelGen : MonoBehaviour
         headObject.GetComponent<Room>().initialize(0);
         headObject.GetComponent<DoorManager>().IsHead = true;
         allRooms.TryAdd((headObject.transform.position.x, headObject.transform.position.y), headObject);
-        routine = levelGen2(headObject, 0);
-        // await levelGen2(headObject, 0);
+        //routine = levelGen2(headObject, 0);
+        Task t= levelGen2(headObject, 0);
+        routine.Add(t);
+        await Task.WhenAll(routine);
         Debug.Log("Room Generation Finished");
-        // PlaceBoss();
+        PlaceBoss();
         Debug.Log("Boss placed");
         reloadLock = false;
-        StartCoroutine(routine);
+        // StartCoroutine(routine);
     }
-    // async Task levelGen2(GameObject head, int depth)
-    IEnumerator levelGen2(GameObject head, int depth)
+    async Task levelGen2(GameObject head, int depth)
     {
-        
+        Debug.Log("Starting + "+depth);
         Room room = head.GetComponent<Room>();
         foreach (Direction key in room.DoorList.Keys)
         {
@@ -159,7 +160,7 @@ public class LevelGen : MonoBehaviour
                 case Direction.NORTH:
                     if(room.North == null)
                     {
-                        yield return new WaitForSeconds(roomSpawnDelay);
+                        // yield return new WaitForSeconds(roomSpawnDelay);
                         // await Task.Delay((int)(roomSpawnDelay*1000));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y + roomSize);
@@ -168,16 +169,16 @@ public class LevelGen : MonoBehaviour
                         //room.North.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd(roomPos, room.North);
-                        IEnumerator temp = levelGen2(room.North, newDepth);
-                        yield return StartCoroutine(temp);
-                        // await levelGen2(room.North, newDepth);
-
+                        // IEnumerator temp = levelGen2(room.North, newDepth);
+                        // yield return StartCoroutine(temp);
+                        await levelGen2(room.North, newDepth);
+                        // await Task.Yield();
                     }
                     break;
                 case Direction.SOUTH:
                     if (room.South == null)
                     {
-                        yield return new WaitForSeconds(roomSpawnDelay);
+                        // yield return new WaitForSeconds(roomSpawnDelay);
                         // await Task.Delay((int)(roomSpawnDelay*1000));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y - roomSize);
@@ -186,15 +187,16 @@ public class LevelGen : MonoBehaviour
                         //room.South.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd(roomPos, room.South);
-                        IEnumerator temp = levelGen2(room.South, newDepth);
-                        yield return StartCoroutine(temp);
-                        // await levelGen2(room.South, newDepth);
+                        // IEnumerator temp = levelGen2(room.South, newDepth);
+                        // yield return StartCoroutine(temp);
+                        await levelGen2(room.South, newDepth);
+                        // await Task.Yield();
                     }
                     break;
                 case Direction.EAST:
                     if (room.East == null)
                     {
-                        yield return new WaitForSeconds(roomSpawnDelay);
+                        // yield return new WaitForSeconds(roomSpawnDelay);
                         // await Task.Delay((int)(roomSpawnDelay*1000));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x + roomSize, room.transform.position.y);
@@ -203,15 +205,16 @@ public class LevelGen : MonoBehaviour
                         //room.East.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd((room.East.transform.position.x, room.East.transform.position.y), room.East);
-                        IEnumerator temp = levelGen2(room.East, newDepth);
-                        yield return StartCoroutine(temp);
-                        // await levelGen2(room.East, newDepth);
+                        // IEnumerator temp = levelGen2(room.East, newDepth);
+                        // yield return StartCoroutine(temp);
+                        await levelGen2(room.East, newDepth);
+                        // await Task.Yield();
                     }
                     break;
                 case Direction.WEST:
                     if (room.West == null)
                     {
-                        yield return new WaitForSeconds(roomSpawnDelay);
+                        // yield return new WaitForSeconds(roomSpawnDelay);
                         // await Task.Delay((int)(roomSpawnDelay*1000));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x - roomSize, room.transform.position.y);
@@ -220,9 +223,10 @@ public class LevelGen : MonoBehaviour
                         //room.West.GetComponent<Room>().UniqueHash = roomCounter;
                         
                         allRooms.TryAdd(roomPos, room.West);
-                        IEnumerator temp = levelGen2(room.West, newDepth);
-                        yield return StartCoroutine(temp);
-                        // await levelGen2(room.West, newDepth);
+                        // IEnumerator temp = levelGen2(room.West, newDepth);
+                        // yield return StartCoroutine(temp);
+                        await levelGen2(room.West, newDepth);
+                        // await Task.Yield();
                     }
                     break;
             }
@@ -440,4 +444,11 @@ public class LevelGen : MonoBehaviour
         }
     }
 
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.Alpha1)) {
+            var pc = GameObject.Find("PlayerController");
+            GameObject bossRoom = BossPlacement.FindRoom(allRooms);
+            pc.transform.position = bossRoom.transform.position;
+        }
+    }
 }
