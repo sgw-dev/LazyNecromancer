@@ -121,7 +121,6 @@ public class LevelGen : MonoBehaviour
     }
     async Task levelGen2(GameObject head, int depth)
     {
-        Debug.Log("Starting + "+depth);
         Room room = head.GetComponent<Room>();
         foreach (Direction key in room.DoorList.Keys)
         {
@@ -161,7 +160,7 @@ public class LevelGen : MonoBehaviour
                     if(room.North == null)
                     {
                         // yield return new WaitForSeconds(roomSpawnDelay);
-                        // await Task.Delay((int)(roomSpawnDelay*1000));
+                        // await Task.Delay((int)(roomSpawnDelay*10));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y + roomSize);
                         chooseRoomV3(Direction.NORTH, newDepth, roomPos, roomCounter);
@@ -179,7 +178,7 @@ public class LevelGen : MonoBehaviour
                     if (room.South == null)
                     {
                         // yield return new WaitForSeconds(roomSpawnDelay);
-                        // await Task.Delay((int)(roomSpawnDelay*1000));
+                        // await Task.Delay((int)(roomSpawnDelay*10));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y - roomSize);
                         chooseRoomV3(Direction.SOUTH, newDepth, roomPos, roomCounter);
@@ -197,7 +196,7 @@ public class LevelGen : MonoBehaviour
                     if (room.East == null)
                     {
                         // yield return new WaitForSeconds(roomSpawnDelay);
-                        // await Task.Delay((int)(roomSpawnDelay*1000));
+                        // await Task.Delay((int)(roomSpawnDelay*10));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x + roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.EAST, newDepth, roomPos, roomCounter);
@@ -215,7 +214,7 @@ public class LevelGen : MonoBehaviour
                     if (room.West == null)
                     {
                         // yield return new WaitForSeconds(roomSpawnDelay);
-                        // await Task.Delay((int)(roomSpawnDelay*1000));
+                        // await Task.Delay((int)(roomSpawnDelay*10));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x - roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.WEST, newDepth, roomPos, roomCounter);
