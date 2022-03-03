@@ -108,6 +108,7 @@ public class SlimeSpawner : MonoBehaviour {
 
             //force exact position, and enable boss comps
             slimeBoss.transform.position = transform.position;
+            slimeBoss.GetComponent<SlimeBehaviour>().spawnpoint = transform.position;
             slimeBoss.GetComponent<Collider2D>().enabled=false;
             slimeBoss.GetComponentsInChildren<Collider2D>().ToList<Collider2D>().ForEach(c => c.enabled=true);
             slimeBoss.GetComponentsInChildren<SlimeAttackRange>().ToList<SlimeAttackRange>().ForEach(c => c.enabled=true);

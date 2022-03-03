@@ -40,7 +40,7 @@ public class SlimeAttackRange : MonoBehaviour {
             line.positionCount  = segments + 1;
             line.useWorldSpace  = false;
 
-            float x,y,z;
+            float x,y;//,z;
             float angle = 20f;
 
             for (int i = 0; i < (segments + 1); i++) {

@@ -36,10 +36,8 @@ public class LevelGen : MonoBehaviour
     public GameObject roomSlice;
     public GameObject roomContainer;
     private GameObject headObject;
-    [System.ObsoleteAttribute("done is not referenced")]
-    public bool done = true;
 
-    private Task routine;
+    private List<Task> routine;
     private ConcurrentDictionary<(float, float), GameObject> allRooms;
 
     private int roomCounter = 0;
@@ -73,6 +71,8 @@ public class LevelGen : MonoBehaviour
     [SerializeField]
     public static Color setColor;
 
+    [SerializeField]
+    GameObject bossSpawnPrefab;
     bool reloadLock = false;
 
     // Start is called before the first frame update
@@ -97,6 +97,7 @@ public class LevelGen : MonoBehaviour
         {
             return;
         }
+        routine = new List<Task>();
         reloadLock = true;
         roomCounter = 0;
         foreach (Transform child in roomContainer.transform)
@@ -109,15 +110,17 @@ public class LevelGen : MonoBehaviour
         headObject.GetComponent<DoorManager>().IsHead = true;
         allRooms.TryAdd((headObject.transform.position.x, headObject.transform.position.y), headObject);
         //routine = levelGen2(headObject, 0);
-        await levelGen2(headObject, 0);
+        Task t= levelGen2(headObject, 0);
+        routine.Add(t);
+        await Task.WhenAll(routine);
         Debug.Log("Room Generation Finished");
+        PlaceBoss();
+        Debug.Log("Boss placed");
         reloadLock = false;
         // StartCoroutine(routine);
-        done = true;
     }
     async Task levelGen2(GameObject head, int depth)
     {
-        
         Room room = head.GetComponent<Room>();
         foreach (Direction key in room.DoorList.Keys)
         {
@@ -139,7 +142,7 @@ public class LevelGen : MonoBehaviour
                     roomPos = (room.transform.position.x - 20f, room.transform.position.y);
                     break;
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(waitTime);
             roomCounter++;
             chooseRoomV3(key, newDepth, roomPos, roomCounter);
             room.DoorList[key].transform.parent = room.transform;
@@ -157,7 +160,7 @@ public class LevelGen : MonoBehaviour
                     if(room.North == null)
                     {
                         // yield return new WaitForSeconds(roomSpawnDelay);
-                        await Task.Delay((int)(roomSpawnDelay*1000));
+                        // await Task.Delay((int)(roomSpawnDelay*10));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y + roomSize);
                         chooseRoomV3(Direction.NORTH, newDepth, roomPos, roomCounter);
@@ -168,13 +171,14 @@ public class LevelGen : MonoBehaviour
                         // IEnumerator temp = levelGen2(room.North, newDepth);
                         // yield return StartCoroutine(temp);
                         await levelGen2(room.North, newDepth);
+                        // await Task.Yield();
                     }
                     break;
                 case Direction.SOUTH:
                     if (room.South == null)
                     {
                         // yield return new WaitForSeconds(roomSpawnDelay);
-                        await Task.Delay((int)(roomSpawnDelay*1000));
+                        // await Task.Delay((int)(roomSpawnDelay*10));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x, room.transform.position.y - roomSize);
                         chooseRoomV3(Direction.SOUTH, newDepth, roomPos, roomCounter);
@@ -185,13 +189,14 @@ public class LevelGen : MonoBehaviour
                         // IEnumerator temp = levelGen2(room.South, newDepth);
                         // yield return StartCoroutine(temp);
                         await levelGen2(room.South, newDepth);
+                        // await Task.Yield();
                     }
                     break;
                 case Direction.EAST:
                     if (room.East == null)
                     {
                         // yield return new WaitForSeconds(roomSpawnDelay);
-                        await Task.Delay((int)(roomSpawnDelay*1000));
+                        // await Task.Delay((int)(roomSpawnDelay*10));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x + roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.EAST, newDepth, roomPos, roomCounter);
@@ -202,13 +207,14 @@ public class LevelGen : MonoBehaviour
                         // IEnumerator temp = levelGen2(room.East, newDepth);
                         // yield return StartCoroutine(temp);
                         await levelGen2(room.East, newDepth);
+                        // await Task.Yield();
                     }
                     break;
                 case Direction.WEST:
                     if (room.West == null)
                     {
                         // yield return new WaitForSeconds(roomSpawnDelay);
-                        await Task.Delay((int)(roomSpawnDelay*1000));
+                        // await Task.Delay((int)(roomSpawnDelay*10));
                         roomCounter++;
                         (float, float) roomPos = (room.transform.position.x - roomSize, room.transform.position.y);
                         chooseRoomV3(Direction.WEST, newDepth, roomPos, roomCounter);
@@ -219,11 +225,11 @@ public class LevelGen : MonoBehaviour
                         // IEnumerator temp = levelGen2(room.West, newDepth);
                         // yield return StartCoroutine(temp);
                         await levelGen2(room.West, newDepth);
+                        // await Task.Yield();
                     }
                     break;
             }
         }
-        done = true;
     }
     /*
      * roomPos is position of the room you are generating
@@ -397,5 +403,51 @@ public class LevelGen : MonoBehaviour
         random = Mathf.Clamp(random, minAdjusted, maxAdjusted);
         return (random / 10);
 
+    }
+
+    public void PlaceBoss() {
+    
+        GameObject bossRoom = BossPlacement.FindRoom(allRooms);
+        
+        //disable spawners and remove sprites
+        var spawnerscript = bossRoom.GetComponent<Spawner>();
+        spawnerscript.IsBossRoom=true;
+        spawnerscript.enabled=false;
+
+        foreach(Transform t in bossRoom.transform) {
+            if(t.name.Contains("SpawnCircles")){
+                t.gameObject.SetActive(false);
+            }
+        }
+
+        if( bossRoom != null ) {
+            Instantiate(bossSpawnPrefab,bossRoom.transform);
+        } else {
+            Debug.LogError("No Valid Rooms for Boss placement");
+        }
+
+    }
+    
+    public void SeparateRoomTree() {
+        List<Transform> clearParent = new List<Transform>();
+        Cheatunparent(clearParent,headObject);
+        clearParent.ForEach(t => t.parent=null);
+    }
+
+    void Cheatunparent(List<Transform> collector,GameObject root) {
+        collector.Add(root.transform);
+        foreach(Transform childtransform in  root.transform) {
+            if(childtransform.name.Contains("Room(Clone)")) {        
+                Cheatunparent(collector,childtransform.gameObject);
+            }
+        }
+    }
+
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.Alpha1)) {
+            var pc = GameObject.Find("PlayerController");
+            GameObject bossRoom = BossPlacement.FindRoom(allRooms);
+            pc.transform.position = bossRoom.transform.position;
+        }
     }
 }

@@ -10,7 +10,10 @@ public class SlimeBehaviour : MonoBehaviour {
     int MaxHealth;
     int Health;
 
-
+    // [SerializeField]
+    // [Range(1,10)]
+    // float bounds=9f;
+    public Vector3 spawnpoint ;
 
     [SerializeField]
     float trailSpawnTime;
@@ -291,14 +294,22 @@ public class SlimeBehaviour : MonoBehaviour {
             //look for player, this state doesnt make sense unless player can be hidden from range
             MoveToward(positionOfInterest);
         } else if(!playerSighted && !playerInAttackRange && nearDeath) {
-            float f = Random.value;
-            MoveToward(new Vector3(f,f,0));
+            //float f = Random.value;
+            //MoveToward(new Vector3(f,f,0)+transform.position);
+            MoveToward(Wander());
         } else if(!playerSighted && !playerInAttackRange && !nearDeath) {
-            float f = Random.value;
-            MoveToward(new Vector3(f,f,0));
+            //float f = Random.value;
+            //MoveToward(new Vector3(f,f,0)+transform.position);
+            MoveToward(Wander()); 
         } else {
             Debug.LogError("Impossible state");
         }
+    }
+
+    public Vector3 Wander() {
+        float x = Random.Range(spawnpoint.x-10f,spawnpoint.x+10f);
+        float y = Random.Range(spawnpoint.y-10f,spawnpoint.y+10f);
+        return Vector3.Lerp(transform.position, new Vector3(x,y,0f),.1f);         
     }
 
     public void TakeDamage(int damage) {
