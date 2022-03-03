@@ -940,7 +940,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 887
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 2991af9a51ec88e49b3da9b7883a33b9, type: 2}
   m_TargetDisplay: 0
@@ -1214,7 +1214,6 @@ MonoBehaviour:
   roomSlice: {fileID: 7200159922843004906, guid: 5c437ee8f84a85d42a69207e8a6ecc44,
     type: 3}
   roomContainer: {fileID: 310128112}
-  done: 1
   waitFlag: 0
   color: {r: 0.18523192, g: 1, b: 0, a: 0.3882353}
   roomSize: 20
