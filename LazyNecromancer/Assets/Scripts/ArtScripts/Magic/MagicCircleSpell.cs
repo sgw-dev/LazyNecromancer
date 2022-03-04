@@ -9,6 +9,9 @@ public class MagicCircleSpell : BaseSpell
 
     bool followTarget = true;
 
+    public float magicCircleDps;
+    public float damageCooldown;
+
     protected override void Awake()
     {
         base.Awake();
@@ -62,5 +65,15 @@ public class MagicCircleSpell : BaseSpell
         rb.velocity = Vector2.zero;
         followTarget = false;
         base.StartDelayedSelfDestruct();
+    }
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Demon")
+        {
+            DemonController dc = other.gameObject.GetComponent<DemonController>();
+            dc.takingDmage = true;
+            dc.MagicCircleDps = magicCircleDps;
+            dc.DamageCoolDown = damageCooldown;
+        }
     }
 }

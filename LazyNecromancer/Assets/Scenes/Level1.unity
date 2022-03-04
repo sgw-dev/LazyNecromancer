@@ -185,6 +185,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+        type: 3}
+      propertyPath: manaBar
+      value: 
+      objectReference: {fileID: 1934010285}
+    - target: {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1224152297}
+    - target: {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+        type: 3}
+      propertyPath: healthPerIcon
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687421696914776493, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
+        type: 3}
+      propertyPath: demonAttackDamage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4687421696914776528, guid: 08f9aa7e78b3dba40b50bddfa8518c32,
         type: 3}
       propertyPath: m_Name
@@ -306,6 +331,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -411,6 +437,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d3d6f521882624a9bc099301fcea55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
 --- !u!1 &617406593
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +631,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1224152297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5923527876923123423, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 4354799588111597624}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca427cb9adc678a4d9ba7c4a07759a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1225007521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1141,7 +1192,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1815459525}
   - component: {fileID: 1815459524}
-  - component: {fileID: 1815459526}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1164,7 +1214,6 @@ MonoBehaviour:
   roomSlice: {fileID: 7200159922843004906, guid: 5c437ee8f84a85d42a69207e8a6ecc44,
     type: 3}
   roomContainer: {fileID: 310128112}
-  done: 1
   waitFlag: 0
   color: {r: 0.18523192, g: 1, b: 0, a: 0.3882353}
   roomSize: 20
@@ -1185,19 +1234,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1815459526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1815459523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 089eecbc0f12eab4aa4e8b147b5829ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useSceneView: 1
 --- !u!1 &1850057238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,6 +1367,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850057238}
   m_CullTransparentMesh: 1
+--- !u!114 &1934010285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6326394580828617572, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 4354799588111597624}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca427cb9adc678a4d9ba7c4a07759a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4354799588111597624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1503,10 +1551,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5923527876287197608, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
+    - target: {fileID: 5923527876923123419, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5923527876923123422, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
         type: 3}
@@ -1585,6 +1633,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8957999927756129966, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957999927756129966, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -1635,6 +1688,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8957999928352814179, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957999928352814179, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1662,6 +1720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957999928661450205, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8957999928661450205, guid: 0441e08a309260d4e9b9cdf3e7e386ed,
         type: 3}
