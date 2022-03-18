@@ -70,6 +70,10 @@ public class DoorManager : MonoBehaviour
         SetDoorsAnim(ribsDoorAnims, false);
         
         this.GetComponent<Spawner>().PlayerEntersRoom();
+        var bscript = GetComponentInChildren<SlimeSpawner>();
+        if(bscript!=null) {
+            bscript.TriggerBossStart();
+        }
     }
 
     public void RoomCleared()

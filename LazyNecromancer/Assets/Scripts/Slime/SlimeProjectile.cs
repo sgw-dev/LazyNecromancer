@@ -70,7 +70,7 @@ public class SlimeProjectile : MonoBehaviour {
     }
 
     bool _animating;
-    private protected async Task Lob(Vector3 start,Vector3 end) {
+    private protected async void Lob(Vector3 start,Vector3 end) {
         if(!_animating) {
             _animating=true;
             while(timer < TimeUntilImpact) {
@@ -87,7 +87,7 @@ public class SlimeProjectile : MonoBehaviour {
         }
     }
 
-    private protected async Task Hurl(Vector3 start,Vector3 end) {
+    private protected async void Hurl(Vector3 start,Vector3 end) {
         if(!_animating) {
             _animating=true;
             while(timer < TimeUntilImpact) {

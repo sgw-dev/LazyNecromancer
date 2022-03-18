@@ -18,9 +18,12 @@ public class DemonController : MonoBehaviour
     private List<GameObject> demons;
     public LayerMask mask;
 
+    [Space(20)]
+
     // DanValues:
     private Spawner parentSpawner;
-    int Health;
+    [Space(20)]
+    public float Health;
 
 
 
@@ -35,15 +38,20 @@ public class DemonController : MonoBehaviour
     public float attackChargeTime;
 
     public WaveSpell magicWave;
-    //public GameObject magicWave;
 
     private bool attacking;
     private float attackTimer = 0f;
+
+    public bool takingDmage;
+    public float DamageCoolDown { get; set; }
+    public float MagicCircleDps { get; set; }
+    private float damageTimer;
     // Start is called before the first frame update
     void Start()
     {
         //Temp health value
-        this.Health = 50;
+        this.Health = 50f;
+        damageTimer = 0;
 
         player = GameObject.FindGameObjectWithTag("Player");
         moveDirections = new List<DirectionValue>();
@@ -72,6 +80,21 @@ public class DemonController : MonoBehaviour
         {
             attackTimer += Time.fixedDeltaTime;
         }
+
+        if (takingDmage && damageTimer <= 0)
+        {
+            TakeDamage(MagicCircleDps);
+            damageTimer = DamageCoolDown;
+            takingDmage = false;
+        }else if(takingDmage)
+        {
+            damageTimer -= Time.fixedDeltaTime;
+        }
+
+        AIMove();
+    }
+    private void AIMove()
+    {
         demons = new List<GameObject>(GameObject.FindGameObjectsWithTag("Demon"));
 
         moveDirections.Clear();
@@ -98,21 +121,21 @@ public class DemonController : MonoBehaviour
             // minimise this
             float distanceToPlayer = Vector3.Distance(newPos, player.transform.position);
             // If the player is too close, this is bad
-            if(distanceToPlayer < minRange)
+            if (distanceToPlayer < minRange)
             {
-                distanceToPlayer = (1/distanceToPlayer) * 1;
+                distanceToPlayer = (1 / distanceToPlayer) * 1;
             }
             // maximise this
             float distanceToDemons = 0;
-            foreach(GameObject demon in demons)
+            foreach (GameObject demon in demons)
             {
                 distanceToDemons += Vector3.Distance(newPos, demon.transform.position);
             }
             // Maxamise this
             float distanceToWall = 2.5f;
             //Debug.DrawLine(transform.position, transform.position+(dv.Dir * stepSize), Color.red);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dv.Dir, stepSize*2, mask);
-            if(hit.collider != null)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dv.Dir, stepSize * 2, mask);
+            if (hit.collider != null)
             {
                 distanceToWall = Vector3.Distance(transform.position, hit.transform.position);
                 //Debug.DrawLine(transform.position, transform.position + (dv.Dir * stepSize * 2), Color.red);
@@ -121,7 +144,7 @@ public class DemonController : MonoBehaviour
             {
                 //Debug.DrawLine(transform.position, transform.position + (dv.Dir * stepSize*2), Color.green);
             }
-            dv.Value = distanceToPlayer + (3.5f / distanceToDemons) + (10f/distanceToWall);
+            dv.Value = distanceToPlayer + (3.5f / distanceToDemons) + (10f / distanceToWall);
 
             Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + (dv.Dir * dv.Value));
 
@@ -133,16 +156,16 @@ public class DemonController : MonoBehaviour
                 {
                     smallest = dv;
                 }
-                
+
             }
         }
 
         // Pick Smallest Direction
         // if the previous value has been set
-        if(previous != null)
+        if (previous != null)
         {
             // If the difference is larger, use the new movement and update the previous
-            if(Mathf.Abs(previous.Value - smallest.Value) > diff)
+            if (Mathf.Abs(previous.Value - smallest.Value) > diff)
             {
                 previous = new DirectionValue(smallest.Dir, smallest.Value);
             }
@@ -188,14 +211,18 @@ public class DemonController : MonoBehaviour
         if(collision.tag == "Player")
         {
             CombatController cc = collision.GetComponent<CombatController>();
-            this.Health -= 25;
-            if (this.Health == 0)
-            {
-                parentSpawner.RemoveEnemyFromAlive(this.gameObject);
-                parentSpawner.CheckIfEnemiesAlive();
-                Destroy(gameObject);
-            }
+            TakeDamage(25f);
         }
         
+    }
+    public void TakeDamage(float dmg)
+    {
+        this.Health -= dmg;
+        if (this.Health <= 0)
+        {
+            parentSpawner.RemoveEnemyFromAlive(this.gameObject);
+            parentSpawner.CheckIfEnemiesAlive();
+            Destroy(gameObject);
+        }
     }
 }

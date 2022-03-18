@@ -19,6 +19,12 @@ public class ResourceDisplayBar : MonoBehaviour
         Initialize();
     }
 
+    public float ValuePerIcon
+    {
+        get { return valuePerIcon; }
+        set { valuePerIcon = value; }
+    }
+
     void Initialize()
     {
         resourceIcons = new ResourceIcon[maxNumIcons];

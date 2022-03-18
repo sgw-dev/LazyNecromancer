@@ -312,8 +312,12 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 64
+  Health: 0
   diff: 0.002
   timeBetweenAttacks: 5
   attackChargeTime: 0
   magicWave: {fileID: 6700096781869516825, guid: bb1d591ae135611438669c8f768a081a,
     type: 3}
+  takingDmage: 0
+  damageCoolDown: 0.5
+  magicCircleDps: 10

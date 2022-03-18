@@ -98,7 +98,11 @@ public abstract class BaseSpell : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered");
+        //Debug.Log("Triggered");
+        if(collision.gameObject.tag == "Player")
+        {
+            collision.GetComponent<PlayerController>().DemonHit();
+        }
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
