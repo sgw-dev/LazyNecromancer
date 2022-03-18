@@ -73,9 +73,74 @@ public class LevelUpScreen : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        HealthUp.onClick.AddListener(() => ClickHealthUp());
+        HealthDown.onClick.AddListener(() => ClickHealthDown());
+        ManaUp.onClick.AddListener(() => ClickManaUp());
+        ManaDown.onClick.AddListener(() => ClickManaDown());
+        StrengthUp.onClick.AddListener(() => ClickStrengthUp());
+        StrengthDown.onClick.AddListener(() => ClickStrengthDown());
+        MagicUp.onClick.AddListener(() => ClickMagicUp());
+        MagicDown.onClick.AddListener(() => ClickMagicDown());
+        StaminaUp.onClick.AddListener(() => ClickStaminaUp());
+        StaminaDown.onClick.AddListener(() => ClickStaminaDown());
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    private void ClickHealthUp()
+    {
+        this.EXP.text = "Clicked Health Up";
+    }
+
+    private void ClickHealthDown()
+    {
+        this.EXP.text = "Clicked Health Down";
+    }
+
+    private void ClickManaUp()
+    {
+        this.EXP.text = "Clicked Mana Up";
+    }
+
+    private void ClickManaDown()
+    {
+        this.EXP.text = "Clicked Mana Down";
+    }
+
+    private void ClickStrengthUp()
+    {
+        this.EXP.text = "Clicked strength Up";
+    }
+
+    private void ClickStrengthDown()
+    {
+        this.EXP.text = "Clicked strength Down";
+    }
+
+    private void ClickMagicUp()
+    {
+        this.EXP.text = "Clicked magic Up";
+    }
+
+    private void ClickMagicDown()
+    {
+        this.EXP.text = "Clicked magic Down";
+    }
+
+    private void ClickStaminaUp()
+    {
+        this.EXP.text = "Clicked stamina Up";
+    }
+
+    private void ClickStaminaDown()
+    {
+        this.EXP.text = "Clicked stamina Down";
     }
 }
